@@ -1,7 +1,9 @@
 
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { servicesData } from '@/data/services';
 
+// Create slides from the top services
 const slides = [
   {
     id: 1,
@@ -9,6 +11,7 @@ const slides = [
     subtitle: 'Confiables & Profesionales',
     description: 'Expertos en auditoría financiera, contable y tributaria con más de 20 años de experiencia.',
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    serviceId: 'auditoria-financiera'
   },
   {
     id: 2,
@@ -16,6 +19,7 @@ const slides = [
     subtitle: 'Optimiza tus Obligaciones',
     description: 'Cumplimiento eficiente de declaraciones, reclamaciones y solicitudes ante SUNAT.',
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2011&q=80',
+    serviceId: 'tributario'
   },
   {
     id: 3,
@@ -23,8 +27,23 @@ const slides = [
     subtitle: 'Mejora tu Organización',
     description: 'Reorganización de obligaciones y determinación de viabilidad comercial y operacional.',
     image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
+    serviceId: 'reestructuracion'
   },
 ];
+
+// Add other key services from servicesData
+servicesData.forEach(service => {
+  if (!slides.some(slide => slide.serviceId === service.id) && slides.length < 6) {
+    slides.push({
+      id: slides.length + 1,
+      title: service.title,
+      subtitle: 'Servicios Especializados',
+      description: service.description,
+      image: service.image,
+      serviceId: service.id
+    });
+  }
+});
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -134,10 +153,10 @@ const Hero = () => {
                     Nuestros Servicios
                   </a>
                   <a 
-                    href="#contacto" 
+                    href={`/servicios/${slide.serviceId}`}
                     className="bg-transparent hover:bg-white/10 text-white border border-white px-6 py-3 rounded-md transition-all duration-300"
                   >
-                    Contáctanos
+                    Ver Detalles
                   </a>
                 </div>
               </div>

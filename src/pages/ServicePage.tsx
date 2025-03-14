@@ -4,7 +4,7 @@ import ServiceDetail from '@/components/ServiceDetail';
 
 const ServicePage = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
-  return <ServiceDetail />;
+  return <ServiceDetail serviceId={serviceId} />;
 };
 
 export default ServicePage;
