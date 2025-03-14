@@ -8,57 +8,116 @@ import {
   FileSpreadsheet, 
   BarChart4, 
   Shield, 
-  Lightbulb 
+  Lightbulb,
+  Search,
+  FileCheck 
 } from 'lucide-react';
 
 const servicesData = [
   {
     id: 'reestructuracion',
-    title: 'Reestructuración Financiera',
-    description: 'Asistencia en procesos de reestructuración empresarial y determinación de viabilidad comercial y operacional.',
+    title: 'Reestructuración Financiera y Operativa',
+    description: 'Asistencia en procesos de reestructuración empresarial para reorganizar obligaciones a corto y mediano plazo, y determinar viabilidad comercial.',
     icon: BarChart3,
+    details: [
+      'Asistencia en procesos de reestructuración empresarial para reorganizar las obligaciones a corto y mediano plazo.',
+      'Participación en la reestructuración del negocio en marcha para determinar su viabilidad comercial y operacional.',
+      'Asignación de personal calificado de forma temporal o permanente para apoyar en áreas contables, financieras y legales.'
+    ],
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3'
   },
   {
     id: 'outsourcing',
     title: 'Outsourcing Administrativo',
-    description: 'Soporte administrativo para tesorería, logística, importaciones y análisis de cuentas.',
+    description: 'Soporte administrativo para la ejecución de actividades como tesorería, logística, importaciones y análisis de cuentas.',
     icon: Building,
+    details: [
+      'Soporte administrativo para la ejecución de actividades como tesorería, logística, importaciones y análisis de cuentas.'
+    ],
+    image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3'
   },
   {
     id: 'tributario',
     title: 'Outsourcing Tributario',
-    description: 'Declaraciones juradas, reclamaciones, descargos y solicitudes a SUNAT con normativas NIIF.',
+    description: 'Declaraciones juradas, reclamaciones, descargos y solicitudes a SUNAT bajo normativas NIIF plenas y NIIF para PYMES.',
     icon: Calculator,
+    details: [
+      'Declaraciones juradas del impuesto a la renta, IGV, ITAN, entre otros.',
+      'Reclamaciones, descargos y solicitudes a SUNAT.',
+      'Asistencia en procedimientos de compensación, devolución y recuperación de tributos.',
+      'Servicios bajo las normativas NIIF plenas y NIIF para PYMES.'
+    ],
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3'
   },
   {
     id: 'planillas',
     title: 'Outsourcing de Planillas',
-    description: 'Cálculo de planillas, aportes mensuales y gestión de beneficios sociales.',
+    description: 'Cálculo de planillas, determinación de aportes mensuales y gestión de bajas de trabajadores y beneficios sociales.',
     icon: ClipboardList,
+    details: [
+      'Cálculo de planillas y generación de reportes.',
+      'Determinación de aportes mensuales (AFP, ESSALUD, renta de 5ta categoría, etc.).',
+      'Gestión de bajas de trabajadores y cálculo de beneficios sociales (vacaciones, CTS, gratificaciones).'
+    ],
+    image: 'https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-4.0.3'
   },
   {
     id: 'niif',
     title: 'Implementación NIIF',
-    description: 'Implementación de NIIF plenas y NIIF para PYMES con cumplimiento tributario peruano.',
+    description: 'Implementación de NIIF plenas y NIIF para PYMES con cumplimiento tributario bajo las normativas peruanas.',
     icon: FileSpreadsheet,
+    details: [
+      'Implementación de NIIF plenas y NIIF para PYMES.',
+      'Cumplimiento tributario bajo las normativas peruanas.'
+    ],
+    image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-4.0.3'
   },
   {
     id: 'precios',
     title: 'Precios de Transferencia',
-    description: 'Elaboración de estudios de precios de transferencia y reportes País por País para SUNAT.',
+    description: 'Elaboración del estudio de precios de transferencia, documentación y reportes País por País para SUNAT.',
     icon: BarChart4,
+    details: [
+      'Elaboración del estudio de precios de transferencia y documentación relacionada.',
+      'Elaboración de Reportes País por País.',
+      'Presentación de Declaraciones Juradas Informativas a SUNAT.'
+    ],
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3'
   },
   {
     id: 'auditoria',
     title: 'Auditoría de Sistemas',
-    description: 'Evaluación de sistemas informáticos, controles y aspectos de seguridad de hardware y software.',
+    description: 'Evaluación de sistemas informáticos, controles y aspectos de seguridad de hardware, software y administración de datos.',
     icon: Shield,
+    details: [
+      'Evaluación del ambiente de los sistemas de información computarizada, los controles generales y los controles en las aplicaciones.',
+      'Evaluación de los aspectos de seguridad física del hardware, software y administración de datos.',
+      'Asesoría para prevenir las contingencias derivadas de los softwares (cumplimiento BSA).'
+    ],
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3'
+  },
+  {
+    id: 'auditoria-financiera',
+    title: 'Auditoría Financiera y Tributaria',
+    description: 'Expertos en Tributación y Finanzas, defensa ante la SUNAT y asesoramiento para la eliminación de multas.',
+    icon: Search,
+    details: [
+      'Expertos en Tributación y Finanzas.',
+      'Defensa ante la SUNAT.',
+      'Asesoramiento para la eliminación de multas bajo el Decreto Legislativo 1634.'
+    ],
+    image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3'
   },
   {
     id: 'consultoria',
     title: 'Asesoría Empresarial',
-    description: 'Planeamiento, organización y control de actividades para garantizar eficiencia operativa.',
+    description: 'Asistencia en planeamiento, organización y control de actividades para garantizar eficiencia y economía operativa.',
     icon: Lightbulb,
+    details: [
+      'Asistencia en el planeamiento, organización y control de actividades para garantizar la eficiencia y economía operativa.',
+      'Asesoría para la adquisición de sistemas de información computarizada.'
+    ],
+    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3'
   },
 ];
 
@@ -120,19 +179,40 @@ const Services = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicesData.map((service, index) => (
             <div 
               key={service.id}
               id={service.id}
-              className="service-card opacity-0 animate-on-scroll"
+              className="service-card opacity-0 animate-on-scroll flex flex-col h-full"
               ref={(el) => cardRefs.current[index + 1] = el}
             >
-              <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-cuenca-blue/10 text-cuenca-blue mb-4">
-                <service.icon className="h-6 w-6" />
+              <div className="relative h-44 mb-4 rounded-t-xl overflow-hidden">
+                <img 
+                  src={service.image} 
+                  alt={service.title} 
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                <div className="absolute bottom-3 left-4 flex items-center">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-cuenca-blue text-white mr-3">
+                    <service.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white">{service.title}</h3>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-              <p className="text-gray-600">{service.description}</p>
+              
+              <div className="p-5 flex-grow">
+                <p className="text-gray-600 mb-4">{service.description}</p>
+                <ul className="text-sm text-gray-700 space-y-2">
+                  {service.details.map((detail, i) => (
+                    <li key={i} className="flex items-start">
+                      <span className="text-cuenca-blue mr-2">•</span>
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>

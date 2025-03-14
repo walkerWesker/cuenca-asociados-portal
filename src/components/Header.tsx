@@ -1,6 +1,18 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
+
+// Define services data to keep it consistent
+const servicesMenuItems = [
+  { id: 'reestructuracion', name: 'Reestructuración Financiera' },
+  { id: 'outsourcing', name: 'Outsourcing Administrativo' },
+  { id: 'tributario', name: 'Outsourcing Tributario' },
+  { id: 'planillas', name: 'Outsourcing de Planillas' },
+  { id: 'niif', name: 'Implementación NIIF' },
+  { id: 'precios', name: 'Precios de Transferencia' },
+  { id: 'auditoria', name: 'Auditoría de Sistemas' },
+  { id: 'auditoria-financiera', name: 'Auditoría Financiera' },
+  { id: 'consultoria', name: 'Asesoría Empresarial' },
+];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,16 +58,17 @@ const Header = () => {
             >
               Servicios <ChevronDown className="ml-1 h-4 w-4" />
             </button>
-            <div className="absolute left-0 mt-2 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+            <div className="absolute left-0 mt-2 w-72 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <div className="py-2 px-4 space-y-2">
-                <a href="#reestructuracion" className="block px-2 py-2 text-sm hover:bg-gray-100 rounded-md">Reestructuración Financiera</a>
-                <a href="#outsourcing" className="block px-2 py-2 text-sm hover:bg-gray-100 rounded-md">Outsourcing Administrativo</a>
-                <a href="#tributario" className="block px-2 py-2 text-sm hover:bg-gray-100 rounded-md">Outsourcing Tributario</a>
-                <a href="#planillas" className="block px-2 py-2 text-sm hover:bg-gray-100 rounded-md">Outsourcing de Planillas</a>
-                <a href="#niif" className="block px-2 py-2 text-sm hover:bg-gray-100 rounded-md">Implementación NIIF</a>
-                <a href="#precios" className="block px-2 py-2 text-sm hover:bg-gray-100 rounded-md">Precios de Transferencia</a>
-                <a href="#auditoria" className="block px-2 py-2 text-sm hover:bg-gray-100 rounded-md">Auditoría de Sistemas</a>
-                <a href="#consultoria" className="block px-2 py-2 text-sm hover:bg-gray-100 rounded-md">Asesoría Empresarial</a>
+                {servicesMenuItems.map(service => (
+                  <a 
+                    key={service.id} 
+                    href={`#${service.id}`} 
+                    className="block px-2 py-2 text-sm hover:bg-gray-100 rounded-md"
+                  >
+                    {service.name}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -96,14 +109,15 @@ const Header = () => {
               servicesOpen ? 'max-h-96 mt-2' : 'max-h-0'
             }`}>
               <div className="pl-4 space-y-2 border-l-2 border-cuenca-gold">
-                <a href="#reestructuracion" className="block py-1 text-sm">Reestructuración Financiera</a>
-                <a href="#outsourcing" className="block py-1 text-sm">Outsourcing Administrativo</a>
-                <a href="#tributario" className="block py-1 text-sm">Outsourcing Tributario</a>
-                <a href="#planillas" className="block py-1 text-sm">Outsourcing de Planillas</a>
-                <a href="#niif" className="block py-1 text-sm">Implementación NIIF</a>
-                <a href="#precios" className="block py-1 text-sm">Precios de Transferencia</a>
-                <a href="#auditoria" className="block py-1 text-sm">Auditoría de Sistemas</a>
-                <a href="#consultoria" className="block py-1 text-sm">Asesoría Empresarial</a>
+                {servicesMenuItems.map(service => (
+                  <a 
+                    key={service.id} 
+                    href={`#${service.id}`} 
+                    className="block py-1 text-sm"
+                  >
+                    {service.name}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
