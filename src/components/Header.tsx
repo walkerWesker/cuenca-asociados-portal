@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Define services data to keep it consistent
 const servicesMenuItems = [
@@ -42,15 +43,15 @@ const Header = () => {
       isScrolled ? 'glass-effect py-3' : 'bg-transparent py-5'
     }`}>
       <div className="container mx-auto flex items-center justify-between">
-        <a href="#home" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <span className="text-2xl font-serif font-bold text-cuenca-blue">
             Cuenca <span className="text-cuenca-gold">&</span> Asociados
           </span>
-        </a>
+        </Link>
         
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-8">
-          <a href="#home" className="hover-link font-medium text-cuenca-dark">Inicio</a>
+          <Link to="/" className="hover-link font-medium text-cuenca-dark">Inicio</Link>
           <div className="relative group">
             <button 
               onClick={toggleServices}
@@ -61,13 +62,13 @@ const Header = () => {
             <div className="absolute left-0 mt-2 w-72 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <div className="py-2 px-4 space-y-2">
                 {servicesMenuItems.map(service => (
-                  <a 
+                  <Link 
                     key={service.id} 
-                    href={`#${service.id}`} 
+                    to={`/servicios/${service.id}`} 
                     className="block px-2 py-2 text-sm hover:bg-gray-100 rounded-md"
                   >
                     {service.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -96,7 +97,7 @@ const Header = () => {
         mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
       }`}>
         <div className="container mx-auto py-4 px-4 space-y-3">
-          <a href="#home" className="block py-2 hover:text-cuenca-gold transition-colors">Inicio</a>
+          <Link to="/" className="block py-2 hover:text-cuenca-gold transition-colors">Inicio</Link>
           <div>
             <button 
               onClick={toggleServices}
@@ -110,13 +111,13 @@ const Header = () => {
             }`}>
               <div className="pl-4 space-y-2 border-l-2 border-cuenca-gold">
                 {servicesMenuItems.map(service => (
-                  <a 
+                  <Link 
                     key={service.id} 
-                    href={`#${service.id}`} 
+                    to={`/servicios/${service.id}`} 
                     className="block py-1 text-sm"
                   >
                     {service.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
