@@ -3,12 +3,9 @@ import { useEffect, useState, Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 import ServiceDetail from '@/components/ServiceDetail';
 import Header from '@/components/Header';
-import About from '@/components/About';
-import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import { servicesData } from '@/data/services';
 
-// Use React.lazy for code splitting and better performance
 const ServicePage = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
   const id = serviceId || '';
@@ -64,8 +61,6 @@ const ServicePage = () => {
       <main>
         <Suspense fallback={<div className="flex justify-center items-center py-20">Cargando...</div>}>
           <ServiceDetail />
-          <About />
-          <Contact />
         </Suspense>
       </main>
       <Footer />
