@@ -64,42 +64,42 @@ const Services = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicesData.map((service, index) => (
-            <Link 
-              key={service.id}
-              to={`/servicios/${service.id}`}
-              className="service-card opacity-0 animate-on-scroll flex flex-col h-full hover:no-underline"
-              ref={(el) => cardRefs.current[index + 1] = el}
-            >
-              <div className="relative h-44 mb-4 rounded-t-xl overflow-hidden">
-                <img 
-                  src={service.image} 
-                  alt={service.title} 
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-3 left-4 flex items-center">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-cuenca-blue text-white mr-3">
-                    <service.icon className="h-5 w-5" />
+            <div key={service.id} className="opacity-0 animate-on-scroll" ref={(el) => cardRefs.current[index + 1] = el}>
+              <Link 
+                to={`/servicios/${service.id}`}
+                className="service-card flex flex-col h-full hover:no-underline block"
+              >
+                <div className="relative h-44 mb-4 rounded-t-xl overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title} 
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <div className="absolute bottom-3 left-4 flex items-center">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-cuenca-blue text-white mr-3">
+                      <service.icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-lg font-bold text-white">{service.title}</h3>
                   </div>
-                  <h3 className="text-lg font-bold text-white">{service.title}</h3>
                 </div>
-              </div>
-              
-              <div className="p-5 flex-grow">
-                <p className="text-gray-600 mb-4">{service.description}</p>
-                <ul className="text-sm text-gray-700 space-y-2">
-                  {service.details.slice(0, 2).map((detail, i) => (
-                    <li key={i} className="flex items-start">
-                      <span className="text-cuenca-blue mr-2">•</span>
-                      <span>{detail}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-4 text-cuenca-blue font-medium hover:underline">
-                  Ver más detalles
+                
+                <div className="p-5 flex-grow">
+                  <p className="text-gray-600 mb-4">{service.description}</p>
+                  <ul className="text-sm text-gray-700 space-y-2">
+                    {service.details.slice(0, 2).map((detail, i) => (
+                      <li key={i} className="flex items-start">
+                        <span className="text-cuenca-blue mr-2">•</span>
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-4 text-cuenca-blue font-medium hover:underline">
+                    Ver más detalles
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
         
