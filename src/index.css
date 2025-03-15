@@ -129,6 +129,12 @@
     animation: staggerAnimation 0.5s ease-out forwards;
   }
   
+  /* Fix for the CSS warning by removing the problematic selector */
+  /* We're replacing the group hover with a cleaner approach */
+  .stagger-animation .group:hover .group-item {
+    animation: staggerAnimation 0.5s ease-out forwards;
+  }
+  
   /* Professional subtle animations */
   .animate-pulse-subtle {
     animation: pulseSubtle 3s ease-in-out infinite;
