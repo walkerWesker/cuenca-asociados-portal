@@ -8,7 +8,7 @@ const ServicePage = () => {
   // If serviceId is undefined, use a fallback or handle it appropriately
   const id = serviceId || '';
   
-  return <ServiceDetail serviceId={id} />;
+  return <ServiceDetail />;
 };
 
 export default ServicePage;

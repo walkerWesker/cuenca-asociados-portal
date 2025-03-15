@@ -1,31 +1,62 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import { servicesData } from '@/data/services';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import About from '@/components/About';
+import Contact from '@/components/Contact';
 
 const ServiceDetail = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
   const contentRef = useRef<HTMLDivElement>(null);
+  const [isScrolling, setIsScrolling] = useState(false);
   
   const service = servicesData.find(s => s.id === serviceId);
   
   useEffect(() => {
     window.scrollTo(0, 0);
     
-    const animateElements = () => {
+    // Initialize scroll animation handlers
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolling(scrollPosition > 50);
+      
+      // Handle animations for elements with animate-on-scroll class
+      const animateElements = document.querySelectorAll('.animate-on-scroll:not(.visible)');
+      animateElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight - 100;
+        if (isVisible) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    
+    // Initial animation for elements that are already in view
+    const animateInitialElements = () => {
       const elements = document.querySelectorAll('.animate-on-load');
       elements.forEach((el, index) => {
         setTimeout(() => {
           el.classList.add('visible');
         }, 100 * index);
       });
+      
+      // Also check for scroll-animated elements initially in view
+      handleScroll();
     };
     
-    animateElements();
+    // Run initial animations
+    animateInitialElements();
+    
+    // Add scroll listener for scroll animations
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [serviceId]);
   
   if (!service) {
@@ -77,7 +108,7 @@ const ServiceDetail = () => {
         <div className="container mx-auto px-4 py-16" ref={contentRef}>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Main Content */}
-            <div className="lg:col-span-2 animate-on-load opacity-0">
+            <div className="lg:col-span-2 animate-on-scroll opacity-0">
               <h2 className="text-3xl font-bold mb-6 text-cuenca-blue">Qué ofrecemos</h2>
               
               <div className="prose prose-lg max-w-none">
@@ -92,7 +123,7 @@ const ServiceDetail = () => {
                 
                 <ul className="space-y-4 mb-8">
                   {service.details.map((detail, index) => (
-                    <li key={index} className="flex items-start animate-on-load opacity-0" style={{animationDelay: `${index * 100}ms`}}>
+                    <li key={index} className="flex items-start animate-on-scroll opacity-0" style={{animationDelay: `${index * 100}ms`}}>
                       <div className="bg-cuenca-blue text-white rounded-full p-1 mr-3 mt-1">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -113,18 +144,18 @@ const ServiceDetail = () => {
                 </p>
               </div>
               
-              <div className="mt-12 animate-on-load opacity-0">
-                <Link to="#contacto">
+              <div className="mt-12 animate-on-scroll opacity-0">
+                <a href="#contacto">
                   <Button size="lg" className="bg-cuenca-blue hover:bg-cuenca-blue/90">
                     Solicitar información
                   </Button>
-                </Link>
+                </a>
               </div>
             </div>
             
             {/* Sidebar */}
             <div className="lg:col-span-1">
-              <div className="bg-gray-50 p-6 rounded-lg shadow-sm animate-on-load opacity-0">
+              <div className="bg-gray-50 p-6 rounded-lg shadow-sm animate-on-scroll opacity-0">
                 <div className="flex items-center justify-center w-16 h-16 rounded-lg bg-cuenca-blue text-white mb-6 mx-auto">
                   <service.icon className="h-8 w-8" />
                 </div>
@@ -179,6 +210,15 @@ const ServiceDetail = () => {
               </div>
             </div>
           </div>
+        </div>
+        
+        {/* Add About and Contact section inside ServiceDetail */}
+        <div id="nosotros">
+          <About />
+        </div>
+        
+        <div id="contacto">
+          <Contact />
         </div>
       </main>
       

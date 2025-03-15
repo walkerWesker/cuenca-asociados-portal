@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 // Define services data to keep it consistent
 const servicesMenuItems = [
@@ -19,6 +19,8 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const location = useLocation();
+  const isServicePage = location.pathname.includes('/servicios/');
   
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +36,29 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  
+  // Scroll to section with offset for fixed header
+  const scrollToSection = (sectionId: string) => {
+    setMobileMenuOpen(false); // Close mobile menu if open
+    
+    if (isServicePage) {
+      // If we're on a service page, scroll to the section on the same page
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const headerHeight = 80; // Approx header height
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    } else {
+      // If not on service page, navigate to homepage with hash
+      window.location.href = `/#${sectionId}`;
+    }
+  };
   
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
   const toggleServices = () => setServicesOpen(!servicesOpen);
@@ -73,17 +98,27 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <a href="#nosotros" className="hover-link font-medium text-cuenca-dark">Nosotros</a>
-          <a href="#contacto" className="hover-link font-medium text-cuenca-dark">Contacto</a>
+          <button 
+            onClick={() => scrollToSection('nosotros')} 
+            className="hover-link font-medium text-cuenca-dark"
+          >
+            Nosotros
+          </button>
+          <button 
+            onClick={() => scrollToSection('contacto')} 
+            className="hover-link font-medium text-cuenca-dark"
+          >
+            Contacto
+          </button>
         </nav>
         
         <div className="hidden lg:block">
-          <a 
-            href="#contacto" 
+          <button
+            onClick={() => scrollToSection('contacto')}
             className="bg-cuenca-blue hover:bg-opacity-90 text-white px-5 py-2 rounded-md transition-all duration-300"
           >
             Contáctanos
-          </a>
+          </button>
         </div>
         
         {/* Mobile Menu Toggle */}
@@ -122,14 +157,24 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <a href="#nosotros" className="block py-2 hover:text-cuenca-gold transition-colors">Nosotros</a>
-          <a href="#contacto" className="block py-2 hover:text-cuenca-gold transition-colors">Contacto</a>
-          <a 
-            href="#contacto" 
+          <button 
+            onClick={() => scrollToSection('nosotros')}
+            className="block py-2 w-full text-left hover:text-cuenca-gold transition-colors"
+          >
+            Nosotros
+          </button>
+          <button 
+            onClick={() => scrollToSection('contacto')}
+            className="block py-2 w-full text-left hover:text-cuenca-gold transition-colors"
+          >
+            Contacto
+          </button>
+          <button
+            onClick={() => scrollToSection('contacto')}
             className="block w-full text-center bg-cuenca-blue hover:bg-opacity-90 text-white px-5 py-2 rounded-md mt-4 transition-all duration-300"
           >
             Contáctanos
-          </a>
+          </button>
         </div>
       </div>
     </header>
