@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
@@ -9,28 +9,36 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 const Index = () => {
+  // Set document title
   useEffect(() => {
-    // Add title for the page
     document.title = 'Cuenca & Asociados | Sociedad de Auditoría';
     
-    // Smooth scroll functionality for anchor links
-    const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const href = target.getAttribute('href');
-      
-      if (href && href.startsWith('#') && href.length > 1) {
-        e.preventDefault();
-        const element = document.getElementById(href.substring(1));
-        
-        if (element) {
-          window.scrollTo({
-            top: element.offsetTop - 80, // Offset for the header
-            behavior: 'smooth',
-          });
-        }
-      }
+    // Clean up function
+    return () => {
+      // Title is reset in other pages' cleanup functions
     };
+  }, []);
+  
+  // Optimized handler for anchor clicks
+  const handleAnchorClick = useCallback((e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    const href = target.getAttribute('href');
     
+    if (href && href.startsWith('#') && href.length > 1) {
+      e.preventDefault();
+      const element = document.getElementById(href.substring(1));
+      
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop - 80, // Offset for the header
+          behavior: 'smooth',
+        });
+      }
+    }
+  }, []);
+  
+  // Set up intersection observer for animations
+  useEffect(() => {
     // Add click event listeners to all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', handleAnchorClick as EventListener);
@@ -51,18 +59,22 @@ const Index = () => {
       });
     }, observerOptions);
     
+    // Efficiently query elements only once
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     animatedElements.forEach((element) => observer.observe(element));
     
-    // Cleanup
+    // Cleanup to prevent memory leaks
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', handleAnchorClick as EventListener);
       });
       
+      animatedElements.forEach(element => {
+        observer.unobserve(element);
+      });
       observer.disconnect();
     };
-  }, []);
+  }, [handleAnchorClick]);
   
   return (
     <div className="min-h-screen">

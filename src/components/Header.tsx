@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+
+import { useState, useEffect, useCallback } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -22,27 +23,36 @@ const Header = () => {
   const location = useLocation();
   const isServicePage = location.pathname.includes('/servicios/');
   
+  // Memoize the scroll handler to avoid unnecessary re-renders
+  const handleScroll = useCallback(() => {
+    if (window.scrollY > 50) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  }, []);
+  
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
-    window.addEventListener('scroll', handleScroll);
+    // Clean up event listener on component unmount
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
+  
+  // Close mobile menu when location changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location]);
   
   // Scroll to section with offset for fixed header
   const scrollToSection = (sectionId: string) => {
     setMobileMenuOpen(false); // Close mobile menu if open
     
-    if (isServicePage) {
-      // If we're on a service page, scroll to the section on the same page
+    // If we're already on the homepage and the target section exists, scroll smoothly
+    if (location.pathname === '/' && document.getElementById(sectionId)) {
       const element = document.getElementById(sectionId);
       if (element) {
         const headerHeight = 80; // Approx header height
@@ -54,8 +64,23 @@ const Header = () => {
           behavior: 'smooth'
         });
       }
-    } else {
-      // If not on service page, navigate to homepage with hash
+    } 
+    // If we're on a service page and the target section exists, scroll smoothly
+    else if (isServicePage && document.getElementById(sectionId)) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const headerHeight = 80; // Approx header height
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    } 
+    // If we're not on the homepage, navigate to homepage with hash
+    else {
       window.location.href = `/#${sectionId}`;
     }
   };
@@ -81,16 +106,23 @@ const Header = () => {
             <button 
               onClick={toggleServices}
               className="flex items-center font-medium text-cuenca-dark hover-link"
+              aria-expanded={servicesOpen}
+              aria-haspopup="true"
             >
               Servicios <ChevronDown className="ml-1 h-4 w-4" />
             </button>
-            <div className="absolute left-0 mt-2 w-72 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+            <div 
+              className="absolute left-0 mt-2 w-72 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
+              role="menu"
+              aria-orientation="vertical"
+            >
               <div className="py-2 px-4 space-y-2">
                 {servicesMenuItems.map(service => (
                   <Link 
                     key={service.id} 
                     to={`/servicios/${service.id}`} 
                     className="block px-2 py-2 text-sm hover:bg-gray-100 rounded-md"
+                    role="menuitem"
                   >
                     {service.name}
                   </Link>
@@ -122,21 +154,36 @@ const Header = () => {
         </div>
         
         {/* Mobile Menu Toggle */}
-        <button className="lg:hidden text-cuenca-dark" onClick={toggleMobileMenu}>
+        <button 
+          className="lg:hidden text-cuenca-dark p-2" 
+          onClick={toggleMobileMenu}
+          aria-expanded={mobileMenuOpen}
+          aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+        >
           {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
       
       {/* Mobile Menu */}
-      <div className={`lg:hidden absolute top-full left-0 w-full glass-effect overflow-hidden transition-all duration-300 ease-in-out ${
-        mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-      }`}>
+      <div 
+        className={`lg:hidden absolute top-full left-0 w-full glass-effect overflow-hidden transition-all duration-300 ease-in-out ${
+          mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+        }`}
+        aria-hidden={!mobileMenuOpen}
+      >
         <div className="container mx-auto py-4 px-4 space-y-3">
-          <Link to="/" className="block py-2 hover:text-cuenca-gold transition-colors">Inicio</Link>
+          <Link 
+            to="/" 
+            className="block py-2 hover:text-cuenca-gold transition-colors"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Inicio
+          </Link>
           <div>
             <button 
               onClick={toggleServices}
               className="flex items-center justify-between w-full py-2"
+              aria-expanded={servicesOpen}
             >
               <span>Servicios</span>
               <ChevronDown className={`h-4 w-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
@@ -150,6 +197,7 @@ const Header = () => {
                     key={service.id} 
                     to={`/servicios/${service.id}`} 
                     className="block py-1 text-sm"
+                    onClick={() => setMobileMenuOpen(false)}
                   >
                     {service.name}
                   </Link>
