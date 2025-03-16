@@ -74,7 +74,7 @@ export const servicesData = [
       'Adaptación de sistemas contables a estándares internacionales.',
       'Capacitación al personal en normativas NIIF.'
     ],
-    image: 'https://images.unsplash.com/photo-1474377207190-a7d8b3334068?ixlib=rb-4.0.3'
+    image: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?ixlib=rb-4.0.3'
   },
   {
     id: 'precios',
@@ -114,7 +114,7 @@ export const servicesData = [
       'Diagnóstico integral de la situación financiera y tributaria de su empresa.',
       'Planificación fiscal estratégica para optimizar la carga tributaria.'
     ],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3'
+    image: 'https://images.unsplash.com/photo-1554224154-22dec7ec8818?ixlib=rb-4.0.3'
   },
   {
     id: 'consultoria',

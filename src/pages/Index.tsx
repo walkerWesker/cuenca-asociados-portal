@@ -1,5 +1,5 @@
 
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
@@ -9,6 +9,8 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 const Index = () => {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  
   // Set document title
   useEffect(() => {
     document.title = 'Cuenca & Asociados | Sociedad de Auditoría';
@@ -17,6 +19,18 @@ const Index = () => {
     return () => {
       // Title is reset in other pages' cleanup functions
     };
+  }, []);
+  
+  // Track scroll progress for animations
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
   // Optimized handler for anchor clicks
@@ -48,13 +62,20 @@ const Index = () => {
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.1,
+      threshold: 0.15, // Lower threshold to trigger animations earlier
     };
     
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          // Add visible class for basic animation
           entry.target.classList.add('visible');
+          
+          // Get data attribute to apply specific animations
+          const animation = entry.target.getAttribute('data-animation');
+          if (animation) {
+            entry.target.classList.add(animation);
+          }
         }
       });
     }, observerOptions);
@@ -77,7 +98,13 @@ const Index = () => {
   }, [handleAnchorClick]);
   
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Scroll progress indicator */}
+      <div 
+        className="fixed top-0 left-0 h-1 bg-cuenca-gold z-50 transition-all duration-300 ease-out"
+        style={{ width: `${scrollProgress}%` }}
+      ></div>
+      
       <Header />
       <main>
         <Hero />
