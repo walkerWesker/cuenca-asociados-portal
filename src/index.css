@@ -66,9 +66,9 @@
     duration-300 hover:shadow-md hover:translate-y-[-4px] cursor-pointer;
   }
   
-  /* Enhanced animation utilities with Clean Architecture organization */
+  /* Clean Architecture organized animations */
   
-  /* Base animations - Presentation layer */
+  /* Presentation Layer - Basic Animations */
   .animate-on-scroll {
     @apply opacity-0 transform translate-y-4 transition-all duration-700 delay-100;
   }
@@ -78,48 +78,43 @@
   }
   
   .animate-on-load {
-    @apply opacity-0 transform translate-y-4 transition-all duration-700;
+    @apply opacity-0 transition-opacity duration-700;
   }
   
   .animate-on-load.visible {
-    @apply opacity-100 translate-y-0;
+    @apply opacity-100;
   }
   
-  /* Direction-based animations - Infrastructure layer */
-  .slide-in-right {
-    animation: slideInRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  }
-  
-  .slide-in-left {
-    animation: slideInLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  }
-  
-  .slide-in-up {
-    animation: slideInUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  }
-  
-  .slide-in-down {
-    animation: slideInDown 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  }
-  
-  /* Effect-based animations - Domain layer */
+  /* Application Layer - Complex Combined Animations */
   .fade-in {
     animation: fadeIn 0.6s ease-out forwards;
   }
   
-  .zoom-in {
-    animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  .scale-in {
+    animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   }
   
-  .bounce-in {
-    animation: bounceIn 0.75s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
   }
   
-  .flip-in {
-    animation: flipIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  .animate-scale-in {
+    animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   }
   
-  /* Staggered animations - Application layer */
+  .animate-slide-in-up {
+    animation: slideInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+  
+  /* Domain Layer - Staggered Animations */
   .stagger-animation > * {
     opacity: 0;
     transform: translateY(20px);
@@ -129,13 +124,12 @@
     animation: staggerAnimation 0.5s ease-out forwards;
   }
   
-  /* Fix for the CSS warning by removing the problematic selector */
-  /* We're replacing the group hover with a cleaner approach */
+  /* We're replacing the problematic selector with a cleaner approach */
   .stagger-animation .group:hover .group-item {
     animation: staggerAnimation 0.5s ease-out forwards;
   }
   
-  /* Professional subtle animations */
+  /* Infrastructure Layer - Subtle Professional Animations */
   .animate-pulse-subtle {
     animation: pulseSubtle 3s ease-in-out infinite;
   }
@@ -152,7 +146,7 @@
   @keyframes slideInRight {
     from {
       opacity: 0;
-      transform: translateX(50px);
+      transform: translateX(30px);
     }
     to {
       opacity: 1;
@@ -163,7 +157,7 @@
   @keyframes slideInLeft {
     from {
       opacity: 0;
-      transform: translateX(-50px);
+      transform: translateX(-30px);
     }
     to {
       opacity: 1;
@@ -174,7 +168,7 @@
   @keyframes slideInUp {
     from {
       opacity: 0;
-      transform: translateY(50px);
+      transform: translateY(30px);
     }
     to {
       opacity: 1;
@@ -185,7 +179,7 @@
   @keyframes slideInDown {
     from {
       opacity: 0;
-      transform: translateY(-50px);
+      transform: translateY(-30px);
     }
     to {
       opacity: 1;
@@ -202,7 +196,7 @@
     }
   }
   
-  @keyframes zoomIn {
+  @keyframes scaleIn {
     from {
       opacity: 0;
       transform: scale(0.95);
@@ -306,7 +300,7 @@
     text-wrap: balance;
   }
   
-  /* Additional utility classes for professional animations */
+  /* Professional utility classes for animations */
   .hover-scale {
     @apply transition-transform duration-300 hover:scale-105;
   }
@@ -317,5 +311,14 @@
   
   .hover-glow {
     @apply transition-all duration-300 hover:shadow-lg hover:shadow-cuenca-blue/10;
+  }
+  
+  /* Responsive utilities */
+  .mobile-padding {
+    @apply px-4 sm:px-6 md:px-8;
+  }
+  
+  .mobile-spacing {
+    @apply py-8 md:py-12 lg:py-16;
   }
 }

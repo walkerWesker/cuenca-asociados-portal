@@ -2,40 +2,38 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { servicesData } from '@/data/services';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { Link } from 'react-router-dom';
 
-// Create slides from the top services
-const slides = [
-  {
-    id: 1,
-    title: 'Soluciones Financieras',
-    subtitle: 'Confiables & Profesionales',
-    description: 'Expertos en auditoría financiera, contable y tributaria con más de 20 años de experiencia.',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-    serviceId: 'auditoria-financiera'
-  },
-  {
-    id: 2,
-    title: 'Asesoría Tributaria',
-    subtitle: 'Optimiza tus Obligaciones',
-    description: 'Cumplimiento eficiente de declaraciones, reclamaciones y solicitudes ante SUNAT.',
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2011&q=80',
-    serviceId: 'tributario'
-  },
-  {
-    id: 3,
-    title: 'Reestructuración Empresarial',
-    subtitle: 'Mejora tu Organización',
-    description: 'Reorganización de obligaciones y determinación de viabilidad comercial y operacional.',
-    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
-    serviceId: 'reestructuracion'
-  },
+// Define important services that must be included
+const importantServiceIds = [
+  'auditoria-financiera',
+  'tributario',
+  'reestructuracion',
+  'niif',
+  'outsourcing'
 ];
 
-// Add other key services from servicesData
+// Create slides with priority services first
+const slides = importantServiceIds.map(serviceId => {
+  const service = servicesData.find(s => s.id === serviceId);
+  if (!service) return null;
+  
+  return {
+    id: serviceId,
+    title: service.title,
+    subtitle: serviceId === 'auditoria-financiera' ? 'Expertos en Auditoría' : 'Servicios Especializados',
+    description: service.description,
+    image: service.image,
+    serviceId: service.id
+  };
+}).filter(Boolean);
+
+// Add other services if needed to reach desired count
 servicesData.forEach(service => {
-  if (!slides.some(slide => slide.serviceId === service.id) && slides.length < 6) {
+  if (!slides.some(slide => slide?.serviceId === service.id) && slides.length < 6) {
     slides.push({
-      id: slides.length + 1,
+      id: service.id,
       title: service.title,
       subtitle: 'Servicios Especializados',
       description: service.description,
@@ -50,19 +48,26 @@ const Hero = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
+  const isMobile = useIsMobile();
   
   useEffect(() => {
     const preloadImages = async () => {
-      const promises = slides.map((slide) => {
-        return new Promise((resolve) => {
-          const img = new Image();
-          img.src = slide.image;
-          img.onload = resolve;
+      try {
+        const promises = slides.map((slide) => {
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.src = slide.image;
+            img.onload = resolve;
+            img.onerror = resolve; // Handle any loading errors gracefully
+          });
         });
-      });
-      
-      await Promise.all(promises);
-      setIsLoading(false);
+        
+        await Promise.all(promises);
+      } catch (error) {
+        console.error("Error preloading images:", error);
+      } finally {
+        setIsLoading(false);
+      }
     };
     
     preloadImages();
@@ -102,7 +107,7 @@ const Hero = () => {
   
   if (isLoading) {
     return (
-      <div id="home" className="relative h-screen w-full flex items-center justify-center bg-gray-100">
+      <div id="home" className="relative h-screen md:h-screen w-full flex items-center justify-center bg-gray-100">
         <div className="animate-pulse flex flex-col items-center">
           <div className="h-10 w-48 bg-gray-300 rounded mb-4"></div>
           <div className="h-6 w-36 bg-gray-300 rounded mb-8"></div>
@@ -115,7 +120,7 @@ const Hero = () => {
   return (
     <div 
       id="home" 
-      className="relative h-screen w-full overflow-hidden"
+      className="relative h-[85vh] md:h-screen w-full overflow-hidden"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -135,29 +140,29 @@ const Hero = () => {
           />
           <div className="absolute inset-0 z-20 flex items-center justify-center">
             <div className="container mx-auto px-4">
-              <div className="max-w-xl mx-auto md:mx-0 text-center md:text-left">
-                <span className="inline-block text-cuenca-gold font-medium mb-2 tracking-wider animate-slide-in">
+              <div className={`max-w-xl mx-auto ${isMobile ? 'text-center' : 'md:mx-0 md:text-left'}`}>
+                <span className="inline-block text-cuenca-gold font-medium mb-2 tracking-wider animate-fade-in">
                   {slide.subtitle}
                 </span>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in">
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 animate-fade-in">
                   {slide.title}
                 </h1>
-                <p className="text-lg text-white/90 mb-8 animate-slide-up">
+                <p className="text-base md:text-lg text-white/90 mb-6 md:mb-8 animate-slide-in-up">
                   {slide.description}
                 </p>
-                <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start animate-scale-up">
+                <div className={`flex ${isMobile ? 'flex-col' : 'md:flex-row'} gap-4 justify-center md:justify-start animate-scale-in`}>
                   <a 
                     href="#servicios" 
-                    className="bg-cuenca-blue hover:bg-opacity-90 text-white px-6 py-3 rounded-md transition-all duration-300"
+                    className="bg-cuenca-blue hover:bg-opacity-90 text-white px-6 py-3 rounded-md transition-all duration-300 text-center"
                   >
                     Nuestros Servicios
                   </a>
-                  <a 
-                    href={`/servicios/${slide.serviceId}`}
-                    className="bg-transparent hover:bg-white/10 text-white border border-white px-6 py-3 rounded-md transition-all duration-300"
+                  <Link 
+                    to={`/servicios/${slide.serviceId}`}
+                    className="bg-transparent hover:bg-white/10 text-white border border-white px-6 py-3 rounded-md transition-all duration-300 text-center"
                   >
                     Ver Detalles
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
