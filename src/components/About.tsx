@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { Check } from 'lucide-react';
+import { Check, MessageSquare } from 'lucide-react';
 
 const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -55,7 +55,7 @@ const About = () => {
               <img 
                 src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" 
                 alt="Equipo de Cuenca & Asociados" 
-                className="relative z-10 rounded-2xl shadow-xl w-full h-auto object-cover"
+                className="relative z-10 rounded-2xl shadow-xl w-full h-auto object-cover animate-float"
               />
             </div>
           </div>
@@ -64,7 +64,7 @@ const About = () => {
             <span className="text-sm uppercase tracking-wider text-cuenca-blue font-medium">
               Sobre Nosotros
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6 animate-slide-in-left">
               Cuenca & Asociados
             </h2>
             <p className="text-gray-600 mb-6">
@@ -72,7 +72,7 @@ const About = () => {
             </p>
             
             <div className="space-y-4 mb-8">
-              <div className="flex items-start">
+              <div className="flex items-start animate-slide-in-left" style={{ animationDelay: '100ms' }}>
                 <div className="flex-shrink-0 p-1 bg-cuenca-blue/10 rounded-full text-cuenca-blue mr-3">
                   <Check className="h-5 w-5" />
                 </div>
@@ -82,7 +82,7 @@ const About = () => {
                 </div>
               </div>
               
-              <div className="flex items-start">
+              <div className="flex items-start animate-slide-in-left" style={{ animationDelay: '200ms' }}>
                 <div className="flex-shrink-0 p-1 bg-cuenca-blue/10 rounded-full text-cuenca-blue mr-3">
                   <Check className="h-5 w-5" />
                 </div>
@@ -92,7 +92,7 @@ const About = () => {
                 </div>
               </div>
               
-              <div className="flex items-start">
+              <div className="flex items-start animate-slide-in-left" style={{ animationDelay: '300ms' }}>
                 <div className="flex-shrink-0 p-1 bg-cuenca-blue/10 rounded-full text-cuenca-blue mr-3">
                   <Check className="h-5 w-5" />
                 </div>
@@ -103,12 +103,24 @@ const About = () => {
               </div>
             </div>
             
-            <a 
-              href="#contacto" 
-              className="inline-flex items-center bg-cuenca-blue hover:bg-opacity-90 text-white px-6 py-3 rounded-md transition-all duration-300"
-            >
-              Contáctanos
-            </a>
+            <div className="flex flex-wrap gap-4">
+              <a 
+                href="#contacto" 
+                className="inline-flex items-center bg-cuenca-blue hover:bg-opacity-90 text-white px-6 py-3 rounded-md transition-all duration-300 transform hover:translate-y-[-3px] hover:shadow-lg"
+              >
+                Contáctanos
+              </a>
+              
+              <a 
+                href="https://wa.me/51999999999" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md transition-all duration-300 transform hover:translate-y-[-3px] hover:shadow-lg"
+              >
+                <MessageSquare className="mr-2 h-5 w-5" />
+                WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </div>
