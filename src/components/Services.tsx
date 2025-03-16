@@ -2,8 +2,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { servicesData } from '@/data/services';
-import { Button } from '@/components/ui/button';
-import { MessageSquare } from 'lucide-react';
 
 const Services = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -79,9 +77,9 @@ const Services = () => {
             >
               <Link 
                 to={`/servicios/${service.id}`}
-                className="service-card flex flex-col h-full hover:no-underline block transform transition-all duration-500 ease-in-out"
+                className="service-card h-full hover:no-underline block transform transition-all duration-500 ease-in-out bg-white rounded-xl shadow-md hover:shadow-lg overflow-hidden"
               >
-                <div className="relative h-52 mb-4 rounded-t-xl overflow-hidden">
+                <div className="relative h-52 overflow-hidden">
                   <img 
                     src={service.image} 
                     alt={service.title} 
@@ -92,13 +90,13 @@ const Services = () => {
                     <div className={`flex items-center justify-center w-12 h-12 rounded-lg bg-cuenca-blue text-white mr-3 transition-all duration-300 ${activeIndex === index ? 'scale-110 bg-cuenca-gold' : 'scale-100'}`}>
                       <service.icon className="h-6 w-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-white animate-slide-in-left">{service.title}</h3>
+                    <h3 className="text-xl font-bold text-white animate-fade-in">{service.title}</h3>
                   </div>
                 </div>
                 
-                <div className="p-6 flex-grow flex flex-col bg-white">
-                  <p className="text-gray-600 mb-6 flex-grow">{service.description}</p>
-                  <div className="space-y-4 mb-6">
+                <div className="p-6 flex flex-col h-[calc(100%-13rem)]">
+                  <p className="text-gray-600 mb-4">{service.description}</p>
+                  <div className="space-y-3 mt-2">
                     {service.details.slice(0, 2).map((detail, i) => (
                       <li key={i} className="flex items-start list-none">
                         <span className={`text-cuenca-blue mr-3 text-lg transition-all duration-300 ${activeIndex === index ? 'translate-x-1 text-cuenca-gold' : 'translate-x-0'}`}>•</span>
@@ -106,7 +104,7 @@ const Services = () => {
                       </li>
                     ))}
                   </div>
-                  <div className={`mt-auto font-medium transition-all duration-300 flex items-center ${activeIndex === index ? 'text-cuenca-gold translate-x-1' : 'text-cuenca-blue'}`}>
+                  <div className={`mt-auto pt-4 font-medium transition-all duration-300 flex items-center ${activeIndex === index ? 'text-cuenca-gold translate-x-1' : 'text-cuenca-blue'}`}>
                     Ver más detalles
                     <span className={`ml-1 inline-block transition-transform duration-300 ${activeIndex === index ? 'translate-x-1' : 'translate-x-0'}`}>→</span>
                   </div>
@@ -114,24 +112,6 @@ const Services = () => {
               </Link>
             </div>
           ))}
-        </div>
-        
-        <div className="mt-16 text-center opacity-0 animate-on-scroll" ref={(el) => cardRefs.current[servicesData.length + 1] = el}>
-          <a 
-            href="#contacto" 
-            className="inline-flex items-center bg-cuenca-blue hover:bg-opacity-90 text-white px-8 py-4 rounded-md transition-all duration-300 transform hover:translate-y-[-3px] hover:shadow-xl text-lg"
-          >
-            Consulta Nuestros Servicios
-          </a>
-          <a 
-            href="https://wa.me/51999999999" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-md transition-all duration-300 transform hover:translate-y-[-3px] hover:shadow-xl text-lg ml-4"
-          >
-            <MessageSquare className="mr-2 h-5 w-5" />
-            Contáctanos por WhatsApp
-          </a>
         </div>
       </div>
     </section>
