@@ -90,11 +90,11 @@ const Header = () => {
   
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'glass-effect py-3' : 'bg-black/40 py-5'
+      isScrolled ? 'bg-black/80 backdrop-blur-md py-3' : 'bg-black/60 py-5'
     }`}>
       <div className="container mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <span className="text-2xl font-serif font-bold text-white drop-shadow-md">
+          <span className="text-2xl font-serif font-bold text-cuenca-blue drop-shadow-md">
             Cuenca <span className="text-cuenca-gold">&</span> Asociados
           </span>
         </Link>
@@ -166,7 +166,7 @@ const Header = () => {
       
       {/* Mobile Menu */}
       <div 
-        className={`lg:hidden absolute top-full left-0 w-full glass-effect overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`lg:hidden absolute top-full left-0 w-full bg-black/80 backdrop-blur-md overflow-hidden transition-all duration-300 ease-in-out ${
           mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         }`}
         aria-hidden={!mobileMenuOpen}
@@ -174,7 +174,7 @@ const Header = () => {
         <div className="container mx-auto py-4 px-4 space-y-3">
           <Link 
             to="/" 
-            className="block py-2 hover:text-cuenca-gold transition-colors"
+            className="block py-2 text-white hover:text-cuenca-gold transition-colors"
             onClick={() => setMobileMenuOpen(false)}
           >
             Inicio
@@ -182,7 +182,7 @@ const Header = () => {
           <div>
             <button 
               onClick={toggleServices}
-              className="flex items-center justify-between w-full py-2"
+              className="flex items-center justify-between w-full py-2 text-white"
               aria-expanded={servicesOpen}
             >
               <span>Servicios</span>
@@ -196,7 +196,7 @@ const Header = () => {
                   <Link 
                     key={service.id} 
                     to={`/servicios/${service.id}`} 
-                    className="block py-1 text-sm"
+                    className="block py-1 text-sm text-white"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {service.name}
@@ -207,13 +207,13 @@ const Header = () => {
           </div>
           <button 
             onClick={() => scrollToSection('nosotros')}
-            className="block py-2 w-full text-left hover:text-cuenca-gold transition-colors"
+            className="block py-2 w-full text-left text-white hover:text-cuenca-gold transition-colors"
           >
             Nosotros
           </button>
           <button 
             onClick={() => scrollToSection('contacto')}
-            className="block py-2 w-full text-left hover:text-cuenca-gold transition-colors"
+            className="block py-2 w-full text-left text-white hover:text-cuenca-gold transition-colors"
           >
             Contacto
           </button>
