@@ -60,7 +60,7 @@ const Services = () => {
           <Badge variant="outline" className="text-sm uppercase tracking-wider text-cuenca-blue font-medium mb-3 px-4 py-1.5 border-cuenca-blue/30">
             Nuestros Servicios
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6 relative inline-block">
+          <h2 className="text-3xl md:text-4xl font-bold mt-6 mb-6 relative inline-block">
             <span className="relative">
               Servicios Profesionales
               <span className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-cuenca-gold rounded animate-pulse-subtle"></span>
@@ -83,7 +83,7 @@ const Services = () => {
                 className="block h-full hover:no-underline"
               >
                 <Card 
-                  className="h-full overflow-hidden bg-white hover:shadow-lg transition-all duration-500 ease-in-out border-none"
+                  className="h-full flex flex-col overflow-hidden bg-white hover:shadow-lg transition-all duration-500 ease-in-out border-none"
                   onMouseEnter={() => setActiveIndex(index)}
                   onMouseLeave={() => setActiveIndex(null)}
                 >
@@ -102,7 +102,7 @@ const Services = () => {
                     </div>
                   </div>
                   
-                  <CardContent className="p-6">
+                  <CardContent className="p-6 flex-grow">
                     <p className="text-gray-600 mb-4">{service.description}</p>
                     <div className="space-y-3 mt-2">
                       {service.details.slice(0, 2).map((detail, i) => (
@@ -114,7 +114,7 @@ const Services = () => {
                     </div>
                   </CardContent>
                   
-                  <CardFooter className="pt-2 pb-4 px-6">
+                  <CardFooter className="pt-2 pb-4 px-6 mt-auto">
                     <div className={`font-medium transition-all duration-300 flex items-center ${activeIndex === index ? 'text-cuenca-gold translate-x-1' : 'text-cuenca-blue'}`}>
                       Ver más detalles
                       <span className={`ml-1 inline-block transition-transform duration-300 ${activeIndex === index ? 'translate-x-1' : 'translate-x-0'}`}>→</span>

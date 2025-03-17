@@ -90,22 +90,22 @@ const Header = () => {
   
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'glass-effect py-3' : 'bg-transparent py-5'
+      isScrolled ? 'glass-effect py-3' : 'bg-black/40 py-5'
     }`}>
       <div className="container mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <span className="text-2xl font-serif font-bold text-cuenca-blue">
+          <span className="text-2xl font-serif font-bold text-white drop-shadow-md">
             Cuenca <span className="text-cuenca-gold">&</span> Asociados
           </span>
         </Link>
         
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-8">
-          <Link to="/" className="hover-link font-medium text-cuenca-dark">Inicio</Link>
+          <Link to="/" className="hover-link font-medium text-white drop-shadow-md">Inicio</Link>
           <div className="relative group">
             <button 
               onClick={toggleServices}
-              className="flex items-center font-medium text-cuenca-dark hover-link"
+              className="flex items-center font-medium text-white drop-shadow-md hover-link"
               aria-expanded={servicesOpen}
               aria-haspopup="true"
             >
@@ -132,13 +132,13 @@ const Header = () => {
           </div>
           <button 
             onClick={() => scrollToSection('nosotros')} 
-            className="hover-link font-medium text-cuenca-dark"
+            className="hover-link font-medium text-white drop-shadow-md"
           >
             Nosotros
           </button>
           <button 
             onClick={() => scrollToSection('contacto')} 
-            className="hover-link font-medium text-cuenca-dark"
+            className="hover-link font-medium text-white drop-shadow-md"
           >
             Contacto
           </button>
@@ -155,7 +155,7 @@ const Header = () => {
         
         {/* Mobile Menu Toggle */}
         <button 
-          className="lg:hidden text-cuenca-dark p-2" 
+          className="lg:hidden text-white p-2" 
           onClick={toggleMobileMenu}
           aria-expanded={mobileMenuOpen}
           aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}

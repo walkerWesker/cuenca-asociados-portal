@@ -31,13 +31,14 @@ const ServicesSlider = () => {
   };
 
   return (
-    <div className="w-full py-12 px-4 md:px-8 bg-gradient-to-b from-white to-gray-50">
+    <div className="w-full py-16 px-4 md:px-8 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto">
-        <div className="text-center mb-8 animate-on-scroll">
-          <h2 className="text-3xl md:text-4xl font-bold text-cuenca-blue mb-4">
+        <div className="text-center mb-10 animate-on-scroll">
+          <h2 className="text-3xl md:text-4xl font-bold text-cuenca-blue mb-4 relative inline-block">
             Nuestros Servicios Destacados
+            <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-cuenca-gold rounded animate-pulse-subtle"></span>
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto mt-6">
             Explore nuestra gama completa de servicios especializados en auditoría, 
             consultoría y asesoría financiera para empresas y organizaciones.
           </p>
@@ -58,7 +59,7 @@ const ServicesSlider = () => {
                 className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
               >
                 <div 
-                  className="service-card h-[400px] flex flex-col"
+                  className="service-card h-[400px] flex flex-col bg-white"
                   onClick={() => handleServiceClick(service.id)}
                 >
                   <div className="relative h-48 overflow-hidden">
