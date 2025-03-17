@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
@@ -97,8 +96,8 @@ const Header = () => {
     <header 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isVisible 
-          ? 'translate-y-0 opacity-100 bg-black/80 backdrop-blur-md py-3' 
-          : 'translate-y-[-100%] opacity-0'
+          ? 'translate-y-0 bg-black/80 backdrop-blur-md py-3' 
+          : 'translate-y-[-80%]'
       }`}
     >
       <div className="container mx-auto flex items-center justify-between">
