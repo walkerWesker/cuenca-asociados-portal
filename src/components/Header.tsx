@@ -17,7 +17,8 @@ const servicesMenuItems = [
 ];
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
@@ -25,11 +26,15 @@ const Header = () => {
   
   // Memoize the scroll handler to avoid unnecessary re-renders
   const handleScroll = useCallback(() => {
-    if (window.scrollY > 50) {
-      setIsScrolled(true);
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY > 100) {
+      setIsVisible(true);
     } else {
-      setIsScrolled(false);
+      setIsVisible(false);
     }
+    
+    setLastScrollY(currentScrollY);
   }, []);
   
   useEffect(() => {
@@ -89,9 +94,13 @@ const Header = () => {
   const toggleServices = () => setServicesOpen(!servicesOpen);
   
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-black/80 backdrop-blur-md py-3' : 'bg-black/60 py-5'
-    }`}>
+    <header 
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        isVisible 
+          ? 'translate-y-0 opacity-100 bg-black/80 backdrop-blur-md py-3' 
+          : 'translate-y-[-100%] opacity-0'
+      }`}
+    >
       <div className="container mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center">
           <span className="text-2xl font-serif font-bold text-cuenca-blue drop-shadow-md">
