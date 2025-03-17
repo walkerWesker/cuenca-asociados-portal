@@ -122,7 +122,7 @@ const About = () => {
               </Button>
               
               <Button 
-                variant="success"
+                variant="secondary"
                 asChild
                 className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md transition-all duration-300 transform hover:translate-y-[-3px] hover:shadow-lg flex items-center"
               >
