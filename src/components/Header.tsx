@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useCallback } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
@@ -16,8 +17,7 @@ const servicesMenuItems = [
 ];
 
 const Header = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
@@ -25,15 +25,11 @@ const Header = () => {
   
   // Memoize the scroll handler to avoid unnecessary re-renders
   const handleScroll = useCallback(() => {
-    const currentScrollY = window.scrollY;
-    
-    if (currentScrollY > 100) {
-      setIsVisible(true);
+    if (window.scrollY > 50) {
+      setIsScrolled(true);
     } else {
-      setIsVisible(false);
+      setIsScrolled(false);
     }
-    
-    setLastScrollY(currentScrollY);
   }, []);
   
   useEffect(() => {
@@ -93,27 +89,23 @@ const Header = () => {
   const toggleServices = () => setServicesOpen(!servicesOpen);
   
   return (
-    <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isVisible 
-          ? 'translate-y-0 bg-black/80 backdrop-blur-md py-3' 
-          : 'translate-y-[-80%]'
-      }`}
-    >
+    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      isScrolled ? 'glass-effect py-3' : 'bg-transparent py-5'
+    }`}>
       <div className="container mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <span className="text-2xl font-serif font-bold text-cuenca-blue drop-shadow-md">
+          <span className="text-2xl font-serif font-bold text-cuenca-blue">
             Cuenca <span className="text-cuenca-gold">&</span> Asociados
           </span>
         </Link>
         
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-8">
-          <Link to="/" className="hover-link font-medium text-white drop-shadow-md">Inicio</Link>
+          <Link to="/" className="hover-link font-medium text-cuenca-dark">Inicio</Link>
           <div className="relative group">
             <button 
               onClick={toggleServices}
-              className="flex items-center font-medium text-white drop-shadow-md hover-link"
+              className="flex items-center font-medium text-cuenca-dark hover-link"
               aria-expanded={servicesOpen}
               aria-haspopup="true"
             >
@@ -140,13 +132,13 @@ const Header = () => {
           </div>
           <button 
             onClick={() => scrollToSection('nosotros')} 
-            className="hover-link font-medium text-white drop-shadow-md"
+            className="hover-link font-medium text-cuenca-dark"
           >
             Nosotros
           </button>
           <button 
             onClick={() => scrollToSection('contacto')} 
-            className="hover-link font-medium text-white drop-shadow-md"
+            className="hover-link font-medium text-cuenca-dark"
           >
             Contacto
           </button>
@@ -163,7 +155,7 @@ const Header = () => {
         
         {/* Mobile Menu Toggle */}
         <button 
-          className="lg:hidden text-white p-2" 
+          className="lg:hidden text-cuenca-dark p-2" 
           onClick={toggleMobileMenu}
           aria-expanded={mobileMenuOpen}
           aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
@@ -174,7 +166,7 @@ const Header = () => {
       
       {/* Mobile Menu */}
       <div 
-        className={`lg:hidden absolute top-full left-0 w-full bg-black/80 backdrop-blur-md overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`lg:hidden absolute top-full left-0 w-full glass-effect overflow-hidden transition-all duration-300 ease-in-out ${
           mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         }`}
         aria-hidden={!mobileMenuOpen}
@@ -182,7 +174,7 @@ const Header = () => {
         <div className="container mx-auto py-4 px-4 space-y-3">
           <Link 
             to="/" 
-            className="block py-2 text-white hover:text-cuenca-gold transition-colors"
+            className="block py-2 hover:text-cuenca-gold transition-colors"
             onClick={() => setMobileMenuOpen(false)}
           >
             Inicio
@@ -190,7 +182,7 @@ const Header = () => {
           <div>
             <button 
               onClick={toggleServices}
-              className="flex items-center justify-between w-full py-2 text-white"
+              className="flex items-center justify-between w-full py-2"
               aria-expanded={servicesOpen}
             >
               <span>Servicios</span>
@@ -204,7 +196,7 @@ const Header = () => {
                   <Link 
                     key={service.id} 
                     to={`/servicios/${service.id}`} 
-                    className="block py-1 text-sm text-white"
+                    className="block py-1 text-sm"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {service.name}
@@ -215,13 +207,13 @@ const Header = () => {
           </div>
           <button 
             onClick={() => scrollToSection('nosotros')}
-            className="block py-2 w-full text-left text-white hover:text-cuenca-gold transition-colors"
+            className="block py-2 w-full text-left hover:text-cuenca-gold transition-colors"
           >
             Nosotros
           </button>
           <button 
             onClick={() => scrollToSection('contacto')}
-            className="block py-2 w-full text-left text-white hover:text-cuenca-gold transition-colors"
+            className="block py-2 w-full text-left hover:text-cuenca-gold transition-colors"
           >
             Contacto
           </button>
