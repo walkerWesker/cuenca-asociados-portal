@@ -9,21 +9,20 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import 'animate.css';
 
 const Index = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   
-  // Set document title
+  // Set document title and initialize AOS
   useEffect(() => {
     document.title = 'Cuenca & Asociados | Sociedad de Auditoría';
     
-    // Initialize AOS animations
+    // Inicializar AOS
     AOS.init({
-      duration: 1000,
+      duration: 800,
+      easing: 'ease-in-out',
       once: false,
       mirror: true,
-      easing: 'ease-in-out',
     });
     
     // Clean up function
@@ -39,7 +38,7 @@ const Index = () => {
       const progress = (window.scrollY / totalHeight) * 100;
       setScrollProgress(progress);
       
-      // Refresh AOS on scroll
+      // Refrescar AOS en scroll para asegurar que las animaciones se disparen correctamente
       AOS.refresh();
     };
     
@@ -122,10 +121,16 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <ServicesSlider />
-        <Services />
+        <div data-aos="fade-up" data-aos-duration="1000">
+          <ServicesSlider />
+        </div>
+        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+          <Services />
+        </div>
         <About />
-        <Contact />
+        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+          <Contact />
+        </div>
       </main>
       <Footer />
     </div>
