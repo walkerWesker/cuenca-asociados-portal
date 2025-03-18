@@ -23,6 +23,11 @@ const ServiceDetail = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [isScrolling, setIsScrolling] = useState(false);
   
+  // WhatsApp message template
+  const whatsappMessage = encodeURIComponent("¡Hola! Me gustaría recibir información detallada sobre los servicios que ofrecen. 📄📌 ¿Podrían ayudarme? ¡Gracias!");
+  const whatsappNumber = "51992854449";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+  
   // This represents the use case / interactor in Clean Architecture
   const getServiceById = (id: string): ServiceEntity | undefined => {
     return servicesData.find(s => s.id === id);
@@ -202,7 +207,7 @@ const ServiceDetail = () => {
                 
                 <div className="flex flex-col space-y-2">
                   <a 
-                    href="https://wa.me/51992854449" 
+                    href={whatsappLink} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded transition-colors duration-300 transform hover:scale-105 transition-transform"
