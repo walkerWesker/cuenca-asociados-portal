@@ -7,23 +7,12 @@ import { Button } from '@/components/ui/button';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
   
   useEffect(() => {
-    // Inicializar AOS
-    AOS.init({
-      duration: 800,
-      once: false,
-      mirror: true,
-      offset: 50
-    });
-    
-    // Configuración del observador de intersección para animaciones adicionales
     const observerOptions = {
       root: null,
       rootMargin: '0px',
@@ -56,28 +45,16 @@ const About = () => {
       }
     });
     
-    // Refrescar AOS cuando cambia la ventana
-    window.addEventListener('resize', () => {
-      AOS.refresh();
-    });
-    
     return () => {
       sectionObserver.disconnect();
       contentObserver.disconnect();
-      window.removeEventListener('resize', () => {
-        AOS.refresh();
-      });
     };
   }, []);
   
   return (
     <section id="nosotros" className="py-20 bg-gradient-to-b from-white to-gray-50" ref={sectionRef}>
       <div className="container mx-auto px-4">
-        <div 
-          className="text-center mb-10" 
-          data-aos="fade-up" 
-          data-aos-delay="100"
-        >
+        <div className="text-center mb-10">
           <Badge variant="outline" className="mb-2 bg-cuenca-blue/10 text-cuenca-blue hover:bg-cuenca-blue/20 border-none">
             Sobre Nosotros
           </Badge>
@@ -89,13 +66,7 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div 
-            className="opacity-0 animate-on-scroll" 
-            ref={(el) => contentRefs.current[0] = el}
-            data-aos="fade-right"
-            data-aos-delay="200"
-            data-aos-duration="1000"
-          >
+          <div className="opacity-0 animate-on-scroll" ref={(el) => contentRefs.current[0] = el}>
             <div className="relative overflow-hidden rounded-2xl shadow-xl">
               <AspectRatio ratio={16/9} className="bg-muted">
                 <div className="absolute inset-0 bg-cuenca-blue/10 translate-x-4 translate-y-4 transition-all duration-700 rounded-2xl"></div>
@@ -108,51 +79,26 @@ const About = () => {
             </div>
           </div>
           
-          <div 
-            className="opacity-0 animate-on-scroll space-y-6" 
-            ref={(el) => contentRefs.current[1] = el}
-            data-aos="fade-left"
-            data-aos-delay="300"
-            data-aos-duration="1000"
-          >
+          <div className="opacity-0 animate-on-scroll space-y-6" ref={(el) => contentRefs.current[1] = el}>
             <Tabs defaultValue="vision" className="w-full">
-              <TabsList 
-                className="grid w-full grid-cols-3 mb-6"
-                data-aos="fade-down"
-                data-aos-delay="400"
-              >
+              <TabsList className="grid w-full grid-cols-3 mb-6">
                 <TabsTrigger value="vision">Visión</TabsTrigger>
                 <TabsTrigger value="mision">Misión</TabsTrigger>
                 <TabsTrigger value="valores">Valores</TabsTrigger>
               </TabsList>
-              <TabsContent 
-                value="vision" 
-                className="space-y-4"
-                data-aos="zoom-in"
-                data-aos-duration="800"
-              >
+              <TabsContent value="vision" className="space-y-4">
                 <h3 className="text-xl font-medium text-cuenca-blue">Nuestra Visión</h3>
                 <p className="text-gray-600">
                   Ser reconocidos como la firma líder en servicios de auditoría y consultoría en Perú, distinguiéndonos por nuestra excelencia, integridad y compromiso con nuestros clientes.
                 </p>
               </TabsContent>
-              <TabsContent 
-                value="mision" 
-                className="space-y-4"
-                data-aos="zoom-in"
-                data-aos-duration="800"
-              >
+              <TabsContent value="mision" className="space-y-4">
                 <h3 className="text-xl font-medium text-cuenca-blue">Nuestra Misión</h3>
                 <p className="text-gray-600">
                   Brindar servicios profesionales de alta calidad que generen valor para nuestros clientes, ayudándoles a alcanzar sus objetivos empresariales a través de soluciones personalizadas.
                 </p>
               </TabsContent>
-              <TabsContent 
-                value="valores" 
-                className="space-y-4"
-                data-aos="zoom-in"
-                data-aos-duration="800"
-              >
+              <TabsContent value="valores" className="space-y-4">
                 <h3 className="text-xl font-medium text-cuenca-blue">Nuestros Valores</h3>
                 <p className="text-gray-600">
                   Integridad, excelencia, responsabilidad, confidencialidad y trabajo en equipo son los pilares que guían nuestro trabajo diario y compromiso con cada cliente.
@@ -160,18 +106,10 @@ const About = () => {
               </TabsContent>
             </Tabs>
             
-            <h3 
-              className="text-xl font-medium text-cuenca-blue mt-4"
-              data-aos="fade-up"
-              data-aos-delay="500"
-            >Qué nos distingue</h3>
+            <h3 className="text-xl font-medium text-cuenca-blue mt-4">Qué nos distingue</h3>
             
             <div className="grid gap-4 md:grid-cols-2">
-              <Card 
-                className="border-none shadow-md hover:shadow-lg transition-shadow duration-300 bg-white"
-                data-aos="flip-up"
-                data-aos-delay="600"
-              >
+              <Card className="border-none shadow-md hover:shadow-lg transition-shadow duration-300 bg-white">
                 <CardContent className="p-4 flex items-start space-x-3">
                   <div className="flex-shrink-0 p-2 bg-cuenca-blue/10 rounded-full text-cuenca-blue">
                     <Trophy className="h-5 w-5" />
@@ -183,11 +121,7 @@ const About = () => {
                 </CardContent>
               </Card>
               
-              <Card 
-                className="border-none shadow-md hover:shadow-lg transition-shadow duration-300 bg-white"
-                data-aos="flip-up"
-                data-aos-delay="700"
-              >
+              <Card className="border-none shadow-md hover:shadow-lg transition-shadow duration-300 bg-white">
                 <CardContent className="p-4 flex items-start space-x-3">
                   <div className="flex-shrink-0 p-2 bg-cuenca-blue/10 rounded-full text-cuenca-blue">
                     <Users className="h-5 w-5" />
@@ -199,11 +133,7 @@ const About = () => {
                 </CardContent>
               </Card>
               
-              <Card 
-                className="border-none shadow-md hover:shadow-lg transition-shadow duration-300 bg-white"
-                data-aos="flip-up"
-                data-aos-delay="800"
-              >
+              <Card className="border-none shadow-md hover:shadow-lg transition-shadow duration-300 bg-white">
                 <CardContent className="p-4 flex items-start space-x-3">
                   <div className="flex-shrink-0 p-2 bg-cuenca-blue/10 rounded-full text-cuenca-blue">
                     <Building2 className="h-5 w-5" />
@@ -215,11 +145,7 @@ const About = () => {
                 </CardContent>
               </Card>
               
-              <Card 
-                className="border-none shadow-md hover:shadow-lg transition-shadow duration-300 bg-white"
-                data-aos="flip-up"
-                data-aos-delay="900"
-              >
+              <Card className="border-none shadow-md hover:shadow-lg transition-shadow duration-300 bg-white">
                 <CardContent className="p-4 flex items-start space-x-3">
                   <div className="flex-shrink-0 p-2 bg-cuenca-blue/10 rounded-full text-cuenca-blue">
                     <Check className="h-5 w-5" />
@@ -232,11 +158,7 @@ const About = () => {
               </Card>
             </div>
             
-            <div 
-              className="flex flex-wrap gap-4 mt-6"
-              data-aos="fade-up"
-              data-aos-delay="1000"
-            >
+            <div className="flex flex-wrap gap-4 mt-6">
               <Button 
                 asChild
                 className="bg-cuenca-blue hover:bg-opacity-90 text-white rounded-md transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
@@ -249,7 +171,7 @@ const About = () => {
                 variant="outline"
                 className="bg-white border-cuenca-blue text-cuenca-blue hover:bg-cuenca-blue/10 rounded-md transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
               >
-                <a href="https://wa.me/51992854449?text=%C2%A1Hola!%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20detallada%20sobre%20los%20servicios%20que%20ofrecen.%20%F0%9F%93%84%F0%9F%93%8C%20%C2%BFPodr%C3%ADan%20ayudarme?%20%C2%A1Gracias!" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/51999999999" target="_blank" rel="noopener noreferrer">
                   <MessageSquare className="mr-2 h-5 w-5" />
                   WhatsApp
                 </a>
