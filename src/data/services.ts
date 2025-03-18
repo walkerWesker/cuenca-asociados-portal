@@ -74,7 +74,7 @@ export const servicesData = [
       'Adaptación de sistemas contables a estándares internacionales.',
       'Capacitación al personal en normativas NIIF.'
     ],
-    image: 'https://images.unsplash.com/photo-1586486855377-b390b59dc6b1?ixlib=rb-4.0.3'
+    image: 'https://images.unsplash.com/photo-1554224154-22dec7ec8818?ixlib=rb-4.0.3'
   },
   {
     id: 'precios',
