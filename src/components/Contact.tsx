@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
@@ -13,6 +12,11 @@ const Contact = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // WhatsApp message template
+  const whatsappMessage = encodeURIComponent("¡Hola! Me gustaría recibir información detallada sobre los servicios que ofrecen. 📄📌 ¿Podrían ayudarme? ¡Gracias!");
+  const whatsappNumber = "51992854449";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
   
   useEffect(() => {
     const observerOptions = {
@@ -243,7 +247,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Teléfono</h4>
-                    <a href="https://wa.me/51992854449" className="block hover:underline mt-1 transition-all duration-300 hover:text-white/80 flex items-center" target="_blank" rel="noopener noreferrer">
+                    <a href={whatsappLink} className="block hover:underline mt-1 transition-all duration-300 hover:text-white/80 flex items-center" target="_blank" rel="noopener noreferrer">
                       <span className="mr-1">WhatsApp:</span> +51 992 854 449
                     </a>
                   </div>
