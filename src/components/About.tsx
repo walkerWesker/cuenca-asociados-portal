@@ -12,6 +12,11 @@ const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
   
+  // WhatsApp message template
+  const whatsappMessage = encodeURIComponent("¡Hola! Me gustaría recibir información detallada sobre los servicios que ofrecen. 📄📌 ¿Podrían ayudarme? ¡Gracias!");
+  const whatsappNumber = "51992854449";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+  
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -171,7 +176,7 @@ const About = () => {
                 variant="outline"
                 className="bg-white border-cuenca-blue text-cuenca-blue hover:bg-cuenca-blue/10 rounded-md transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
               >
-                <a href="https://wa.me/51999999999" target="_blank" rel="noopener noreferrer">
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                   <MessageSquare className="mr-2 h-5 w-5" />
                   WhatsApp
                 </a>
