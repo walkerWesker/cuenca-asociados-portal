@@ -7,13 +7,23 @@ import ServicesSlider from '@/components/ServicesSlider';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Index = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   
-  // Set document title
+  // Set document title and initialize AOS
   useEffect(() => {
     document.title = 'Cuenca & Asociados | Sociedad de Auditoría';
+    
+    // Inicializar AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: false,
+      mirror: true,
+    });
     
     // Clean up function
     return () => {
@@ -27,6 +37,9 @@ const Index = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = (window.scrollY / totalHeight) * 100;
       setScrollProgress(progress);
+      
+      // Refrescar AOS en scroll para asegurar que las animaciones se disparen correctamente
+      AOS.refresh();
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -108,10 +121,16 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <ServicesSlider />
-        <Services />
+        <div data-aos="fade-up" data-aos-duration="1000">
+          <ServicesSlider />
+        </div>
+        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+          <Services />
+        </div>
         <About />
-        <Contact />
+        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+          <Contact />
+        </div>
       </main>
       <Footer />
     </div>
