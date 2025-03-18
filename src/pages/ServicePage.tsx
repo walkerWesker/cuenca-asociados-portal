@@ -5,8 +5,6 @@ import ServiceDetail from '@/components/ServiceDetail';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { servicesData } from '@/data/services';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 const ServicePage = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
@@ -14,16 +12,8 @@ const ServicePage = () => {
   const [pageTitle, setPageTitle] = useState('Servicio | Cuenca & Asociados');
   const observer = useRef<IntersectionObserver | null>(null);
   
-  // Set document title based on service and initialize AOS
+  // Set document title based on service
   useEffect(() => {
-    // Inicializar AOS
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: false,
-      mirror: true,
-    });
-    
     // Find the service to get its title
     const service = servicesData.find(service => service.id === id);
     
@@ -63,36 +53,19 @@ const ServicePage = () => {
       animatedElements.forEach((element) => observer.current?.observe(element));
     }
     
-    // Configurar AOS para refrescar en scroll y resize
-    window.addEventListener('scroll', () => {
-      AOS.refresh();
-    });
-    
-    window.addEventListener('resize', () => {
-      AOS.refresh();
-    });
-    
     // Cleanup function to prevent memory leaks
     return () => {
       if (observer.current) {
         animatedElements.forEach((element) => observer.current?.unobserve(element));
         observer.current.disconnect();
       }
-      
-      window.removeEventListener('scroll', () => {
-        AOS.refresh();
-      });
-      
-      window.removeEventListener('resize', () => {
-        AOS.refresh();
-      });
     };
   }, []);
   
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="pb-16" data-aos="fade-up" data-aos-duration="1000">
+      <main className="pb-16">
         <Suspense fallback={
           <div className="flex justify-center items-center py-20">
             <div className="animate-pulse flex space-x-4">
