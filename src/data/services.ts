@@ -1,4 +1,3 @@
-
 import { 
   BarChart3, 
   Building, 
@@ -16,117 +15,126 @@ export const servicesData = [
   {
     id: 'reestructuracion',
     title: 'Reestructuración Financiera y Operativa',
-    description: 'Asistencia en procesos de reestructuración empresarial para reorganizar obligaciones a corto y mediano plazo, y determinar viabilidad comercial.',
+    description: 'Asistencia integral en procesos de reestructuración empresarial para optimizar la estructura financiera y operativa, garantizando viabilidad y sostenibilidad a largo plazo',
     icon: BarChart3,
     details: [
-      'Asistencia en procesos de reestructuración empresarial para reorganizar las obligaciones a corto y mediano plazo.',
-      'Participación en la reestructuración del negocio en marcha para determinar su viabilidad comercial y operacional.',
-      'Asignación de personal calificado de forma temporal o permanente para apoyar en áreas contables, financieras y legales.'
+      'Evaluación exhaustiva de la situación financiera y operativa de la empresa',
+      'Diseño y ejecución de estrategias de reestructuración de deudas y capital',
+      'Optimización de procesos internos para mejorar la eficiencia operativa',
+      'Implementación de planes de contingencia y mitigación de riesgos',
+      'Asesoría en negociaciones con acreedores y stakeholders clave'
     ],
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3'
   },
   {
     id: 'outsourcing',
     title: 'Outsourcing Administrativo',
-    description: 'Soporte administrativo para la ejecución de actividades como tesorería, logística, importaciones y análisis de cuentas.',
+    description: 'Externalización de funciones administrativas clave, garantizando eficiencia operativa y cumplimiento normativo en un entorno empresarial dinámico',
     icon: Building,
     details: [
-      'Soporte administrativo para la ejecución de actividades como tesorería, logística, importaciones y análisis de cuentas.',
-      'Gestión eficiente de procesos administrativos para optimizar recursos y tiempo.',
-      'Implementación de mejores prácticas adaptadas a su modelo de negocio.'
+      'Gestión integral de procesos administrativos y financieros',
+      'Automatización y digitalización de tareas administrativas',
+      'Monitoreo continuo de indicadores clave de desempeño (KPIs)',
+      'Optimización de recursos y reducción de costos operativos',
+      'Implementación de soluciones tecnológicas personalizadas'
     ],
     image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3'
   },
   {
     id: 'tributario',
     title: 'Outsourcing Tributario',
-    description: 'Declaraciones juradas, reclamaciones, descargos y solicitudes a SUNAT bajo normativas NIIF plenas y NIIF para PYMES.',
+    description: 'Gestión especializada en obligaciones fiscales y tributarias, asegurando el cumplimiento de normativas y la optimización de la carga impositiva',
     icon: Calculator,
     details: [
-      'Declaraciones juradas del impuesto a la renta, IGV, ITAN, entre otros.',
-      'Reclamaciones, descargos y solicitudes a SUNAT.',
-      'Asistencia en procedimientos de compensación, devolución y recuperación de tributos.',
-      'Servicios bajo las normativas NIIF plenas y NIIF para PYMES.'
+      'Preparación y presentación oportuna de declaraciones de impuestos (Renta, IGV, ITAN, etc.)',
+      'Asesoría en incentivos y beneficios fiscales conforme a la legislación peruana',
+      'Gestión de requerimientos y fiscalizaciones por parte de la SUNAT',
+      'Elaboración de estrategias de planificación fiscal y tributaria',
+      'Actualización constante ante cambios en normativas y leyes fiscales'
     ],
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3'
   },
   {
     id: 'planillas',
     title: 'Outsourcing de Planillas',
-    description: 'Cálculo de planillas, determinación de aportes mensuales y gestión de bajas de trabajadores y beneficios sociales.',
+    description: 'Administración integral del procesamiento de nóminas y beneficios sociales, garantizando cumplimiento normativo y satisfacción del personal.',
     icon: ClipboardList,
     details: [
-      'Cálculo de planillas y generación de reportes.',
-      'Determinación de aportes mensuales (AFP, ESSALUD, renta de 5ta categoría, etc.).',
-      'Gestión de bajas de trabajadores y cálculo de beneficios sociales (vacaciones, CTS, gratificaciones).',
-      'Manejo de documentación laboral y cumplimiento normativo.'
+      'Cálculo preciso de planillas, remuneraciones y beneficios sociales',
+      'Gestión de aportes obligatorios a AFP, EsSalud y otros organismos estatales',
+      'Control eficiente de altas, bajas y modificaciones de personal',
+      'Elaboración y entrega de reportes laborales conforme a la legislación vigente',
+      'Aseguramiento del cumplimiento de normativas laborales en cada proceso'
     ],
     image: 'https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-4.0.3'
   },
   {
     id: 'niif',
     title: 'Implementación NIIF',
-    description: 'Implementación de NIIF plenas y NIIF para PYMES con cumplimiento tributario bajo las normativas peruanas.',
+    description: 'Asesoría integral en la adopción e implementación de las Normas Internacionales de Información Financiera (NIIF) para lograr transparencia y comparabilidad en la información financiera',
     icon: FileSpreadsheet,
     details: [
-      'Implementación de NIIF plenas y NIIF para PYMES.',
-      'Cumplimiento tributario bajo las normativas peruanas.',
-      'Adaptación de sistemas contables a estándares internacionales.',
-      'Capacitación al personal en normativas NIIF.'
+      'Diagnóstico inicial para identificar brechas entre prácticas actuales y NIIF',
+      'Diseño de un plan de transición adaptado a las necesidades de la empresa',
+      'Capacitación y acompañamiento al equipo contable y financiero',
+      'Actualización y adecuación de sistemas contables para cumplir con NIIF',
+      'Revisión y validación de estados financieros elaborados bajo estos estándares'
     ],
     image: 'https://images.unsplash.com/photo-1554224154-22dec7ec8818?ixlib=rb-4.0.3'
   },
   {
     id: 'precios',
     title: 'Precios de Transferencia',
-    description: 'Elaboración del estudio de precios de transferencia, documentación y reportes País por País para SUNAT.',
+    description: 'Servicios especializados en estudios de precios de transferencia, asegurando el cumplimiento de normativas locales e internacionales y reduciendo riesgos fiscales',
     icon: BarChart4,
     details: [
-      'Elaboración del estudio de precios de transferencia y documentación relacionada.',
-      'Elaboración de Reportes País por País.',
-      'Presentación de Declaraciones Juradas Informativas a SUNAT.',
-      'Asesoría especializada en transacciones entre empresas vinculadas.'
+      'Elaboración de estudios técnicos de precios de transferencia acorde a la legislación',
+      'Análisis comparativo para determinar valores de mercado en transacciones intercompañía',
+      'Documentación detallada y elaboración de reportes país por país',
+      'Asesoría en la implementación de políticas de precios de transferencia',
+      'Soporte técnico y defensa ante auditorías fiscales de SUNAT'
     ],
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3'
   },
   {
     id: 'auditoria',
     title: 'Auditoría de Sistemas',
-    description: 'Evaluación de sistemas informáticos, controles y aspectos de seguridad de hardware, software y administración de datos.',
+    description: 'Evaluación integral de la infraestructura tecnológica y sistemas de información, enfocada en la seguridad, eficiencia y cumplimiento de normativas internacionales',
     icon: Shield,
     details: [
-      'Evaluación del ambiente de los sistemas de información computarizada, los controles generales y los controles en las aplicaciones.',
-      'Evaluación de los aspectos de seguridad física del hardware, software y administración de datos.',
-      'Asesoría para prevenir las contingencias derivadas de los softwares (cumplimiento BSA).',
-      'Optimización de arquitectura de sistemas para mayor eficiencia operativa.'
+      'Revisión exhaustiva de la infraestructura tecnológica y sistemas informáticos',
+      'Identificación y análisis de vulnerabilidades en la seguridad de la información',
+      'Evaluación de controles internos y políticas de protección de datos',
+      'Recomendaciones para la optimización y fortalecimiento de sistemas TI',
+      'Implementación de prácticas de auditoría conforme a estándares internacionales'
     ],
     image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3'
   },
   {
     id: 'auditoria-financiera',
     title: 'Auditoría Financiera y Tributaria',
-    description: 'Expertos en Tributación y Finanzas, defensa ante la SUNAT y asesoramiento para la eliminación de multas.',
+    description: 'Análisis riguroso del cumplimiento financiero y tributario, ofreciendo soluciones para mitigar riesgos y optimizar la gestión fiscal de la empresa',
     icon: Search,
     details: [
-      'Expertos en Tributación y Finanzas.',
-      'Defensa ante la SUNAT.',
-      'Asesoramiento para la eliminación de multas bajo el Decreto Legislativo 1634.',
-      'Diagnóstico integral de la situación financiera y tributaria de su empresa.',
-      'Planificación fiscal estratégica para optimizar la carga tributaria.'
+      'Revisión detallada de estados financieros y prácticas contables',
+      'Verificación del cumplimiento de obligaciones tributarias según la normativa peruana',
+      'Identificación de riesgos financieros y fiscales con propuestas de mitigación',
+      'Asesoría en defensa y respuesta ante auditorías y fiscalizaciones de SUNAT',
+      'Elaboración de informes integrales y planes de mejora continua'
     ],
     image: 'https://images.unsplash.com/photo-1554224154-22dec7ec8818?ixlib=rb-4.0.3'
   },
   {
     id: 'consultoria',
     title: 'Asesoría Empresarial',
-    description: 'Asistencia en planeamiento, organización y control de actividades para garantizar eficiencia y economía operativa.',
+    description: 'Consultoría estratégica integral para optimizar la gestión empresarial, impulsar el crecimiento y mejorar la competitividad en mercados locales y globales',
     icon: Lightbulb,
     details: [
-      'Asistencia en el planeamiento, organización y control de actividades para garantizar la eficiencia y economía operativa.',
-      'Asesoría para la adquisición de sistemas de información computarizada.',
-      'Consultoría estratégica para la toma de decisiones empresariales.',
-      'Desarrollo de planes de negocio y proyecciones financieras.',
-      'Optimización de procesos y reducción de costos operativos.'
+      'Desarrollo de planes estratégicos y estudios de viabilidad empresarial',
+      'Optimización de procesos internos y administrativos para mayor eficiencia',
+      'Asesoría en transformación digital y adopción de nuevas tecnologías',
+      'Diseño de modelos de negocio innovadores y sostenibles',
+      'Implementación de estrategias para reducción de costos y mejora de rentabilidad'
     ],
     image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3'
   },

@@ -11,11 +11,6 @@ const Footer = () => {
     });
   };
   
-  // WhatsApp message template
-  const whatsappMessage = encodeURIComponent("¡Hola! Me gustaría recibir información detallada sobre los servicios que ofrecen. 📄📌 ¿Podrían ayudarme? ¡Gracias!");
-  const whatsappNumber = "51992854449";
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-  
   const year = new Date().getFullYear();
   
   return (
@@ -47,7 +42,7 @@ const Footer = () => {
                 <Mail className="h-[18px] w-[18px]" />
               </a>
               <a 
-                href={whatsappLink} 
+                href="https://wa.me/51992854449" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors duration-300"
@@ -120,7 +115,7 @@ const Footer = () => {
                 <Phone className="h-5 w-5 text-cuenca-gold mr-3 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-sm font-medium mb-1">Teléfono</p>
-                  <a href={whatsappLink} className="text-gray-300 hover:text-white transition-colors text-sm block" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/51992854449" className="text-gray-300 hover:text-white transition-colors text-sm block" target="_blank" rel="noopener noreferrer">
                     +51 992 854 449
                   </a>
                 </div>

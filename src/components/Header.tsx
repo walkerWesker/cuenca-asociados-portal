@@ -1,10 +1,14 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, FC } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 
-// Define services data to keep it consistent
-const servicesMenuItems = [
+interface ServiceItem {
+  id: string;
+  name: string;
+}
+
+const servicesMenuItems: ServiceItem[] = [
   { id: 'reestructuracion', name: 'Reestructuración Financiera' },
   { id: 'outsourcing', name: 'Outsourcing Administrativo' },
   { id: 'tributario', name: 'Outsourcing Tributario' },
@@ -16,31 +20,31 @@ const servicesMenuItems = [
   { id: 'consultoria', name: 'Asesoría Empresarial' },
 ];
 
-const Header = () => {
+const Header: FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
+
+  // Determinar si la ruta actual es una página de servicios
   const isServicePage = location.pathname.includes('/servicios/');
 
-  // Memoized scroll handler to optimize performance
+  // Controla el estado del scroll para aplicar efectos en el header
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 50);
   }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  // Close mobile menu when location changes
+  // Cierra el menú móvil al cambiar de ruta
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location]);
 
-  // Scroll to section with offset for fixed header
+  // Función para hacer scroll a una sección con un offset acorde al header fijo
   const scrollToSection = useCallback((sectionId: string) => {
     setMobileMenuOpen(false);
     const element = document.getElementById(sectionId);
@@ -48,41 +52,57 @@ const Header = () => {
       const headerHeight = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   }, []);
 
-  // Toggle mobile menu and services dropdown
-  const toggleMobileMenu = () => setMobileMenuOpen(prev => !prev);
-  const toggleServices = () => setServicesOpen(prev => !prev);
+  // Toggle para el menú móvil
+  const toggleMobileMenu = useCallback(() => {
+    setMobileMenuOpen(prev => !prev);
+  }, []);
+
+  // Toggle para el dropdown de servicios
+  const toggleServices = useCallback(() => {
+    setServicesOpen(prev => !prev);
+  }, []);
 
   return (
     <header
       className={clsx(
-        'fixed top-0 left-0 w-full z-50 transition-all duration-300',
+        'fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out',
         isScrolled ? 'glass-effect py-3' : 'bg-transparent py-5'
       )}
     >
       <div className="container mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <span className="text-2xl font-serif font-bold text-cuenca-blue">
+          <span
+            className={clsx(
+              'font-serif font-bold tracking-wider transition-all duration-300 ease-in-out',
+              isScrolled ? 'text-cuenca-blue text-3xl' : 'text-gray-200 text-4xl'
+            )}
+          >
             Cuenca <span className="text-cuenca-gold">&</span> Asociados
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Navegación para escritorio */}
         <nav className="hidden lg:flex items-center space-x-8">
-          <Link to="/" className="hover-link font-medium text-cuenca-dark">
+          <Link
+            to="/"
+            className={clsx(
+              'hover-link font-medium transition-colors duration-300',
+              isScrolled ? 'text-cuenca-dark' : 'text-gray-200'
+            )}
+          >
             Inicio
           </Link>
           <div className="relative group">
             <button
               onClick={toggleServices}
-              className="flex items-center font-medium text-cuenca-dark hover-link"
+              className={clsx(
+                'flex items-center font-medium hover-link transition-colors duration-300',
+                isScrolled ? 'text-cuenca-dark' : 'text-gray-200'
+              )}
               aria-expanded={servicesOpen}
               aria-haspopup="true"
             >
@@ -90,8 +110,8 @@ const Header = () => {
             </button>
             <div
               className={clsx(
-                'absolute left-0 mt-2 w-72 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300',
-                servicesOpen && 'max-h-96 opacity-100 visible'
+                'absolute left-0 mt-2 w-72 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible transform origin-top scale-95 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:visible group-hover:scale-100',
+                servicesOpen && 'max-h-96 opacity-100 visible scale-100'
               )}
               role="menu"
               aria-orientation="vertical"
@@ -101,7 +121,7 @@ const Header = () => {
                   <Link
                     key={service.id}
                     to={`/servicios/${service.id}`}
-                    className="block px-2 py-2 text-sm hover:bg-gray-100 rounded-md"
+                    className="block px-2 py-2 text-sm hover:bg-gray-100 rounded-md transition-colors duration-300"
                     role="menuitem"
                   >
                     {service.name}
@@ -112,13 +132,19 @@ const Header = () => {
           </div>
           <button
             onClick={() => scrollToSection('nosotros')}
-            className="hover-link font-medium text-cuenca-dark"
+            className={clsx(
+              'hover-link font-medium transition-colors duration-300',
+              isScrolled ? 'text-cuenca-dark' : 'text-gray-200'
+            )}
           >
             Nosotros
           </button>
           <button
             onClick={() => scrollToSection('contacto')}
-            className="hover-link font-medium text-cuenca-dark"
+            className={clsx(
+              'hover-link font-medium transition-colors duration-300',
+              isScrolled ? 'text-cuenca-dark' : 'text-gray-200'
+            )}
           >
             Contacto
           </button>
@@ -133,7 +159,7 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Toggle para menú móvil */}
         <button
           className="lg:hidden text-cuenca-dark p-2"
           onClick={toggleMobileMenu}
@@ -144,18 +170,21 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Menú móvil */}
       <div
         className={clsx(
-          'lg:hidden absolute top-full left-0 w-full glass-effect overflow-hidden transition-all duration-300 ease-in-out',
-          mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+          'lg:hidden absolute top-full left-0 w-full glass-effect overflow-hidden transform transition-all duration-300 ease-in-out',
+          mobileMenuOpen ? 'max-h-screen opacity-100 scale-100' : 'max-h-0 opacity-0 scale-95'
         )}
         aria-hidden={!mobileMenuOpen}
       >
         <div className="container mx-auto py-4 px-4 space-y-3">
           <Link
             to="/"
-            className="block py-2 hover:text-cuenca-gold transition-colors"
+            className={clsx(
+              'block py-2 transition-colors duration-300 hover:text-cuenca-gold',
+              isScrolled ? 'text-cuenca-dark' : 'text-gray-200'
+            )}
             onClick={() => setMobileMenuOpen(false)}
           >
             Inicio
@@ -163,17 +192,20 @@ const Header = () => {
           <div>
             <button
               onClick={toggleServices}
-              className="flex items-center justify-between w-full py-2"
+              className={clsx(
+                'flex items-center justify-between w-full py-2 transition-colors duration-300',
+                isScrolled ? 'text-cuenca-dark' : 'text-gray-200'
+              )}
               aria-expanded={servicesOpen}
             >
               <span>Servicios</span>
               <ChevronDown
-                className={clsx('h-4 w-4 transition-transform', servicesOpen ? 'rotate-180' : '')}
+                className={clsx('h-4 w-4 transition-transform duration-300', servicesOpen && 'rotate-180')}
               />
             </button>
             <div
               className={clsx(
-                'overflow-hidden transition-all duration-300',
+                'overflow-hidden transition-all duration-300 ease-in-out',
                 servicesOpen ? 'max-h-96 mt-2' : 'max-h-0'
               )}
             >
@@ -182,7 +214,7 @@ const Header = () => {
                   <Link
                     key={service.id}
                     to={`/servicios/${service.id}`}
-                    className="block py-1 text-sm"
+                    className="block py-1 text-sm transition-colors duration-300"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {service.name}
@@ -193,13 +225,19 @@ const Header = () => {
           </div>
           <button
             onClick={() => scrollToSection('nosotros')}
-            className="block py-2 w-full text-left hover:text-cuenca-gold transition-colors"
+            className={clsx(
+              'block py-2 w-full text-left transition-colors duration-300 hover:text-cuenca-gold',
+              isScrolled ? 'text-cuenca-dark' : 'text-gray-200'
+            )}
           >
             Nosotros
           </button>
           <button
             onClick={() => scrollToSection('contacto')}
-            className="block py-2 w-full text-left hover:text-cuenca-gold transition-colors"
+            className={clsx(
+              'block py-2 w-full text-left transition-colors duration-300 hover:text-cuenca-gold',
+              isScrolled ? 'text-cuenca-dark' : 'text-gray-200'
+            )}
           >
             Contacto
           </button>
