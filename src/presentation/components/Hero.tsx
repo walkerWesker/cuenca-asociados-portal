@@ -1,5 +1,5 @@
 
-import { FC, useState, useMemo, useCallback, useEffect, useRef } from 'react';
+import { FC, useState, useMemo, useCallback, useEffect, useRef, memo } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -72,7 +72,7 @@ const useInterval = (callback: () => void, delay: number | null): void => {
 /* ================= Presentation Components ================= */
 
 // Slide component - memoized to prevent unnecessary renders
-const Slide: FC<SlideProps> = React.memo(({ slide, isActive, isMobile }) => (
+const Slide = memo<SlideProps>(({ slide, isActive, isMobile }) => (
   <div
     className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
       isActive ? 'opacity-100 z-20 transform scale-100' : 'opacity-0 z-10 transform scale-105'
@@ -129,10 +129,11 @@ const Slide: FC<SlideProps> = React.memo(({ slide, isActive, isMobile }) => (
   </div>
 ));
 
+// Set display name for debugging in React Developer Tools
 Slide.displayName = 'Slide';
 
 // Slider controls component - memoized for performance
-const SliderControls: FC<SliderControlsProps> = React.memo(({ 
+const SliderControls = memo<SliderControlsProps>(({ 
   slides, 
   currentSlide, 
   setCurrentSlide, 
@@ -173,6 +174,7 @@ const SliderControls: FC<SliderControlsProps> = React.memo(({
   </div>
 ));
 
+// Set display name for debugging
 SliderControls.displayName = 'SliderControls';
 
 /* ================= Main Component ================= */

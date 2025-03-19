@@ -1,6 +1,7 @@
 
 /**
  * Service entity representing a business service offered by the company
+ * Following React 19 and clean architecture principles
  */
 export interface Service {
   id: string;
