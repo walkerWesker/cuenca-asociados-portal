@@ -2,8 +2,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Send } from "lucide-react";
-import { useState } from "react";
+import { Send, User, Mail, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -54,19 +53,21 @@ export function ContactForm({ onSubmit, isSubmitting }: ContactFormProps) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 animate-fade-in">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem className="group transition-all duration-300 hover:-translate-y-[2px]">
-                <FormLabel>Nombre Completo</FormLabel>
+                <FormLabel className="text-gray-700 flex items-center gap-2">
+                  <User className="h-4 w-4 text-cuenca-blue" /> Nombre Completo
+                </FormLabel>
                 <FormControl>
                   <Input 
                     placeholder="Ingrese su nombre" 
                     {...field} 
-                    className="transition-shadow duration-300 hover:shadow-md focus:shadow-md"
+                    className="transition-all duration-300 focus:border-cuenca-blue focus:ring-cuenca-blue/20 hover:border-cuenca-blue/70 rounded-md"
                   />
                 </FormControl>
                 <FormMessage />
@@ -79,13 +80,15 @@ export function ContactForm({ onSubmit, isSubmitting }: ContactFormProps) {
             name="email"
             render={({ field }) => (
               <FormItem className="group transition-all duration-300 hover:-translate-y-[2px]">
-                <FormLabel>Correo Electrónico</FormLabel>
+                <FormLabel className="text-gray-700 flex items-center gap-2">
+                  <Mail className="h-4 w-4 text-cuenca-blue" /> Correo Electrónico
+                </FormLabel>
                 <FormControl>
                   <Input 
                     placeholder="ejemplo@correo.com" 
                     type="email" 
                     {...field}
-                    className="transition-shadow duration-300 hover:shadow-md focus:shadow-md"
+                    className="transition-all duration-300 focus:border-cuenca-blue focus:ring-cuenca-blue/20 hover:border-cuenca-blue/70 rounded-md"
                   />
                 </FormControl>
                 <FormMessage />
@@ -100,13 +103,15 @@ export function ContactForm({ onSubmit, isSubmitting }: ContactFormProps) {
             name="phone"
             render={({ field }) => (
               <FormItem className="group transition-all duration-300 hover:-translate-y-[2px]">
-                <FormLabel>Teléfono</FormLabel>
+                <FormLabel className="text-gray-700 flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-cuenca-blue" /> Teléfono
+                </FormLabel>
                 <FormControl>
                   <Input 
                     placeholder="(Opcional)" 
                     type="tel" 
                     {...field}
-                    className="transition-shadow duration-300 hover:shadow-md focus:shadow-md"
+                    className="transition-all duration-300 focus:border-cuenca-blue focus:ring-cuenca-blue/20 hover:border-cuenca-blue/70 rounded-md"
                   />
                 </FormControl>
                 <FormMessage />
@@ -119,23 +124,23 @@ export function ContactForm({ onSubmit, isSubmitting }: ContactFormProps) {
             name="subject"
             render={({ field }) => (
               <FormItem className="group transition-all duration-300 hover:-translate-y-[2px]">
-                <FormLabel>Asunto</FormLabel>
+                <FormLabel className="text-gray-700">Asunto</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
-                    <SelectTrigger className="transition-shadow duration-300 hover:shadow-md focus:shadow-md">
+                    <SelectTrigger className="transition-all duration-300 focus:border-cuenca-blue focus:ring-cuenca-blue/20 hover:border-cuenca-blue/70 rounded-md">
                       <SelectValue placeholder="Seleccionar" />
                     </SelectTrigger>
                   </FormControl>
-                  <SelectContent>
-                    <SelectItem value="reestructuracion">Reestructuración Financiera</SelectItem>
-                    <SelectItem value="outsourcing">Outsourcing Administrativo</SelectItem>
-                    <SelectItem value="tributario">Outsourcing Tributario</SelectItem>
-                    <SelectItem value="planillas">Outsourcing de Planillas</SelectItem>
-                    <SelectItem value="niif">Implementación NIIF</SelectItem>
-                    <SelectItem value="precios">Precios de Transferencia</SelectItem>
-                    <SelectItem value="auditoria">Auditoría de Sistemas</SelectItem>
-                    <SelectItem value="consultoria">Asesoría Empresarial</SelectItem>
-                    <SelectItem value="otro">Otro</SelectItem>
+                  <SelectContent className="bg-white rounded-md border border-gray-200 shadow-lg">
+                    <SelectItem value="reestructuracion" className="hover:bg-gray-50 cursor-pointer">Reestructuración Financiera</SelectItem>
+                    <SelectItem value="outsourcing" className="hover:bg-gray-50 cursor-pointer">Outsourcing Administrativo</SelectItem>
+                    <SelectItem value="tributario" className="hover:bg-gray-50 cursor-pointer">Outsourcing Tributario</SelectItem>
+                    <SelectItem value="planillas" className="hover:bg-gray-50 cursor-pointer">Outsourcing de Planillas</SelectItem>
+                    <SelectItem value="niif" className="hover:bg-gray-50 cursor-pointer">Implementación NIIF</SelectItem>
+                    <SelectItem value="precios" className="hover:bg-gray-50 cursor-pointer">Precios de Transferencia</SelectItem>
+                    <SelectItem value="auditoria" className="hover:bg-gray-50 cursor-pointer">Auditoría de Sistemas</SelectItem>
+                    <SelectItem value="consultoria" className="hover:bg-gray-50 cursor-pointer">Asesoría Empresarial</SelectItem>
+                    <SelectItem value="otro" className="hover:bg-gray-50 cursor-pointer">Otro</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -149,11 +154,11 @@ export function ContactForm({ onSubmit, isSubmitting }: ContactFormProps) {
           name="message"
           render={({ field }) => (
             <FormItem className="group transition-all duration-300 hover:-translate-y-[2px]">
-              <FormLabel>Mensaje</FormLabel>
+              <FormLabel className="text-gray-700">Mensaje</FormLabel>
               <FormControl>
                 <Textarea 
                   placeholder="Cuéntanos cómo podemos ayudarte" 
-                  className="min-h-[120px] transition-shadow duration-300 hover:shadow-md focus:shadow-md"
+                  className="min-h-[120px] transition-all duration-300 focus:border-cuenca-blue focus:ring-cuenca-blue/20 hover:border-cuenca-blue/70 rounded-md resize-none"
                   {...field} 
                 />
               </FormControl>
@@ -165,18 +170,18 @@ export function ContactForm({ onSubmit, isSubmitting }: ContactFormProps) {
         <Button 
           type="submit" 
           disabled={isSubmitting}
-          className="w-full bg-cuenca-blue hover:bg-cuenca-blue/90 transition-all duration-300 transform hover:scale-[1.02] group"
+          className="w-full bg-gradient-to-r from-cuenca-blue to-cuenca-blue/90 hover:from-cuenca-blue/90 hover:to-cuenca-blue text-white transition-all duration-500 transform hover:scale-[1.02] rounded-md group"
         >
           {isSubmitting ? (
-            <span className="flex items-center">
+            <div className="flex items-center justify-center space-x-2">
               <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
-              Enviando...
-            </span>
+              <span>Enviando...</span>
+            </div>
           ) : (
-            <span className="flex items-center">
+            <span className="flex items-center justify-center">
               <Send className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform duration-300" />
               Enviar Mensaje
             </span>
