@@ -1,66 +1,33 @@
 
-import { useEffect, useState, Suspense, useRef } from 'react';
-import { useParams } from 'react-router-dom';
-import ServiceDetail from '@/components/ServiceDetail';
+import { useEffect, Suspense } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import ServiceDetail from '@/presentation/components/ServiceDetail';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { servicesData } from '@/data/services';
+import { Button } from '@/components/ui/button';
+import { useAnimation } from '@/presentation/hooks/useAnimation';
 
+/**
+ * Service page component with modern React practices
+ */
 const ServicePage = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
-  const id = serviceId || '';
-  const [pageTitle, setPageTitle] = useState('Servicio | Cuenca & Asociados');
-  const observer = useRef<IntersectionObserver | null>(null);
+  useAnimation({ once: true });
   
-  // Set document title based on service
+  // Scroll to top when the service page loads
   useEffect(() => {
-    // Find the service to get its title
-    const service = servicesData.find(service => service.id === id);
+    window.scrollTo(0, 0);
+  }, [serviceId]);
+  
+  // Change document title based on service
+  useEffect(() => {
+    const service = serviceId ? document.title = `${serviceId} | Cuenca & Asociados` : 'Servicio | Cuenca & Asociados';
+    document.title = service;
     
-    if (service) {
-      const newTitle = `${service.title} | Cuenca & Asociados`;
-      document.title = newTitle;
-      setPageTitle(newTitle);
-    } else {
-      document.title = 'Servicio | Cuenca & Asociados';
-    }
-    
-    // Cleanup function to reset title when component unmounts
     return () => {
       document.title = 'Cuenca & Asociados | Sociedad de Auditoría';
     };
-  }, [id]);
-  
-  // Set up intersection observer for animation on scroll with proper cleanup
-  useEffect(() => {
-    const observerOptions = {
-      rootMargin: '0px',
-      threshold: 0.1,
-    };
-    
-    // Use ref to store the observer instance for proper cleanup
-    observer.current = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-    
-    // Query once and store in a variable to avoid memory leaks
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    if (observer.current) {
-      animatedElements.forEach((element) => observer.current?.observe(element));
-    }
-    
-    // Cleanup function to prevent memory leaks
-    return () => {
-      if (observer.current) {
-        animatedElements.forEach((element) => observer.current?.unobserve(element));
-        observer.current.disconnect();
-      }
-    };
-  }, []);
+  }, [serviceId]);
   
   return (
     <div className="min-h-screen">
