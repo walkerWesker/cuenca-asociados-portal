@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback, FC } from 'react';
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
@@ -115,14 +114,20 @@ const Header: FC = () => {
           className="flex items-center relative z-20 group"
           aria-label="Cuenca & Asociados - Inicio"
         >
-          <span
-            className={clsx(
-              'font-serif font-bold tracking-wider transition-all duration-300 ease-in-out group-hover:text-cuenca-gold',
-              isScrolled ? 'text-cuenca-blue text-2xl sm:text-3xl' : 'text-gray-200 text-3xl sm:text-4xl'
-            )}
-          >
-            Cuenca <span className="text-cuenca-gold">&</span> Asociados
-          </span>
+          {/* Logo responsivo mejorado */}
+          <div className="relative overflow-hidden transition-all duration-300">
+            <span
+              className={clsx(
+                'font-serif font-bold tracking-wider transition-all duration-300 ease-in-out group-hover:text-cuenca-gold relative',
+                isScrolled 
+                  ? 'text-cuenca-blue text-xl sm:text-2xl md:text-3xl' 
+                  : 'text-gray-200 text-2xl sm:text-3xl md:text-4xl'
+              )}
+            >
+              Cuenca <span className="text-cuenca-gold animate-pulse-subtle">&</span> Asociados
+            </span>
+            <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cuenca-gold transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></span>
+          </div>
         </Link>
 
         {/* Navegación para escritorio */}
