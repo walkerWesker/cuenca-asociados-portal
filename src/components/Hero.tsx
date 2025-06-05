@@ -280,6 +280,17 @@ const Hero: FC = () => {
                   >
                     {slide.description}
                   </p>
+                  
+                  {/* LogoDisplay en móvil - Mostrar antes de los botones */}
+                  {isMobile && (
+                    <div 
+                      className="mb-6 opacity-0 animate-slide-in-up"
+                      style={{ animationDelay: '0.7s', animationFillMode: 'forwards', animationDuration: '0.8s' }}
+                    >
+                      <LogoDisplay />
+                    </div>
+                  )}
+                  
                   <div
                     className={`flex ${isMobile ? 'flex-col space-y-3' : 'md:flex-row md:space-x-4'} md:justify-start opacity-0 animate-slide-in-up`}
                     style={{ animationDelay: '0.8s', animationFillMode: 'forwards', animationDuration: '0.8s' }}
