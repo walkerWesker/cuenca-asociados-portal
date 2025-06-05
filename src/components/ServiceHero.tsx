@@ -1,89 +1,51 @@
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDevice } from '@/hooks/use-device';
-import { serviceHeroSlides, ServiceHeroSlide } from '@/data/serviceHero';
+import { servicesData } from '@/data/services';
 import LogoDisplay from './LogoDisplay';
 
 interface ServiceHeroProps {
-  serviceTitle?: string;
-  serviceDescription?: string;
+  serviceId: string;
 }
 
-const ServiceHero: React.FC<ServiceHeroProps> = ({ 
-  serviceTitle, 
-  serviceDescription 
-}) => {
+const ServiceHero: React.FC<ServiceHeroProps> = ({ serviceId }) => {
   const device = useDevice();
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [scrollY, setScrollY] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
 
-  // Preload images
+  // Encontrar el servicio correspondiente
+  const service = servicesData.find(s => s.id === serviceId);
+
+  // Efecto parallax
   useEffect(() => {
-    const preloadImages = async () => {
-      const imagePromises = serviceHeroSlides.map(slide => {
-        return new Promise<void>((resolve) => {
-          const img = new Image();
-          img.src = slide.image;
-          img.onload = () => resolve();
-          img.onerror = () => resolve();
-        });
-      });
-
-      await Promise.all(imagePromises);
-      setIsLoaded(true);
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
     };
 
-    preloadImages();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Auto-advance slides
+  // Precargar imagen
   useEffect(() => {
-    if (isLoaded) {
-      intervalRef.current = setInterval(() => {
-        setCurrentSlide(prev => (prev + 1) % serviceHeroSlides.length);
-      }, 6000);
+    if (service?.image) {
+      const img = new Image();
+      img.src = service.image;
+      img.onload = () => setIsLoaded(true);
+      img.onerror = () => setIsLoaded(true);
     }
+  }, [service]);
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [isLoaded]);
-
-  const goToSlide = useCallback((index: number) => {
-    setCurrentSlide(index);
-  }, []);
-
-  const nextSlide = useCallback(() => {
-    setCurrentSlide(prev => (prev + 1) % serviceHeroSlides.length);
-  }, []);
-
-  const prevSlide = useCallback(() => {
-    setCurrentSlide(prev => prev === 0 ? serviceHeroSlides.length - 1 : prev - 1);
-  }, []);
-
-  // Touch handlers for mobile
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
-
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  }, []);
-
-  const handleTouchMove = useCallback((e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  }, []);
-
-  const handleTouchEnd = useCallback(() => {
-    if (touchStart - touchEnd > 75) {
-      nextSlide();
-    } else if (touchStart - touchEnd < -75) {
-      prevSlide();
-    }
-  }, [touchStart, touchEnd, nextSlide, prevSlide]);
+  if (!service) {
+    return (
+      <div className="h-screen w-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+        <div className="text-center space-y-4">
+          <p className="text-gray-600">Servicio no encontrado</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!isLoaded) {
     return (
@@ -96,23 +58,24 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
     );
   }
 
-  const currentSlideData = serviceHeroSlides[currentSlide];
+  const parallaxOffset = scrollY * 0.5;
 
   return (
-    <div 
-      className="relative h-screen w-full overflow-hidden"
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-    >
-      {/* Background Image and Overlay */}
-      <div className="absolute inset-0">
+    <div ref={heroRef} className="relative h-screen w-full overflow-hidden">
+      {/* Background Image with Parallax Effect */}
+      <div 
+        className="absolute inset-0 w-full h-[120%]"
+        style={{
+          transform: `translateY(${parallaxOffset}px)`,
+          willChange: 'transform'
+        }}
+      >
         <img
-          src={currentSlideData.image}
-          alt={currentSlideData.title}
-          className="h-full w-full object-cover transition-all duration-1000 ease-in-out"
+          src={service.image}
+          alt={service.title}
+          className="h-full w-full object-cover"
         />
-        <div className={`absolute inset-0 bg-gradient-to-r ${currentSlideData.gradientFrom} ${currentSlideData.gradientTo}`} />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
       </div>
 
       {/* Content */}
@@ -133,15 +96,15 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
             `}>
               <div className="space-y-4">
                 <span className="inline-block text-cuenca-gold font-medium text-sm md:text-base tracking-wider opacity-0 animate-fade-in">
-                  {serviceTitle ? 'Servicio Especializado' : currentSlideData.subtitle}
+                  Servicio Especializado
                 </span>
                 
                 <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                  {serviceTitle || currentSlideData.title}
+                  {service.title}
                 </h1>
                 
                 <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl opacity-0 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                  {serviceDescription || currentSlideData.description}
+                  {service.description}
                 </p>
               </div>
 
@@ -181,49 +144,6 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({
                 <LogoDisplay />
               </div>
             )}
-          </div>
-        </div>
-      </div>
-
-      {/* Navigation Controls */}
-      <div className="absolute bottom-8 left-0 right-0 z-30">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
-            {/* Slide Indicators */}
-            <div className="flex space-x-2">
-              {serviceHeroSlides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`
-                    h-2 rounded-full transition-all duration-300
-                    ${currentSlide === index 
-                      ? 'w-8 bg-cuenca-gold' 
-                      : 'w-2 bg-white/60 hover:bg-white/80'
-                    }
-                  `}
-                  aria-label={`Ir al slide ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Navigation Arrows */}
-            <div className="flex space-x-2">
-              <button
-                onClick={prevSlide}
-                className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-300 transform hover:scale-110"
-                aria-label="Slide anterior"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-300 transform hover:scale-110"
-                aria-label="Siguiente slide"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </div>
           </div>
         </div>
       </div>

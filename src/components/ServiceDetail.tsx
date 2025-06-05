@@ -89,10 +89,7 @@ const ServiceDetail = () => {
   return (
     <>
       {/* Service Hero Section */}
-      <ServiceHero 
-        serviceTitle={service.title}
-        serviceDescription={service.description}
-      />
+      <ServiceHero serviceId={serviceId || ''} />
       
       {/* Content Section with improved animations */}
       <div className="container mx-auto px-4 py-16" ref={contentRef}>
