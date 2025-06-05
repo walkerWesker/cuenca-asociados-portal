@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
@@ -6,6 +5,7 @@ import { servicesData } from '@/data/services';
 import { Button } from '@/components/ui/button';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
+import ServiceHero from '@/components/ServiceHero';
 
 // Clean Architecture pattern - Creating a domain entity interface
 interface ServiceEntity {
@@ -88,34 +88,23 @@ const ServiceDetail = () => {
   
   return (
     <>
-      {/* Hero Section with enhanced animations */}
-      <div 
-        className="relative h-[40vh] sm:h-[50vh] flex items-center"
-        style={{
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url(${service.image})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      >
-        <div className="container mx-auto px-4 py-10 text-white">
-          <Link 
-            to="/" 
-            className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-all duration-300 animate-on-load opacity-0 hover:scale-105"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Volver a Inicio
-          </Link>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight animate-on-load opacity-0 animate-slide-in-left">
-            {service.title}
-          </h1>
-          <p className="text-xl md:text-2xl max-w-2xl text-white/90 animate-on-load opacity-0 animate-slide-in-right">
-            {service.description}
-          </p>
-        </div>
-      </div>
+      {/* Service Hero Section */}
+      <ServiceHero 
+        serviceTitle={service.title}
+        serviceDescription={service.description}
+      />
       
       {/* Content Section with improved animations */}
       <div className="container mx-auto px-4 py-16" ref={contentRef}>
+        {/* Back to Home Link */}
+        <Link 
+          to="/" 
+          className="inline-flex items-center text-cuenca-blue hover:text-cuenca-blue/80 mb-8 transition-all duration-300 animate-on-load opacity-0 hover:scale-105"
+        >
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Volver a Inicio
+        </Link>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Main Content */}
           <div className="lg:col-span-2 animate-on-scroll opacity-0 transition-all duration-700">
