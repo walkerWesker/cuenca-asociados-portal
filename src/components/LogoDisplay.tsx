@@ -8,7 +8,7 @@ const LogoDisplay: React.FC = () => {
   if (!isLoaded) {
     return (
       <div className="flex items-center justify-center w-full max-w-sm mx-auto lg:max-w-md xl:max-w-lg bg-white/10 rounded-xl animate-pulse p-6">
-        <div className="w-32 h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 bg-white/20 rounded-full"></div>
+        <div className="w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 bg-white/20 rounded-full"></div>
       </div>
     );
   }
@@ -39,18 +39,25 @@ const LogoDisplay: React.FC = () => {
           hover:bg-white/25
           w-full
         ">
-          {/* Logo Image - Más grande */}
+          {/* Logo Image - Más grande y responsiva */}
           <div className="flex justify-center mb-4 md:mb-6">
             <img 
               src={data.imageUrl}
               alt={data.altText}
               className="
-                h-32 w-32 sm:h-36 sm:w-36 md:h-40 md:w-40 lg:h-44 lg:w-44 xl:h-48 xl:w-48
+                w-40 h-40 
+                sm:w-48 sm:h-48 
+                md:w-56 md:h-56 
+                lg:w-64 lg:h-64 
+                xl:w-72 xl:h-72
+                2xl:w-80 2xl:h-80
                 object-contain 
                 filter drop-shadow-2xl
                 transition-all duration-300
                 group-hover:scale-110
                 group-hover:drop-shadow-3xl
+                max-w-full
+                max-h-full
               "
             />
           </div>
@@ -59,7 +66,7 @@ const LogoDisplay: React.FC = () => {
           <div className="text-center space-y-2 md:space-y-3">
             <h3 className="
               text-white font-serif font-bold 
-              text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl
+              text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl
               tracking-wide
               drop-shadow-lg
               leading-tight
@@ -68,7 +75,7 @@ const LogoDisplay: React.FC = () => {
             </h3>
             <p className="
               text-white/95 
-              text-xs sm:text-sm md:text-base lg:text-lg
+              text-sm sm:text-base md:text-lg lg:text-xl
               font-medium
               tracking-wider
               drop-shadow-md
