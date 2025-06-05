@@ -225,7 +225,7 @@ const Hero: FC = () => {
 
   if (!imagesLoaded) {
     return (
-      <div id="home" className="relative h-screen md:h-screen w-full flex items-center justify-center bg-gray-100">
+      <div id="home" className="relative h-screen w-full flex items-center justify-center bg-gray-100">
         <div className="animate-pulse flex flex-col items-center">
           <div className="h-10 w-48 bg-gray-300 rounded mb-4" />
           <div className="h-6 w-36 bg-gray-300 rounded mb-8" />
@@ -238,7 +238,7 @@ const Hero: FC = () => {
   return (
     <div
       id="home"
-      className="relative h-[85vh] md:h-screen w-full overflow-hidden"
+      className="relative h-screen w-full overflow-hidden"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
