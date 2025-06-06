@@ -7,33 +7,60 @@ import ServicesSlider from '@/components/ServicesSlider';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import { useNavigation } from '@/contexts/NavigationContext';
 
+/**
+ * Página principal de la aplicación
+ * Implementa el patrón de página con gestión de scroll y animaciones optimizadas
+ */
 const Index = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const { clearSavedRoute, isInitialized } = useNavigation();
   
-  // Set document title
+  /**
+   * Efecto para gestión del título del documento y limpieza de rutas
+   */
   useEffect(() => {
     document.title = 'Cuenca & Asociados | Sociedad de Auditoría';
     
-    // Clean up function
+    // Limpiar ruta guardada cuando estamos en la página principal
+    if (isInitialized) {
+      clearSavedRoute();
+      console.log('Ruta guardada limpiada - estamos en página principal');
+    }
+    
     return () => {
-      // Title is reset in other pages' cleanup functions
+      // El título se resetea en otras páginas
     };
-  }, []);
+  }, [isInitialized, clearSavedRoute]);
   
-  // Track scroll progress for animations
+  /**
+   * Efecto para tracking del progreso de scroll
+   * Implementa throttling para optimizar el rendimiento
+   */
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.scrollY / totalHeight) * 100;
-      setScrollProgress(progress);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+          setScrollProgress(progress);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  // Optimized handler for anchor clicks
+  /**
+   * Handler optimizado para clicks en enlaces anchor
+   * Implementa smooth scrolling con offset para el header
+   */
   const handleAnchorClick = useCallback((e: MouseEvent) => {
     const target = e.target as HTMLElement;
     const href = target.getAttribute('href');
@@ -43,53 +70,68 @@ const Index = () => {
       const element = document.getElementById(href.substring(1));
       
       if (element) {
+        const headerOffset = 80;
+        const elementPosition = element.offsetTop - headerOffset;
+        
         window.scrollTo({
-          top: element.offsetTop - 80, // Offset for the header
+          top: elementPosition,
           behavior: 'smooth',
         });
+        
+        console.log('Navegación suave a:', href);
       }
     }
   }, []);
   
-  // Set up intersection observer for animations
+  /**
+   * Configuración del Intersection Observer para animaciones
+   * Implementa animaciones on-scroll optimizadas
+   */
   useEffect(() => {
-    // Add click event listeners to all anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    // Configurar event listeners para enlaces anchor
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(anchor => {
       anchor.addEventListener('click', handleAnchorClick as EventListener);
     });
     
-    // Initialize animation for elements that should animate on scroll
+    // Configurar Intersection Observer para animaciones
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.15, // Lower threshold to trigger animations earlier
+      threshold: 0.15,
     };
     
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // Add visible class for basic animation
           entry.target.classList.add('visible');
           
-          // Get data attribute to apply specific animations
+          // Aplicar animaciones específicas basadas en data attributes
           const animation = entry.target.getAttribute('data-animation');
           if (animation) {
             entry.target.classList.add(animation);
           }
+          
+          // Opcional: dejar de observar después de la primera animación
+          // observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
     
-    // Efficiently query elements only once
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    animatedElements.forEach((element) => observer.observe(element));
+    // Observar elementos con pequeño delay para asegurar que el DOM esté listo
+    const timer = setTimeout(() => {
+      const animatedElements = document.querySelectorAll('.animate-on-scroll');
+      animatedElements.forEach((element) => observer.observe(element));
+    }, 100);
     
-    // Cleanup to prevent memory leaks
+    // Función de limpieza para prevenir memory leaks
     return () => {
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      clearTimeout(timer);
+      anchorLinks.forEach(anchor => {
         anchor.removeEventListener('click', handleAnchorClick as EventListener);
       });
       
+      const animatedElements = document.querySelectorAll('.animate-on-scroll');
       animatedElements.forEach(element => {
         observer.unobserve(element);
       });
@@ -99,10 +141,12 @@ const Index = () => {
   
   return (
     <div className="min-h-screen w-full overflow-x-hidden max-w-full relative">
-      {/* Scroll progress indicator */}
+      {/* Indicador de progreso de scroll */}
       <div 
         className="fixed top-0 left-0 h-1 bg-cuenca-gold z-50 transition-all duration-300 ease-out"
         style={{ width: `${scrollProgress}%` }}
+        role="progressbar"
+        aria-label="Progreso de scroll"
       ></div>
       
       <Header />
