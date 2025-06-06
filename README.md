@@ -32,6 +32,7 @@
 - [✨ Características Principales](#-características-principales)
 - [🛠️ Stack Tecnológico](#️-stack-tecnológico)
 - [🏗️ Arquitectura del Proyecto](#️-arquitectura-del-proyecto)
+- [📊 Flujo de Datos](#-flujo-de-datos)
 - [🚀 Instalación y Configuración](#-instalación-y-configuración)
 - [📱 Características Técnicas](#-características-técnicas)
 - [🎨 Sistema de Diseño](#-sistema-de-diseño)
@@ -121,119 +122,336 @@ La aplicación está diseñada para:
 
 ## 🏗️ Arquitectura del Proyecto
 
-### 📐 **Arquitectura Component-Based y Custom Hooks**
+### 📐 **Arquitectura Modular de Componentes**
 
 ```mermaid
 graph TB
-    subgraph "Data Layer"
-        A[services.ts] --> B[logoData.ts]
-        B --> C[serviceHero.ts]
+    subgraph "📁 Application Layer"
+        App[App.tsx<br/>🎛️ Router & Providers]
+        Routes[React Router<br/>🗺️ Navigation Management]
+        QueryClient[TanStack Query<br/>💾 Data Cache Layer]
     end
     
-    subgraph "Custom Hooks Layer"
-        D[use-device.tsx] --> E[use-mobile.tsx]
-        E --> F[use-mobile-menu.tsx]
-        F --> G[use-logo.tsx]
-        G --> H[use-toast.ts]
+    subgraph "📄 Page Layer"
+        Index[Index.tsx<br/>🏠 Home Page]
+        ServicePage[ServicePage.tsx<br/>🔍 Service Details]
+        NotFound[NotFound.tsx<br/>❌ 404 Handler]
     end
     
-    subgraph "Component Layer"
-        I[Header.tsx] --> J[MobileMenu.tsx]
-        J --> K[Hero.tsx]
-        K --> L[Services.tsx]
-        L --> M[ServicesSlider.tsx]
-        M --> N[ServiceDetail.tsx]
-        N --> O[About.tsx]
-        O --> P[Contact.tsx]
-        P --> Q[Footer.tsx]
+    subgraph "🧩 Component Layer"
+        Header[Header.tsx<br/>🧭 Navigation Bar]
+        Hero[Hero.tsx<br/>🎬 Landing Section]
+        Services[Services.tsx<br/>📋 Service Catalog]
+        ServiceDetail[ServiceDetail.tsx<br/>📝 Service Info]
+        ServiceHero[ServiceHero.tsx<br/>🎥 Service Banner]
+        Contact[Contact.tsx<br/>📞 Contact Form]
+        Footer[Footer.tsx<br/>📰 Site Footer]
     end
     
-    subgraph "UI Components"
-        R[Shadcn/UI Components] --> S[Button]
-        S --> T[Card]
-        T --> U[Dialog]
-        U --> V[Toast]
-        V --> W[Tooltip]
+    subgraph "🎣 Custom Hooks Layer"
+        useDevice[use-device.tsx<br/>📱 Device Detection]
+        useMobile[use-mobile.tsx<br/>📲 Mobile State]
+        useMobileMenu[use-mobile-menu.tsx<br/>🍔 Menu Toggle]
+        useLogo[use-logo.tsx<br/>🏷️ Logo Management]
+        useToast[use-toast.ts<br/>🔔 Notifications]
     end
     
-    subgraph "Pages Layer"
-        X[Index.tsx] --> Y[ServicePage.tsx]
-        Y --> Z[NotFound.tsx]
+    subgraph "💾 Data Layer"
+        ServicesData[services.ts<br/>📊 Service Catalog]
+        LogoData[logoData.ts<br/>🖼️ Brand Assets]
+        ServiceHeroData[serviceHero.ts<br/>🎭 Hero Content]
     end
     
-    subgraph "Routing & App"
-        AA[App.tsx] --> BB[React Router]
-        BB --> CC[Query Client]
+    subgraph "🎨 UI Foundation"
+        ShadcnUI[Shadcn/UI<br/>🔧 Component Library]
+        TailwindCSS[Tailwind CSS<br/>🎨 Styling System]
+        FramerMotion[Framer Motion<br/>⚡ Animations]
     end
     
-    A --> D
-    D --> I
-    I --> R
-    R --> X
-    X --> AA
+    App --> Routes
+    Routes --> Index
+    Routes --> ServicePage
+    Routes --> NotFound
     
-    style A fill:#2A4B8C,color:#fff
-    style D fill:#D4AF37,color:#000
-    style I fill:#F5F5F7,color:#000
-    style R fill:#1D1D1F,color:#fff
-    style X fill:#2A4B8C,color:#fff
-    style AA fill:#D4AF37,color:#000
+    Index --> Header
+    Index --> Hero
+    Index --> Services
+    Index --> Contact
+    Index --> Footer
+    
+    ServicePage --> Header
+    ServicePage --> ServiceHero
+    ServicePage --> ServiceDetail
+    ServicePage --> Footer
+    
+    Header --> useMobile
+    Header --> useMobileMenu
+    Hero --> useLogo
+    ServiceHero --> useDevice
+    ServiceDetail --> ServicesData
+    
+    ServicesData --> Services
+    LogoData --> useLogo
+    ServiceHeroData --> ServiceHero
+    
+    ShadcnUI --> Header
+    TailwindCSS --> Hero
+    FramerMotion --> ServiceHero
+    
+    style App fill:#2A4B8C,color:#fff,stroke:#D4AF37,stroke-width:3px
+    style Index fill:#D4AF37,color:#000,stroke:#2A4B8C,stroke-width:2px
+    style Header fill:#F5F5F7,color:#000,stroke:#2A4B8C,stroke-width:2px
+    style useDevice fill:#1D1D1F,color:#fff,stroke:#D4AF37,stroke-width:2px
+    style ServicesData fill:#2A4B8C,color:#fff,stroke:#D4AF37,stroke-width:2px
 ```
 
-### 🔄 **Flujo de Datos y Estado**
+### 🔄 **Arquitectura de Estado y Props**
 
 ```mermaid
 graph LR
-    subgraph "Estado Global"
-        A[TanStack Query] --> B[Device Detection]
-        B --> C[Mobile Menu State]
-        C --> D[Toast Notifications]
+    subgraph "🏪 Global State Management"
+        QueryCache[TanStack Query Cache<br/>📊 Server State]
+        DeviceState[Device Detection State<br/>📱 Responsive Context]
+        MenuState[Mobile Menu State<br/>🍔 Navigation Control]
+        ToastState[Toast Notifications<br/>🔔 User Feedback]
     end
     
-    subgraph "Estado Local"
-        E[Component State] --> F[Form State]
-        F --> G[Animation State]
+    subgraph "⚛️ Component State"
+        LocalState[useState Hooks<br/>🔄 Component Data]
+        FormState[React Hook Form<br/>📝 Form Management]
+        AnimationState[Framer Motion<br/>⚡ Animation Control]
     end
     
-    subgraph "Datos Estáticos"
-        H[Services Data] --> I[Logo Data]
-        I --> J[Hero Content]
+    subgraph "📊 Static Data Sources"
+        ConfigData[Configuration Files<br/>⚙️ App Settings]
+        ContentData[Content Data<br/>📄 Static Content]
+        AssetData[Asset References<br/>🖼️ Media Files]
     end
     
-    A --> E
-    H --> A
-    E --> K[UI Components]
-    K --> L[User Interface]
+    subgraph "🎯 Data Flow Patterns"
+        PropsDown[Props Down<br/>⬇️ Parent to Child]
+        EventsUp[Events Up<br/>⬆️ Child to Parent]
+        ContextAPI[Context Sharing<br/>🔄 Cross-Component]
+    end
     
-    style A fill:#2A4B8C,color:#fff
-    style E fill:#D4AF37,color:#000
-    style H fill:#F5F5F7,color:#000
+    QueryCache --> LocalState
+    DeviceState --> LocalState
+    ConfigData --> QueryCache
+    
+    LocalState --> PropsDown
+    PropsDown --> EventsUp
+    EventsUp --> ContextAPI
+    
+    FormState --> ToastState
+    AnimationState --> LocalState
+    
+    style QueryCache fill:#2A4B8C,color:#fff
+    style LocalState fill:#D4AF37,color:#000
+    style ConfigData fill:#F5F5F7,color:#000
+    style PropsDown fill:#1D1D1F,color:#fff
 ```
 
-### 🎯 **Patrones de Diseño Implementados**
+---
 
-#### **1. Custom Hooks Pattern**
-- **`use-device.tsx`**: Detección inteligente de dispositivos con breakpoints responsive
-- **`use-mobile.tsx`**: Hook simplificado para detección móvil con `window.matchMedia`
-- **`use-mobile-menu.tsx`**: Gestión del estado del menú móvil con toggle automático
-- **`use-logo.tsx`**: Gestión centralizada de datos del logotipo corporativo
-- **`use-toast.ts`**: Sistema de notificaciones toast integrado con Radix UI
+## 📊 Flujo de Datos
 
-#### **2. Component Composition Pattern**
-- **Componentes atómicos**: Botones, inputs, cards reutilizables
-- **Componentes moleculares**: ServiceCard, ContactForm, NavigationMenu
-- **Componentes orgánicos**: Header, Footer, Services, About
-- **Templates y páginas**: Index, ServicePage, NotFound
+### 🌊 **Arquitectura de Flujo de Datos Unidireccional**
 
-#### **3. Data-Driven Architecture**
-- **Configuración centralizada** en `src/data/`
-- **Separación de contenido y presentación**
-- **Facilita mantenimiento y actualizaciones**
+Como desarrollador, he implementado un patrón de flujo de datos unidireccional que garantiza la predictibilidad y mantenibilidad del código. El flujo sigue el principio "single source of truth" con múltiples capas de abstracción.
 
-#### **4. TypeScript-First Development**
-- **Tipado estricto** en toda la aplicación
-- **Interfaces bien definidas** para datos y props
-- **IntelliSense mejorado** para desarrollo eficiente
+```mermaid
+graph TD
+    subgraph "🎯 Data Sources"
+        StaticData[Static Data Files<br/>services.ts, logoData.ts]
+        UserInput[User Interactions<br/>Clicks, Forms, Navigation]
+        DeviceAPI[Device APIs<br/>window.matchMedia, viewport]
+    end
+    
+    subgraph "🔄 State Management Layer"
+        CustomHooks[Custom Hooks<br/>Business Logic Encapsulation]
+        ReactState[React State<br/>Component-level State]
+        QueryState[TanStack Query<br/>Server State & Caching]
+    end
+    
+    subgraph "🧩 Component Tree"
+        AppRoot[App Component<br/>Root Provider]
+        PageComponents[Page Components<br/>Route Handlers]
+        FeatureComponents[Feature Components<br/>Business Logic]
+        UIComponents[UI Components<br/>Presentation Layer]
+    end
+    
+    subgraph "🎨 Presentation Layer"
+        DOMUpdates[DOM Updates<br/>React Reconciliation]
+        Animations[Framer Motion<br/>Animation Orchestration]
+        Styling[Tailwind CSS<br/>Dynamic Styling]
+    end
+    
+    StaticData --> CustomHooks
+    UserInput --> ReactState
+    DeviceAPI --> CustomHooks
+    
+    CustomHooks --> QueryState
+    ReactState --> CustomHooks
+    QueryState --> FeatureComponents
+    
+    AppRoot --> PageComponents
+    PageComponents --> FeatureComponents
+    FeatureComponents --> UIComponents
+    
+    UIComponents --> DOMUpdates
+    FeatureComponents --> Animations
+    UIComponents --> Styling
+    
+    DOMUpdates -.-> UserInput
+    Animations -.-> UserInput
+    
+    style StaticData fill:#2A4B8C,color:#fff
+    style CustomHooks fill:#D4AF37,color:#000
+    style FeatureComponents fill:#F5F5F7,color:#000
+    style DOMUpdates fill:#1D1D1F,color:#fff
+```
+
+### 🎣 **Custom Hooks Pattern Implementation**
+
+```mermaid
+graph LR
+    subgraph "🎣 Hook Composition Strategy"
+        PrimitiveHooks[Primitive Hooks<br/>useState, useEffect]
+        ComposedHooks[Composed Hooks<br/>useDevice, useMobile]
+        DomainHooks[Domain Hooks<br/>useLogo, useMobileMenu]
+    end
+    
+    subgraph "📊 Data Transformation Pipeline"
+        RawData[Raw Data Input<br/>Static Files, API Calls]
+        ProcessedData[Processed Data<br/>Normalized, Validated]
+        PresentationData[Presentation Data<br/>UI-Ready Format]
+    end
+    
+    subgraph "🔄 State Synchronization"
+        LocalSync[Local State Sync<br/>Component-level]
+        GlobalSync[Global State Sync<br/>Cross-component]
+        ExternalSync[External State Sync<br/>Device, Browser APIs]
+    end
+    
+    PrimitiveHooks --> ComposedHooks
+    ComposedHooks --> DomainHooks
+    
+    RawData --> ProcessedData
+    ProcessedData --> PresentationData
+    
+    DomainHooks --> LocalSync
+    LocalSync --> GlobalSync
+    GlobalSync --> ExternalSync
+    
+    style PrimitiveHooks fill:#2A4B8C,color:#fff
+    style ComposedHooks fill:#D4AF37,color:#000
+    style DomainHooks fill:#F5F5F7,color:#000
+```
+
+### 🏗️ **Component Communication Patterns**
+
+Como arquitecto del sistema, he implementado varios patrones de comunicación entre componentes para mantener el acoplamiento bajo y la cohesión alta:
+
+#### **1. Props Drilling con TypeScript Strict**
+```typescript
+// Patrón de props tipado estrictamente
+interface ServiceHeroProps {
+  serviceId: string;
+  className?: string;
+}
+
+// Flujo: ServicePage → ServiceHero → LogoDisplay
+```
+
+#### **2. Custom Hooks para Estado Compartido**
+```typescript
+// Hook para gestión de estado de dispositivo
+const useDevice = () => {
+  const [deviceType, setDeviceType] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
+  // Lógica de detección y sincronización
+  return { deviceType, isMobile, isTablet, isDesktop };
+};
+```
+
+#### **3. Event Bubbling con Synthetic Events**
+```typescript
+// Patrón de eventos que suben por el árbol de componentes
+const handleServiceClick = useCallback((serviceId: string) => {
+  // Event propagation hacia componentes padre
+  onServiceSelect?.(serviceId);
+}, [onServiceSelect]);
+```
+
+### 📈 **Performance Optimization Patterns**
+
+```mermaid
+graph TB
+    subgraph "⚡ Performance Layer"
+        LazyLoading[React.lazy()<br/>Code Splitting]
+        Memoization[React.memo()<br/>Render Optimization]
+        Suspense[React.Suspense<br/>Loading States]
+    end
+    
+    subgraph "💾 Caching Strategy"
+        QueryCache[TanStack Query<br/>Server State Cache]
+        MemoryCache[useMemo/useCallback<br/>Computation Cache]
+        BrowserCache[Browser APIs<br/>localStorage, sessionStorage]
+    end
+    
+    subgraph "🎯 Bundle Optimization"
+        TreeShaking[Vite Tree Shaking<br/>Dead Code Elimination]
+        CodeSplitting[Dynamic Imports<br/>Route-based Splitting]
+        AssetOptimization[Asset Pipeline<br/>Image/CSS Optimization]
+    end
+    
+    LazyLoading --> CodeSplitting
+    Memoization --> MemoryCache
+    QueryCache --> BrowserCache
+    
+    TreeShaking --> AssetOptimization
+    CodeSplitting --> TreeShaking
+    
+    style LazyLoading fill:#2A4B8C,color:#fff
+    style QueryCache fill:#D4AF37,color:#000
+    style TreeShaking fill:#F5F5F7,color:#000
+```
+
+### 🛡️ **Error Boundary & Fallback Strategy**
+
+```mermaid
+graph TD
+    subgraph "🛡️ Error Handling Hierarchy"
+        AppBoundary[App-level Boundary<br/>Global Error Catch]
+        PageBoundary[Page-level Boundary<br/>Route Error Isolation]
+        ComponentBoundary[Component Boundary<br/>Feature Error Isolation]
+    end
+    
+    subgraph "📱 Fallback Components"
+        LoadingFallback[Loading Fallback<br/>Suspense Placeholder]
+        ErrorFallback[Error Fallback<br/>User-friendly Error UI]
+        NotFoundFallback[404 Fallback<br/>Route Not Found]
+    end
+    
+    subgraph "🔔 User Feedback"
+        ToastNotifications[Toast System<br/>Non-blocking Feedback]
+        ErrorReporting[Error Logging<br/>Development Debugging]
+        UserGuidance[User Guidance<br/>Recovery Instructions]
+    end
+    
+    AppBoundary --> PageBoundary
+    PageBoundary --> ComponentBoundary
+    
+    ComponentBoundary --> LoadingFallback
+    ComponentBoundary --> ErrorFallback
+    PageBoundary --> NotFoundFallback
+    
+    ErrorFallback --> ToastNotifications
+    ToastNotifications --> UserGuidance
+    
+    style AppBoundary fill:#2A4B8C,color:#fff
+    style LoadingFallback fill:#D4AF37,color:#000
+    style ToastNotifications fill:#F5F5F7,color:#000
+```
 
 ---
 
