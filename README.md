@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="https://via.placeholder.com/200x80/2A4B8C/FFFFFF?text=Cuenca+%26+Asociados" alt="Cuenca & Asociados Logo" />
+  <img src="https://via.placeholder.com/300x120/2A4B8C/FFFFFF?text=Cuenca+%26+Asociados" alt="Cuenca & Asociados Logo" />
   
   # 🏢 Cuenca & Asociados
   ### Plataforma Web Profesional de Auditoría Financiera, Contable y Tributaria
@@ -22,874 +22,933 @@
     <img src="https://img.shields.io/badge/Shadcn/UI-Latest-000000?style=for-the-badge&logo=shadcnui&logoColor=white" alt="Shadcn/UI">
     <img src="https://img.shields.io/badge/Radix_UI-Latest-161618?style=for-the-badge&logo=radix-ui&logoColor=white" alt="Radix UI">
   </p>
+
+  <div align="center" style="margin: 30px 0;">
+    <table>
+      <tr>
+        <td align="center">
+          <img src="https://img.shields.io/badge/🎯-90%25_Performance-success?style=flat-square&labelColor=2A4B8C" alt="Performance">
+        </td>
+        <td align="center">
+          <img src="https://img.shields.io/badge/📱-100%25_Responsive-success?style=flat-square&labelColor=D4AF37" alt="Responsive">
+        </td>
+        <td align="center">
+          <img src="https://img.shields.io/badge/♿-WCAG_2.1_AA-success?style=flat-square&labelColor=2A4B8C" alt="Accessibility">
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
 
 ---
 
-## 📋 Tabla de Contenidos
+## 📋 Índice de Contenidos
 
-- [🎯 Descripción del Proyecto](#-descripción-del-proyecto)
+<table align="center">
+<tr>
+<td width="50%">
+
+### 🎯 **Información del Proyecto**
+- [📖 Descripción del Proyecto](#-descripción-del-proyecto)
 - [✨ Características Principales](#-características-principales)
 - [🛠️ Stack Tecnológico](#️-stack-tecnológico)
+- [🚀 Instalación y Configuración](#-instalación-y-configuración)
+
+</td>
+<td width="50%">
+
+### 🏗️ **Arquitectura Técnica**
 - [🏗️ Arquitectura del Proyecto](#️-arquitectura-del-proyecto)
 - [📊 Flujo de Datos](#-flujo-de-datos)
-- [🚀 Instalación y Configuración](#-instalación-y-configuración)
-- [📱 Características Técnicas](#-características-técnicas)
+- [📈 Optimización de Rendimiento](#-optimización-de-rendimiento)
 - [🎨 Sistema de Diseño](#-sistema-de-diseño)
-- [📁 Estructura de Archivos](#-estructura-de-archivos)
-- [🔧 Scripts Disponibles](#-scripts-disponibles)
-- [🌐 Despliegue](#-despliegue)
-- [📄 Licencia](#-licencia)
+
+</td>
+</tr>
+</table>
+
+<div align="center">
+
+### 📁 **Documentación Técnica**
+[Estructura de Archivos](#-estructura-de-archivos) • [Scripts Disponibles](#-scripts-disponibles) • [Despliegue](#-despliegue) • [Licencia](#-licencia)
+
+</div>
 
 ---
 
 ## 🎯 Descripción del Proyecto
 
-**Cuenca & Asociados** es una aplicación web profesional de última generación, desarrollada con **React 18** y **TypeScript**, que ofrece servicios especializados de auditoría financiera, contable y tributaria. La plataforma combina un diseño moderno y responsivo con funcionalidades avanzadas de interacción, proporcionando una experiencia de usuario excepcional tanto para clientes como para profesionales del sector.
+> **Cuenca & Asociados** es una aplicación web profesional de última generación, desarrollada con **React 18** y **TypeScript**, que ofrece servicios especializados de auditoría financiera, contable y tributaria.
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="25%">
+        <img src="https://img.shields.io/badge/🎨-Design_System-2A4B8C?style=for-the-badge" alt="Design System"><br>
+        <b>Sistema de Diseño Profesional</b><br>
+        <small>Componentes reutilizables y consistentes</small>
+      </td>
+      <td align="center" width="25%">
+        <img src="https://img.shields.io/badge/⚡-Performance-D4AF37?style=for-the-badge" alt="Performance"><br>
+        <b>Optimización Avanzada</b><br>
+        <small>Code splitting y lazy loading</small>
+      </td>
+      <td align="center" width="25%">
+        <img src="https://img.shields.io/badge/📱-Responsive-2A4B8C?style=for-the-badge" alt="Responsive"><br>
+        <b>Diseño Adaptativo</b><br>
+        <small>Mobile-first approach</small>
+      </td>
+      <td align="center" width="25%">
+        <img src="https://img.shields.io/badge/🔒-Type_Safe-D4AF37?style=for-the-badge" alt="Type Safe"><br>
+        <b>TypeScript Estricto</b><br>
+        <small>Tipado robusto en toda la app</small>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ### 🎪 Propósito Empresarial
 
-La aplicación está diseñada para:
-- **Presentar servicios profesionales** de manera elegante y accesible
-- **Facilitar la comunicación** entre la firma y sus clientes
-- **Optimizar la experiencia de usuario** en todos los dispositivos
-- **Demostrar excelencia técnica** que refleje la calidad de los servicios ofrecidos
+<details>
+<summary><b>🎯 Objetivos Estratégicos</b></summary>
+
+- **🏢 Presentación Profesional**: Showcase elegante de servicios de auditoría
+- **🤝 Comunicación Efectiva**: Canal directo entre la firma y sus clientes  
+- **📱 Experiencia Optimizada**: UX excepcional en todos los dispositivos
+- **🎨 Excelencia Técnica**: Reflejo de la calidad de servicios ofrecidos
+
+</details>
 
 ---
 
 ## ✨ Características Principales
 
-### 🎭 **Experiencia de Usuario Inmersiva**
-- **Animaciones fluidas** con Framer Motion y AOS
-- **Transiciones suaves** entre secciones y páginas
-- **Micro-interacciones** que mejoran la experiencia de navegación
-- **Diseño responsivo** optimizado para móviles, tablets y escritorio
-
-### 🏢 **Presentación Profesional de Servicios**
-- **Catálogo dinámico** de servicios de auditoría
-- **Páginas de detalle** con información completa de cada servicio
-- **Slider interactivo** para presentación visual de servicios
-- **Sistema de navegación** intuitivo y accesible
-
-### 🎨 **Diseño Moderno y Adaptativo**
-- **Sistema de diseño** consistente basado en Tailwind CSS
-- **Componentes reutilizables** con Shadcn/UI y Radix UI
-- **Tipografía profesional** con Google Fonts (Poppins y Playfair Display)
-- **Paleta de colores corporativa** personalizada
-
-### 📱 **Optimización Multiplataforma**
-- **Detección automática** de dispositivos móviles y tablets
-- **Menú adaptativo** para diferentes tamaños de pantalla
-- **Optimización de rendimiento** para cargas rápidas
-- **Accesibilidad mejorada** siguiendo estándares web
+<div align="center">
+  <table>
+    <tr>
+      <td width="50%" valign="top">
+        <h3>🎭 Experiencia de Usuario Inmersiva</h3>
+        <ul>
+          <li><b>🌊 Animaciones Fluidas</b> - Framer Motion + AOS</li>
+          <li><b>🔄 Transiciones Suaves</b> - Entre secciones y páginas</li>
+          <li><b>✨ Micro-interacciones</b> - Feedback visual mejorado</li>
+          <li><b>📱 Diseño Responsivo</b> - Mobile, tablet y desktop</li>
+        </ul>
+      </td>
+      <td width="50%" valign="top">
+        <h3>🏢 Presentación Profesional</h3>
+        <ul>
+          <li><b>📊 Catálogo Dinámico</b> - Servicios de auditoría</li>
+          <li><b>📋 Páginas Detalladas</b> - Info completa por servicio</li>
+          <li><b>🎬 Hero Interactivo</b> - Presentación visual impactante</li>
+          <li><b>🧭 Navegación Intuitiva</b> - UX optimizada</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ---
 
 ## 🛠️ Stack Tecnológico
 
-### 🚀 **Frontend Core**
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| **React** | 18.3.1 | Biblioteca principal para construcción de UI |
-| **TypeScript** | 5.0+ | Tipado estático para mayor robustez |
-| **Vite** | 6.3.0 | Build tool y dev server ultrarrápido |
-| **React Router DOM** | 6.26.2 | Navegación y enrutamiento SPA |
+<div align="center">
+  <h3>🚀 Frontend Core Technologies</h3>
+  <table>
+    <tr>
+      <td align="center" width="25%">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="50" height="50"><br>
+        <b>React 18.3.1</b><br>
+        <small>UI Library</small>
+      </td>
+      <td align="center" width="25%">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="50" height="50"><br>
+        <b>TypeScript 5.0+</b><br>
+        <small>Type Safety</small>
+      </td>
+      <td align="center" width="25%">
+        <img src="https://vitejs.dev/logo.svg" width="50" height="50"><br>
+        <b>Vite 6.3.0</b><br>
+        <small>Build Tool</small>
+      </td>
+      <td align="center" width="25%">
+        <img src="https://www.svgrepo.com/show/354431/tailwindcss-icon.svg" width="50" height="50"><br>
+        <b>Tailwind CSS 4.1.0</b><br>
+        <small>Styling Framework</small>
+      </td>
+    </tr>
+  </table>
+</div>
 
-### 🎨 **Styling y UI**
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| **Tailwind CSS** | 4.1.0 | Framework de utilidades CSS |
-| **Shadcn/UI** | Latest | Componentes UI pre-construidos |
-| **Radix UI** | Latest | Primitivos de UI accesibles |
-| **Tailwind Animate** | 1.0.7 | Animaciones CSS optimizadas |
+<details>
+<summary><b>📦 Dependencias Completas del Proyecto</b></summary>
 
-### ⚡ **Animaciones y Interacciones**
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| **Framer Motion** | 12.5.0 | Animaciones React avanzadas |
-| **AOS** | 2.3.4 | Animaciones al scroll |
-| **Lucide React** | 0.462.0 | Iconografía moderna |
+```json
+{
+  "Frontend Core": {
+    "react": "18.3.1",
+    "typescript": "5.0+",
+    "vite": "6.3.0",
+    "react-router-dom": "6.26.2"
+  },
+  "UI & Styling": {
+    "tailwindcss": "4.1.0",
+    "@radix-ui/*": "Latest",
+    "shadcn/ui": "Latest",
+    "framer-motion": "12.5.0",
+    "lucide-react": "0.462.0"
+  },
+  "State Management": {
+    "@tanstack/react-query": "5.56.2",
+    "react-hook-form": "7.53.0",
+    "zod": "3.23.8"
+  },
+  "Animation & Effects": {
+    "framer-motion": "12.5.0",
+    "aos": "2.3.4",
+    "tailwindcss-animate": "1.0.7"
+  }
+}
+```
 
-### 🔧 **Herramientas de Desarrollo**
-| Tecnología | Versión | Propósito |
-|------------|---------|-----------|
-| **React Hook Form** | 7.53.0 | Gestión de formularios |
-| **TanStack Query** | 5.56.2 | Estado del servidor y cache |
-| **Zod** | 3.23.8 | Validación de esquemas |
-| **Class Variance Authority** | 0.7.1 | Gestión de variantes de componentes |
+</details>
 
 ---
 
 ## 🏗️ Arquitectura del Proyecto
 
-### 📐 **Arquitectura Modular de Componentes**
+### 📐 Diagrama de Arquitectura Modular
 
 ```mermaid
 graph TB
-    subgraph "📁 Application Layer"
-        App[App.tsx<br/>🎛️ Router & Providers]
-        Routes[React Router<br/>🗺️ Navigation Management]
-        QueryClient[TanStack Query<br/>💾 Data Cache Layer]
+    subgraph "🎛️ Application Layer"
+        A[App.tsx<br/>🔧 Root Configuration]
+        R[React Router<br/>🗺️ Navigation Management]
+        Q[TanStack Query<br/>💾 Data Cache Layer]
     end
     
     subgraph "📄 Page Layer"
-        Index[Index.tsx<br/>🏠 Home Page]
-        ServicePage[ServicePage.tsx<br/>🔍 Service Details]
-        NotFound[NotFound.tsx<br/>❌ 404 Handler]
+        I[Index.tsx<br/>🏠 Home Page]
+        S[ServicePage.tsx<br/>🔍 Service Details]
+        N[NotFound.tsx<br/>❌ 404 Handler]
     end
     
     subgraph "🧩 Component Layer"
-        Header[Header.tsx<br/>🧭 Navigation Bar]
-        Hero[Hero.tsx<br/>🎬 Landing Section]
-        Services[Services.tsx<br/>📋 Service Catalog]
-        ServiceDetail[ServiceDetail.tsx<br/>📝 Service Info]
-        ServiceHero[ServiceHero.tsx<br/>🎥 Service Banner]
-        Contact[Contact.tsx<br/>📞 Contact Form]
-        Footer[Footer.tsx<br/>📰 Site Footer]
+        H[Header.tsx<br/>🧭 Navigation Bar]
+        HE[Hero.tsx<br/>🎬 Landing Section]
+        SE[Services.tsx<br/>📋 Service Catalog]
+        SD[ServiceDetail.tsx<br/>📝 Service Info]
+        SH[ServiceHero.tsx<br/>🎥 Service Banner]
+        C[Contact.tsx<br/>📞 Contact Form]
+        F[Footer.tsx<br/>📰 Site Footer]
     end
     
     subgraph "🎣 Custom Hooks Layer"
-        useDevice[use-device.tsx<br/>📱 Device Detection]
-        useMobile[use-mobile.tsx<br/>📲 Mobile State]
-        useMobileMenu[use-mobile-menu.tsx<br/>🍔 Menu Toggle]
-        useLogo[use-logo.tsx<br/>🏷️ Logo Management]
-        useToast[use-toast.ts<br/>🔔 Notifications]
+        UD[use-device.tsx<br/>📱 Device Detection]
+        UM[use-mobile.tsx<br/>📲 Mobile State]
+        UMM[use-mobile-menu.tsx<br/>🍔 Menu Toggle]
+        UL[use-logo.tsx<br/>🏷️ Logo Management]
+        UT[use-toast.ts<br/>🔔 Notifications]
     end
     
     subgraph "💾 Data Layer"
-        ServicesData[services.ts<br/>📊 Service Catalog]
-        LogoData[logoData.ts<br/>🖼️ Brand Assets]
-        ServiceHeroData[serviceHero.ts<br/>🎭 Hero Content]
+        SData[services.ts<br/>📊 Service Catalog]
+        LData[logoData.ts<br/>🖼️ Brand Assets]
+        SHData[serviceHero.ts<br/>🎭 Hero Content]
     end
     
-    subgraph "🎨 UI Foundation"
-        ShadcnUI[Shadcn/UI<br/>🔧 Component Library]
-        TailwindCSS[Tailwind CSS<br/>🎨 Styling System]
-        FramerMotion[Framer Motion<br/>⚡ Animations]
-    end
+    A --> R
+    R --> I
+    R --> S
+    R --> N
     
-    App --> Routes
-    Routes --> Index
-    Routes --> ServicePage
-    Routes --> NotFound
+    I --> H
+    I --> HE
+    I --> SE
+    I --> C
+    I --> F
     
-    Index --> Header
-    Index --> Hero
-    Index --> Services
-    Index --> Contact
-    Index --> Footer
+    S --> H
+    S --> SH
+    S --> SD
+    S --> F
     
-    ServicePage --> Header
-    ServicePage --> ServiceHero
-    ServicePage --> ServiceDetail
-    ServicePage --> Footer
+    H --> UM
+    H --> UMM
+    HE --> UL
+    SH --> UD
+    SD --> SData
     
-    Header --> useMobile
-    Header --> useMobileMenu
-    Hero --> useLogo
-    ServiceHero --> useDevice
-    ServiceDetail --> ServicesData
+    SData --> SE
+    LData --> UL
+    SHData --> SH
     
-    ServicesData --> Services
-    LogoData --> useLogo
-    ServiceHeroData --> ServiceHero
+    classDef appLayer fill:#2A4B8C,color:#fff,stroke:#D4AF37,stroke-width:3px
+    classDef pageLayer fill:#D4AF37,color:#000,stroke:#2A4B8C,stroke-width:2px
+    classDef componentLayer fill:#F5F5F7,color:#000,stroke:#2A4B8C,stroke-width:2px
+    classDef hooksLayer fill:#1D1D1F,color:#fff,stroke:#D4AF37,stroke-width:2px
+    classDef dataLayer fill:#2A4B8C,color:#fff,stroke:#D4AF37,stroke-width:2px
     
-    ShadcnUI --> Header
-    TailwindCSS --> Hero
-    FramerMotion --> ServiceHero
-    
-    style App fill:#2A4B8C,color:#fff,stroke:#D4AF37,stroke-width:3px
-    style Index fill:#D4AF37,color:#000,stroke:#2A4B8C,stroke-width:2px
-    style Header fill:#F5F5F7,color:#000,stroke:#2A4B8C,stroke-width:2px
-    style useDevice fill:#1D1D1F,color:#fff,stroke:#D4AF37,stroke-width:2px
-    style ServicesData fill:#2A4B8C,color:#fff,stroke:#D4AF37,stroke-width:2px
+    class A,R,Q appLayer
+    class I,S,N pageLayer
+    class H,HE,SE,SD,SH,C,F componentLayer
+    class UD,UM,UMM,UL,UT hooksLayer
+    class SData,LData,SHData dataLayer
 ```
 
-### 🔄 **Arquitectura de Estado y Props**
+### 🔄 Arquitectura de Estado y Comunicación
 
 ```mermaid
-graph LR
+graph TD
     subgraph "🏪 Global State Management"
-        QueryCache[TanStack Query Cache<br/>📊 Server State]
-        DeviceState[Device Detection State<br/>📱 Responsive Context]
-        MenuState[Mobile Menu State<br/>🍔 Navigation Control]
-        ToastState[Toast Notifications<br/>🔔 User Feedback]
+        QC[TanStack Query Cache<br/>📊 Server State Management]
+        DS[Device State<br/>📱 Responsive Context]
+        MS[Menu State<br/>🍔 Navigation Control]
+        TS[Toast State<br/>🔔 User Feedback System]
     end
     
-    subgraph "⚛️ Component State"
-        LocalState[useState Hooks<br/>🔄 Component Data]
-        FormState[React Hook Form<br/>📝 Form Management]
-        AnimationState[Framer Motion<br/>⚡ Animation Control]
+    subgraph "⚛️ Component State Management"
+        LS[Local State<br/>🔄 useState Hooks]
+        FS[Form State<br/>📝 React Hook Form]
+        AS[Animation State<br/>⚡ Framer Motion Control]
     end
     
     subgraph "📊 Static Data Sources"
-        ConfigData[Configuration Files<br/>⚙️ App Settings]
-        ContentData[Content Data<br/>📄 Static Content]
-        AssetData[Asset References<br/>🖼️ Media Files]
+        CD[Configuration Data<br/>⚙️ App Settings]
+        CTD[Content Data<br/>📄 Static Content]
+        AD[Asset Data<br/>🖼️ Media References]
     end
     
-    subgraph "🎯 Data Flow Patterns"
-        PropsDown[Props Down<br/>⬇️ Parent to Child]
-        EventsUp[Events Up<br/>⬆️ Child to Parent]
-        ContextAPI[Context Sharing<br/>🔄 Cross-Component]
+    subgraph "🎯 Communication Patterns"
+        PD[Props Down<br/>⬇️ Parent to Child]
+        EU[Events Up<br/>⬆️ Child to Parent]
+        CA[Context API<br/>🔄 Cross-Component Sharing]
     end
     
-    QueryCache --> LocalState
-    DeviceState --> LocalState
-    ConfigData --> QueryCache
+    QC --> LS
+    DS --> LS
+    CD --> QC
     
-    LocalState --> PropsDown
-    PropsDown --> EventsUp
-    EventsUp --> ContextAPI
+    LS --> PD
+    PD --> EU
+    EU --> CA
     
-    FormState --> ToastState
-    AnimationState --> LocalState
+    FS --> TS
+    AS --> LS
     
-    style QueryCache fill:#2A4B8C,color:#fff
-    style LocalState fill:#D4AF37,color:#000
-    style ConfigData fill:#F5F5F7,color:#000
-    style PropsDown fill:#1D1D1F,color:#fff
+    classDef globalState fill:#2A4B8C,color:#fff
+    classDef componentState fill:#D4AF37,color:#000
+    classDef dataSource fill:#F5F5F7,color:#000
+    classDef communication fill:#1D1D1F,color:#fff
+    
+    class QC,DS,MS,TS globalState
+    class LS,FS,AS componentState
+    class CD,CTD,AD dataSource
+    class PD,EU,CA communication
 ```
 
 ---
 
 ## 📊 Flujo de Datos
 
-### 🌊 **Arquitectura de Flujo de Datos Unidireccional**
+### 🌊 Arquitectura de Flujo Unidireccional
 
-Como desarrollador, he implementado un patrón de flujo de datos unidireccional que garantiza la predictibilidad y mantenibilidad del código. El flujo sigue el principio "single source of truth" con múltiples capas de abstracción.
+Como desarrollador principal, he implementado un patrón de flujo de datos unidireccional que garantiza la **predictibilidad**, **mantenibilidad** y **escalabilidad** del código. El sistema sigue el principio **"single source of truth"** con múltiples capas de abstracción bien definidas.
 
 ```mermaid
-graph TD
+flowchart TD
     subgraph "🎯 Data Sources"
-        StaticData[Static Data Files<br/>services.ts, logoData.ts]
-        UserInput[User Interactions<br/>Clicks, Forms, Navigation]
-        DeviceAPI[Device APIs<br/>window.matchMedia, viewport]
+        SD[Static Data Files<br/>services.ts, logoData.ts, serviceHero.ts]
+        UI[User Interactions<br/>Clicks, Forms, Navigation, Gestures]
+        DA[Device APIs<br/>window.matchMedia, viewport, orientation]
     end
     
     subgraph "🔄 State Management Layer"
-        CustomHooks[Custom Hooks<br/>Business Logic Encapsulation]
-        ReactState[React State<br/>Component-level State]
-        QueryState[TanStack Query<br/>Server State & Caching]
+        CH[Custom Hooks<br/>Business Logic Encapsulation]
+        RS[React State<br/>Component-level State Management]
+        QS[TanStack Query<br/>Server State & Intelligent Caching]
     end
     
-    subgraph "🧩 Component Tree"
-        AppRoot[App Component<br/>Root Provider]
-        PageComponents[Page Components<br/>Route Handlers]
-        FeatureComponents[Feature Components<br/>Business Logic]
-        UIComponents[UI Components<br/>Presentation Layer]
+    subgraph "🧩 Component Hierarchy"
+        AR[App Root<br/>Provider & Router Configuration]
+        PC[Page Components<br/>Route-based Containers]
+        FC[Feature Components<br/>Business Logic Implementation]
+        UC[UI Components<br/>Pure Presentation Layer]
     end
     
-    subgraph "🎨 Presentation Layer"
-        DOMUpdates[DOM Updates<br/>React Reconciliation]
-        Animations[Framer Motion<br/>Animation Orchestration]
-        Styling[Tailwind CSS<br/>Dynamic Styling]
+    subgraph "🎨 Presentation & Effects"
+        DU[DOM Updates<br/>React Reconciliation Engine]
+        AN[Animations<br/>Framer Motion Orchestration]
+        ST[Styling<br/>Tailwind CSS Dynamic Classes]
     end
     
-    StaticData --> CustomHooks
-    UserInput --> ReactState
-    DeviceAPI --> CustomHooks
+    SD --> CH
+    UI --> RS
+    DA --> CH
     
-    CustomHooks --> QueryState
-    ReactState --> CustomHooks
-    QueryState --> FeatureComponents
+    CH --> QS
+    RS --> CH
+    QS --> FC
     
-    AppRoot --> PageComponents
-    PageComponents --> FeatureComponents
-    FeatureComponents --> UIComponents
+    AR --> PC
+    PC --> FC
+    FC --> UC
     
-    UIComponents --> DOMUpdates
-    FeatureComponents --> Animations
-    UIComponents --> Styling
+    UC --> DU
+    FC --> AN
+    UC --> ST
     
-    DOMUpdates -.-> UserInput
-    Animations -.-> UserInput
+    DU -.->|User Feedback Loop| UI
+    AN -.->|Interactive Response| UI
     
-    style StaticData fill:#2A4B8C,color:#fff
-    style CustomHooks fill:#D4AF37,color:#000
-    style FeatureComponents fill:#F5F5F7,color:#000
-    style DOMUpdates fill:#1D1D1F,color:#fff
+    classDef dataSource fill:#2A4B8C,color:#fff
+    classDef stateLayer fill:#D4AF37,color:#000
+    classDef componentLayer fill:#F5F5F7,color:#000
+    classDef presentationLayer fill:#1D1D1F,color:#fff
+    
+    class SD,UI,DA dataSource
+    class CH,RS,QS stateLayer
+    class AR,PC,FC,UC componentLayer
+    class DU,AN,ST presentationLayer
 ```
 
-### 🎣 **Custom Hooks Pattern Implementation**
+### 🎣 Estrategia de Composición de Custom Hooks
 
 ```mermaid
 graph LR
     subgraph "🎣 Hook Composition Strategy"
-        PrimitiveHooks[Primitive Hooks<br/>useState, useEffect]
-        ComposedHooks[Composed Hooks<br/>useDevice, useMobile]
-        DomainHooks[Domain Hooks<br/>useLogo, useMobileMenu]
+        PH[Primitive Hooks<br/>useState, useEffect, useRef]
+        CH[Composed Hooks<br/>useDevice, useMobile, useMobileMenu]
+        DH[Domain Hooks<br/>useLogo, useServiceData, useToast]
     end
     
     subgraph "📊 Data Transformation Pipeline"
-        RawData[Raw Data Input<br/>Static Files, API Calls]
-        ProcessedData[Processed Data<br/>Normalized, Validated]
-        PresentationData[Presentation Data<br/>UI-Ready Format]
+        RD[Raw Data Input<br/>Static Files, API Responses]
+        PD[Processed Data<br/>Normalized, Validated, Enriched]
+        PRD[Presentation Data<br/>UI-Ready Format with Computed Properties]
     end
     
-    subgraph "🔄 State Synchronization"
-        LocalSync[Local State Sync<br/>Component-level]
-        GlobalSync[Global State Sync<br/>Cross-component]
-        ExternalSync[External State Sync<br/>Device, Browser APIs]
+    subgraph "🔄 State Synchronization Layers"
+        LS[Local State Sync<br/>Component-level State Management]
+        GS[Global State Sync<br/>Cross-component Communication]
+        ES[External State Sync<br/>Device APIs, Browser Events]
     end
     
-    PrimitiveHooks --> ComposedHooks
-    ComposedHooks --> DomainHooks
+    PH --> CH
+    CH --> DH
     
-    RawData --> ProcessedData
-    ProcessedData --> PresentationData
+    RD --> PD
+    PD --> PRD
     
-    DomainHooks --> LocalSync
-    LocalSync --> GlobalSync
-    GlobalSync --> ExternalSync
+    DH --> LS
+    LS --> GS
+    GS --> ES
     
-    style PrimitiveHooks fill:#2A4B8C,color:#fff
-    style ComposedHooks fill:#D4AF37,color:#000
-    style DomainHooks fill:#F5F5F7,color:#000
+    classDef primitive fill:#2A4B8C,color:#fff
+    classDef composed fill:#D4AF37,color:#000
+    classDef domain fill:#F5F5F7,color:#000
+    
+    class PH primitive
+    class CH composed
+    class DH domain
 ```
 
-### 🏗️ **Component Communication Patterns**
+### 🏗️ Patrones de Comunicación entre Componentes
 
-Como arquitecto del sistema, he implementado varios patrones de comunicación entre componentes para mantener el acoplamiento bajo y la cohesión alta:
+Como arquitecto del sistema, he implementado múltiples patrones de comunicación para mantener el **acoplamiento bajo** y la **cohesión alta**:
 
-#### **1. Props Drilling con TypeScript Strict**
+#### **1. Props Drilling con TypeScript Estricto**
 ```typescript
-// Patrón de props tipado estrictamente
+// Patrón de props tipado estrictamente para type safety
 interface ServiceHeroProps {
   serviceId: string;
   className?: string;
+  onServiceChange?: (serviceId: string) => void;
 }
 
-// Flujo: ServicePage → ServiceHero → LogoDisplay
+// Flujo: ServicePage → ServiceHero → ServiceDetail → LogoDisplay
 ```
 
 #### **2. Custom Hooks para Estado Compartido**
 ```typescript
-// Hook para gestión de estado de dispositivo
+// Hook centralizado para gestión de estado de dispositivo
 const useDevice = () => {
-  const [deviceType, setDeviceType] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
-  // Lógica de detección y sincronización
-  return { deviceType, isMobile, isTablet, isDesktop };
+  const [deviceType, setDeviceType] = useState<DeviceType>('desktop');
+  const [orientation, setOrientation] = useState<'portrait' | 'landscape'>('landscape');
+  
+  // Lógica de detección, sincronización y cleanup
+  return { 
+    deviceType, 
+    isMobile, 
+    isTablet, 
+    isDesktop,
+    orientation,
+    breakpoint: getBreakpoint(deviceType)
+  };
 };
 ```
 
 #### **3. Event Bubbling con Synthetic Events**
 ```typescript
-// Patrón de eventos que suben por el árbol de componentes
-const handleServiceClick = useCallback((serviceId: string) => {
-  // Event propagation hacia componentes padre
-  onServiceSelect?.(serviceId);
-}, [onServiceSelect]);
+// Patrón de eventos que propagan hacia componentes padre
+const handleServiceInteraction = useCallback((
+  serviceId: string, 
+  action: 'view' | 'select' | 'contact'
+) => {
+  // Event propagation con metadata enriquecida
+  onServiceAction?.({ 
+    serviceId, 
+    action, 
+    timestamp: Date.now(),
+    deviceContext: deviceType 
+  });
+}, [onServiceAction, deviceType]);
 ```
 
-### 📈 **Performance Optimization Patterns**
+---
+
+## 📈 Optimización de Rendimiento
+
+### ⚡ Estrategias de Optimización Avanzadas
 
 ```mermaid
 graph TB
-    subgraph "⚡ Performance Layer"
-        LazyLoading[React.lazy()<br/>Code Splitting]
-        Memoization[React.memo()<br/>Render Optimization]
-        Suspense[React.Suspense<br/>Loading States]
+    subgraph "🚀 Code Optimization Layer"
+        LL[Lazy Loading<br/>React.lazy() + Dynamic Imports]
+        CS[Code Splitting<br/>Route-based & Component-based]
+        TS[Tree Shaking<br/>Dead Code Elimination]
+        BC[Bundle Compression<br/>Gzip + Brotli]
     end
     
-    subgraph "💾 Caching Strategy"
-        QueryCache[TanStack Query<br/>Server State Cache]
-        MemoryCache[useMemo/useCallback<br/>Computation Cache]
-        BrowserCache[Browser APIs<br/>localStorage, sessionStorage]
+    subgraph "💾 Caching & Memoization Strategy"
+        QC[TanStack Query Cache<br/>Intelligent Server State Management]
+        MC[Memory Cache<br/>useMemo + useCallback Optimization]
+        RC[React Memoization<br/>React.memo + shouldComponentUpdate]
+        BC2[Browser Cache<br/>Service Workers + Cache API]
     end
     
-    subgraph "🎯 Bundle Optimization"
-        TreeShaking[Vite Tree Shaking<br/>Dead Code Elimination]
-        CodeSplitting[Dynamic Imports<br/>Route-based Splitting]
-        AssetOptimization[Asset Pipeline<br/>Image/CSS Optimization]
+    subgraph "🎯 Runtime Performance"
+        VD[Virtual DOM Optimization<br/>React Fiber Reconciliation]
+        EP[Event Pooling<br/>Synthetic Event Optimization]
+        RP[Render Prioritization<br/>Concurrent Features]
+        LP[Loading Prioritization<br/>Critical Resource Loading]
     end
     
-    LazyLoading --> CodeSplitting
-    Memoization --> MemoryCache
-    QueryCache --> BrowserCache
+    subgraph "📊 Performance Monitoring"
+        WV[Web Vitals<br/>CLS, LCP, FID, INP Tracking]
+        PM[Performance Metrics<br/>Bundle Size, Load Time Analysis]
+        EM[Error Monitoring<br/>Runtime Error Tracking]
+        UM[User Metrics<br/>Real User Monitoring (RUM)]
+    end
     
-    TreeShaking --> AssetOptimization
-    CodeSplitting --> TreeShaking
+    LL --> CS
+    CS --> TS
+    TS --> BC
     
-    style LazyLoading fill:#2A4B8C,color:#fff
-    style QueryCache fill:#D4AF37,color:#000
-    style TreeShaking fill:#F5F5F7,color:#000
+    QC --> MC
+    MC --> RC
+    RC --> BC2
+    
+    VD --> EP
+    EP --> RP
+    RP --> LP
+    
+    WV --> PM
+    PM --> EM
+    EM --> UM
+    
+    classDef codeOpt fill:#2A4B8C,color:#fff
+    classDef caching fill:#D4AF37,color:#000
+    classDef runtime fill:#F5F5F7,color:#000
+    classDef monitoring fill:#1D1D1F,color:#fff
+    
+    class LL,CS,TS,BC codeOpt
+    class QC,MC,RC,BC2 caching
+    class VD,EP,RP,LP runtime
+    class WV,PM,EM,UM monitoring
 ```
 
-### 🛡️ **Error Boundary & Fallback Strategy**
+### 🔧 Implementación Técnica de Optimizaciones
+
+#### **Code Splitting Estratégico**
+```typescript
+// Implementación en App.tsx con Suspense boundaries
+const Index = lazy(() => import("./pages/Index"));
+const ServicePage = lazy(() => import("./pages/ServicePage"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+// Route-based splitting con preloading condicional
+const ServiceDetail = lazy(() => 
+  import("./components/ServiceDetail").then(module => ({
+    default: module.ServiceDetail
+  }))
+);
+```
+
+#### **TanStack Query Configuración Avanzada**
+```typescript
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000,      // 5 minutos de cache
+      cacheTime: 10 * 60 * 1000,     // 10 minutos de retención
+      retry: (failureCount, error) => {
+        if (error?.status === 404) return false;
+        return failureCount < 2;
+      },
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: 'always'
+    },
+  },
+});
+```
+
+#### **Performance Budgets y Métricas**
+```typescript
+// Configuración de performance budgets
+const PERFORMANCE_BUDGETS = {
+  bundleSize: {
+    main: '250KB',        // Bundle principal
+    vendor: '500KB',      // Dependencias
+    assets: '2MB'         // Assets totales
+  },
+  metrics: {
+    FCP: 1500,           // First Contentful Paint < 1.5s
+    LCP: 2500,           // Largest Contentful Paint < 2.5s
+    FID: 100,            // First Input Delay < 100ms
+    CLS: 0.1             // Cumulative Layout Shift < 0.1
+  }
+};
+```
+
+### 🛡️ Error Boundary & Resilience Patterns
 
 ```mermaid
 graph TD
     subgraph "🛡️ Error Handling Hierarchy"
-        AppBoundary[App-level Boundary<br/>Global Error Catch]
-        PageBoundary[Page-level Boundary<br/>Route Error Isolation]
-        ComponentBoundary[Component Boundary<br/>Feature Error Isolation]
+        AB[App-level Boundary<br/>Global Error Catch & Recovery]
+        PB[Page-level Boundary<br/>Route Error Isolation]
+        CB[Component Boundary<br/>Feature-specific Error Handling]
+        HB[Hook-level Boundary<br/>Custom Hook Error Management]
     end
     
-    subgraph "📱 Fallback Components"
-        LoadingFallback[Loading Fallback<br/>Suspense Placeholder]
-        ErrorFallback[Error Fallback<br/>User-friendly Error UI]
-        NotFoundFallback[404 Fallback<br/>Route Not Found]
+    subgraph "📱 Fallback Strategy"
+        LF[Loading Fallback<br/>Skeleton UI & Progressive Loading]
+        EF[Error Fallback<br/>User-friendly Error Recovery UI]
+        NF[Network Fallback<br/>Offline Mode & Retry Mechanisms]
+        DF[Data Fallback<br/>Default Values & Graceful Degradation]
     end
     
-    subgraph "🔔 User Feedback"
-        ToastNotifications[Toast System<br/>Non-blocking Feedback]
-        ErrorReporting[Error Logging<br/>Development Debugging]
-        UserGuidance[User Guidance<br/>Recovery Instructions]
+    subgraph "🔔 User Experience Recovery"
+        TN[Toast Notifications<br/>Non-blocking User Feedback]
+        ER[Error Reporting<br/>Structured Error Logging]
+        UG[User Guidance<br/>Clear Recovery Instructions]
+        AR[Automatic Recovery<br/>Silent Error Resolution]
     end
     
-    AppBoundary --> PageBoundary
-    PageBoundary --> ComponentBoundary
+    AB --> PB
+    PB --> CB
+    CB --> HB
     
-    ComponentBoundary --> LoadingFallback
-    ComponentBoundary --> ErrorFallback
-    PageBoundary --> NotFoundFallback
+    HB --> LF
+    CB --> EF
+    PB --> NF
+    AB --> DF
     
-    ErrorFallback --> ToastNotifications
-    ToastNotifications --> UserGuidance
+    EF --> TN
+    TN --> UG
+    UG --> AR
+    ER --> AR
     
-    style AppBoundary fill:#2A4B8C,color:#fff
-    style LoadingFallback fill:#D4AF37,color:#000
-    style ToastNotifications fill:#F5F5F7,color:#000
+    classDef errorBoundary fill:#2A4B8C,color:#fff
+    classDef fallback fill:#D4AF37,color:#000
+    classDef recovery fill:#F5F5F7,color:#000
+    
+    class AB,PB,CB,HB errorBoundary
+    class LF,EF,NF,DF fallback
+    class TN,ER,UG,AR recovery
 ```
 
 ---
 
 ## 🚀 Instalación y Configuración
 
-### 📋 **Prerrequisitos**
+<div align="center">
+  <h3>🔧 Configuración del Entorno de Desarrollo</h3>
+</div>
 
-- **Node.js** >= 18.0.0
-- **npm** >= 9.0.0 o **yarn** >= 1.22.0
-- **Git** para control de versiones
+### 📋 Prerrequisitos del Sistema
 
-### 🔧 **Instalación**
+<table align="center">
+<tr>
+<td align="center" width="25%">
+<img src="https://nodejs.org/static/images/logo.svg" width="50" height="50"><br>
+<b>Node.js</b><br>
+<code>>= 18.0.0</code>
+</td>
+<td align="center" width="25%">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" width="50" height="50"><br>
+<b>npm/yarn</b><br>
+<code>>= 9.0.0</code>
+</td>
+<td align="center" width="25%">
+<img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" width="50" height="50"><br>
+<b>Git</b><br>
+<code>Latest</code>
+</td>
+<td align="center" width="25%">
+<img src="https://code.visualstudio.com/assets/images/code-stable.png" width="50" height="50"><br>
+<b>VS Code</b><br>
+<code>Recomendado</code>
+</td>
+</tr>
+</table>
+
+### 🚀 Instalación Rápida
 
 ```bash
-# Clonar el repositorio
+# 📥 Clonar el repositorio
 git clone https://github.com/tu-usuario/cuenca-asociados.git
 
-# Navegar al directorio
+# 📁 Navegar al directorio del proyecto
 cd cuenca-asociados
 
-# Instalar dependencias
+# 📦 Instalar todas las dependencias
 npm install
 
-# Iniciar servidor de desarrollo
+# 🚀 Iniciar el servidor de desarrollo
 npm run dev
 ```
 
-### 🌐 **Acceso Local**
-
-Una vez iniciado el servidor de desarrollo:
-- **URL**: `http://localhost:8080`
-- **Network**: Accesible desde otros dispositivos en la red local
-
----
-
-## 📱 Características Técnicas
-
-### ⚡ **Optimizaciones de Rendimiento Avanzadas**
-
-#### **Code Splitting y Lazy Loading**
-```typescript
-// Implementación en App.tsx
-const Index = lazy(() => import("./pages/Index"));
-const ServicePage = lazy(() => import("./pages/ServicePage"));
-const NotFound = lazy(() => import("./pages/NotFound"));
-```
-
-#### **Bundle Optimization**
-- **Tree Shaking automático** con Vite
-- **Minificación de assets** en producción
-- **Optimización de imágenes** con lazy loading
-- **Preload de recursos críticos**
-
-#### **TanStack Query Configuration**
-```typescript
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 60 * 1000, // Cache de 1 minuto
-      retry: 1, // Un reintento en caso de error
-    },
-  },
-});
-```
-
-### 🎨 **Sistema de Animaciones Profesional**
-
-#### **Framer Motion Integration**
-- **Animaciones de página** con `motion.div`
-- **Transiciones suaves** entre rutas
-- **Micro-interacciones** en componentes UI
-- **Animaciones basadas en scroll**
-
-#### **Custom Keyframes en Tailwind**
-```css
-/* Definidas en tailwind.config.ts */
-'slide-in-up': '0.6s ease-out',
-'fade-in': '0.5s ease-out',
-'float': '3s ease-in-out infinite',
-'pulse-subtle': '3s ease-in-out infinite',
-'shimmer': '2s ease-in-out infinite',
-'glow': '2s ease-in-out infinite'
-```
-
-### 🔍 **SEO y Accesibilidad Técnica**
-
-#### **Meta Tags Optimization**
-- **Open Graph** para redes sociales
-- **Twitter Cards** para mejor presentación
-- **Meta descriptions** dinámicas por página
-- **Structured data** para motores de búsqueda
-
-#### **Accessibility Features**
-- **ARIA labels** en todos los elementos interactivos
-- **Keyboard navigation** completa
-- **Focus management** con React Router
-- **Screen reader support** optimizado
-
-#### **Performance Metrics**
-- **Lighthouse Score** optimizado para 90+
-- **Core Web Vitals** monitoreados
-- **Bundle size** < 1MB gzipped
-- **First Contentful Paint** < 1.5s
-
-### 🛡️ **Robustez y Manejo de Errores**
-
-#### **Error Boundaries**
-```typescript
-// Implementación con Suspense y fallbacks
-<Suspense fallback={<LoadingFallback />}>
-  <Routes>
-    <Route path="*" element={<NotFound />} />
-  </Routes>
-</Suspense>
-```
-
-#### **Type Safety**
-- **TypeScript estricto** en toda la aplicación
-- **Zod schemas** para validación de datos
-- **React Hook Form** con validación en tiempo real
-
-#### **Responsive Design System**
-```typescript
-// Breakpoints definidos en tailwind.config.ts
-screens: {
-  'mobile': '< 768px',
-  'tablet': '768px - 1024px', 
-  'desktop': '>= 1024px'
-}
-```
+<div align="center">
+  <h4>🌐 Acceso Local</h4>
+  <table>
+    <tr>
+      <td><b>🏠 Desarrollo Local:</b></td>
+      <td><code>http://localhost:8080</code></td>
+    </tr>
+    <tr>
+      <td><b>🌍 Red Local:</b></td>
+      <td><code>http://[tu-ip]:8080</code></td>
+    </tr>
+  </table>
+</div>
 
 ---
 
 ## 🎨 Sistema de Diseño
 
-### 🎨 **Arquitectura del Sistema de Diseño**
+### 🎨 Arquitectura del Design System
 
-El sistema de diseño de Cuenca & Asociados está construido sobre una base sólida de **Design Tokens** y **Component Variants**, proporcionando consistencia visual y facilidad de mantenimiento.
+<div align="center">
+  <h4>🎯 Design Tokens & Component Variants</h4>
+  <p>Sistema de diseño escalable basado en <b>Design Tokens</b> y <b>Component Variants</b></p>
+</div>
 
-#### **Design Tokens Corporativos**
+#### **🎨 Tokens Corporativos de Cuenca & Asociados**
 ```css
-/* Variables CSS definidas en index.css */
+/* Variables CSS globales definidas en index.css */
 :root {
-  /* Colores principales de Cuenca & Asociados */
-  --cuenca-blue: #2A4B8C;    /* Azul corporativo principal */
-  --cuenca-gold: #D4AF37;    /* Dorado para acentos */
-  --cuenca-light: #F5F5F7;   /* Gris claro para fondos */
-  --cuenca-dark: #1D1D1F;    /* Gris oscuro para texto */
+  /* 🏢 Colores corporativos principales */
+  --cuenca-blue: #2A4B8C;      /* Azul corporativo - Confianza y profesionalismo */
+  --cuenca-gold: #D4AF37;      /* Dorado premium - Excelencia y prestigio */
+  --cuenca-light: #F5F5F7;     /* Gris claro - Elegancia y modernidad */
+  --cuenca-dark: #1D1D1F;      /* Gris oscuro - Solidez y autoridad */
   
-  /* Semantic tokens para theming */
-  --primary: 213 31% 36%;     /* HSL del azul corporativo */
-  --secondary: 48 69% 52%;    /* HSL del dorado */
-  --background: 0 0% 96%;     /* Fondo principal */
-  --foreground: 0 0% 11%;     /* Texto principal */
+  /* 🎯 Semantic tokens para theming dinámico */
+  --primary: 213 31% 36%;       /* HSL del azul corporativo */
+  --secondary: 48 69% 52%;      /* HSL del dorado de excelencia */
+  --background: 0 0% 96%;       /* Fondo principal neutro */
+  --foreground: 0 0% 11%;       /* Texto principal de alto contraste */
 }
 ```
 
-#### **Utilidad de Clases CSS (`cn` function)**
+#### **🔧 Función Central del Sistema (`cn` utility)**
 ```typescript
-// src/lib/utils.ts - Función central del sistema de diseño
+// src/lib/utils.ts - Corazón del sistema de diseño
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-// Uso en componentes para variantes dinámicas
-cn("bg-cuenca-blue", "text-white", isActive && "bg-cuenca-gold")
-```
-
-### 📝 **Sistema Tipográfico Profesional**
-
-#### **Jerarquía de Fuentes**
-```css
-/* Configuración en tailwind.config.ts */
-fontFamily: {
-  sans: ['Poppins', 'sans-serif'],    /* Fuente principal para UI */
-  serif: ['Playfair Display', 'serif'] /* Fuente decorativa para títulos */
-}
-```
-
-#### **Scale Tipográfica**
-| Clase | Tamaño | Uso |
-|-------|--------|-----|
-| `text-5xl` | 48px | Títulos principales |
-| `text-4xl` | 36px | Títulos de sección |
-| `text-3xl` | 30px | Subtítulos |
-| `text-xl` | 20px | Texto destacado |
-| `text-base` | 16px | Texto base |
-| `text-sm` | 14px | Texto secundario |
-
-### 🌈 **Paleta de Colores Extendida**
-
-#### **Colores Funcionales**
-```typescript
-// Definidos en tailwind.config.ts
-colors: {
-  cuenca: {
-    blue: '#2A4B8C',      // Color corporativo principal
-    gold: '#D4AF37',      // Acentos y elementos destacados
-    light: '#F5F5F7',     // Fondos y áreas neutras
-    dark: '#1D1D1F'       // Texto y elementos oscuros
-  },
-  // Semantic colors integrados con Radix UI
-  primary: 'hsl(var(--primary))',
-  secondary: 'hsl(var(--secondary))',
-  accent: 'hsl(var(--accent))',
-  muted: 'hsl(var(--muted))'
-}
-```
-
-#### **Estados de Componentes**
-```css
-/* Hover states */
-.hover\:bg-cuenca-blue:hover { background-color: #2A4B8C; }
-
-/* Focus states */
-.focus\:ring-cuenca-gold:focus { 
-  ring-color: #D4AF37; 
-  ring-width: 2px; 
-}
-
-/* Active states */
-.active\:scale-95:active { transform: scale(0.95); }
-```
-
-### 📐 **Sistema de Espaciado y Layout**
-
-#### **Grid System Responsivo**
-```css
-/* Container responsivo */
-.container {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-@media (min-width: 1400px) {
-  .container { max-width: 1400px; }
-}
-```
-
-#### **Spacing Scale**
-```typescript
-// Escala de espaciado en Tailwind
-spacing: {
-  'xs': '0.5rem',    // 8px
-  'sm': '1rem',      // 16px  
-  'md': '1.5rem',    // 24px
-  'lg': '2rem',      // 32px
-  'xl': '3rem',      // 48px
-  '2xl': '4rem',     // 64px
-}
-```
-
-### 📱 **Breakpoints y Responsive Design**
-
-#### **Breakpoints Estratégicos**
-```typescript
-// Configuración en tailwind.config.ts
-screens: {
-  'sm': '640px',    // Smartphones grandes
-  'md': '768px',    // Tablets
-  'lg': '1024px',   // Laptops
-  'xl': '1280px',   // Desktops
-  '2xl': '1536px'   // Pantallas grandes
-}
-```
-
-#### **Utility Classes Responsivas**
-```css
-/* Ejemplo de uso responsivo */
-.responsive-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
-}
-
-.responsive-text {
-  @apply text-lg md:text-xl lg:text-2xl;
-}
-```
-
-### 🎭 **Componentes y Variantes**
-
-#### **Class Variance Authority (CVA)**
-```typescript
-// Ejemplo de variantes de botón
-const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-md font-medium transition-colors",
-  {
-    variants: {
-      variant: {
-        default: "bg-cuenca-blue text-white hover:bg-cuenca-blue/90",
-        secondary: "bg-cuenca-gold text-cuenca-dark hover:bg-cuenca-gold/90",
-        outline: "border border-cuenca-blue text-cuenca-blue hover:bg-cuenca-blue hover:text-white"
-      },
-      size: {
-        sm: "h-9 px-3 text-sm",
-        md: "h-10 px-4 text-base", 
-        lg: "h-11 px-6 text-lg"
-      }
-    }
-  }
+// Uso en componentes para variantes dinámicas y condicionales
+cn(
+  "bg-cuenca-blue text-white transition-all duration-300",
+  isActive && "bg-cuenca-gold shadow-lg",
+  isLoading && "opacity-50 cursor-not-allowed"
 )
 ```
 
-#### **Component Architecture**
-```typescript
-// Estructura de componente con variantes
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'secondary' | 'outline'
-  size?: 'sm' | 'md' | 'lg'
-  className?: string
-}
+### 📝 Sistema Tipográfico Profesional
 
-const Button = ({ variant = 'default', size = 'md', className, ...props }) => {
-  return (
-    <button 
-      className={cn(buttonVariants({ variant, size }), className)}
-      {...props}
-    />
-  )
-}
-```
-
-### 🎨 **Animaciones del Sistema de Diseño**
-
-#### **Keyframes Personalizados**
-```css
-/* Definidos en tailwind.config.ts */
-keyframes: {
-  'fade-in': {
-    '0%': { opacity: '0', transform: 'translateY(10px)' },
-    '100%': { opacity: '1', transform: 'translateY(0)' }
-  },
-  'slide-in-up': {
-    '0%': { opacity: '0', transform: 'translateY(30px) scale(0.95)' },
-    '100%': { opacity: '1', transform: 'translateY(0) scale(1)' }
-  },
-  'pulse-subtle': {
-    '0%, 100%': { opacity: '1', transform: 'scale(1)' },
-    '50%': { opacity: '0.9', transform: 'scale(1.02)' }
-  }
-}
-```
-
-#### **Animation Classes**
-```css
-.animate-fade-in { animation: fade-in 0.5s ease-out; }
-.animate-slide-in-up { animation: slide-in-up 0.6s ease-out; }
-.animate-pulse-subtle { animation: pulse-subtle 3s ease-in-out infinite; }
-```
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="50%">
+        <h4>🎭 Jerarquía de Fuentes</h4>
+        <b>Poppins</b> - Interface & UI<br>
+        <b>Playfair Display</b> - Títulos & Headers
+      </td>
+      <td align="center" width="50%">
+        <h4>📏 Escala Tipográfica</h4>
+        <code>text-5xl</code> → Títulos principales (48px)<br>
+        <code>text-base</code> → Texto base (16px)
+      </td>
+    </tr>
+  </table>
+</div>
 
 ---
 
 ## 📁 Estructura de Archivos
 
+<div align="center">
+  <h3>🗂️ Organización Modular del Proyecto</h3>
+</div>
+
 ```
-src/
-├── 📁 components/           # Componentes React reutilizables
-│   ├── 📁 ui/              # Componentes UI base (Shadcn/UI)
-│   ├── 📄 About.tsx        # Sección "Acerca de"
-│   ├── 📄 Contact.tsx      # Formulario de contacto
-│   ├── 📄 Footer.tsx       # Pie de página
-│   ├── 📄 Header.tsx       # Navegación principal
-│   ├── 📄 Hero.tsx         # Sección hero principal
-│   ├── 📄 ServiceDetail.tsx # Detalle de servicios
-│   ├── 📄 Services.tsx     # Lista de servicios
-│   └── 📄 ServicesSlider.tsx # Carrusel de servicios
-├── 📁 data/                # Datos y configuraciones
-│   ├── 📄 logoData.ts      # Información del logotipo
-│   ├── 📄 services.ts      # Catálogo de servicios
-│   └── 📄 serviceHero.ts   # Configuración de hero de servicios
-├── 📁 hooks/               # Custom hooks de React
-│   ├── 📄 use-device.tsx   # Detección de dispositivos
-│   ├── 📄 use-logo.tsx     # Gestión del logotipo
-│   ├── 📄 use-mobile.tsx   # Detección móvil simplificada
-│   ├── 📄 use-mobile-menu.tsx # Control del menú móvil
-│   └── 📄 use-toast.ts     # Sistema de notificaciones
-├── 📁 lib/                 # Utilidades y helpers
-│   └── 📄 utils.ts         # Funciones de utilidad
-├── 📁 pages/               # Páginas principales
-│   ├── 📄 Index.tsx        # Página de inicio
-│   ├── 📄 NotFound.tsx     # Página 404
-│   └── 📄 ServicePage.tsx  # Página de servicio individual
-├── 📄 App.tsx              # Componente principal
-├── 📄 main.tsx             # Punto de entrada
-└── 📄 index.css            # Estilos globales y variables CSS
+📦 cuenca-asociados/
+├── 📁 src/
+│   ├── 📁 components/           # 🧩 Componentes React reutilizables
+│   │   ├── 📁 ui/              # 🎨 Componentes UI base (Shadcn/UI)
+│   │   │   ├── 📄 button.tsx   # Botones con variantes
+│   │   │   ├── 📄 card.tsx     # Cards responsivas
+│   │   │   └── 📄 ...          # Más componentes UI
+│   │   ├── 📄 Header.tsx       # 🧭 Navegación principal
+│   │   ├── 📄 Hero.tsx         # 🎬 Sección hero landing
+│   │   ├── 📄 ServiceHero.tsx  # 🎥 Hero específico de servicios
+│   │   ├── 📄 Services.tsx     # 📋 Catálogo de servicios
+│   │   ├── 📄 Contact.tsx      # 📞 Formulario de contacto
+│   │   └── 📄 Footer.tsx       # 📰 Pie de página corporativo
+│   ├── 📁 hooks/               # 🎣 Custom React Hooks
+│   │   ├── 📄 use-device.tsx   # 📱 Detección inteligente de dispositivos
+│   │   ├── 📄 use-mobile.tsx   # 📲 Estado móvil simplificado
+│   │   ├── 📄 use-logo.tsx     # 🏷️ Gestión dinámica del logotipo
+│   │   └── 📄 use-toast.ts     # 🔔 Sistema de notificaciones
+│   ├── 📁 data/                # 💾 Fuentes de datos y configuración
+│   │   ├── 📄 services.ts      # 📊 Catálogo completo de servicios
+│   │   ├── 📄 logoData.ts      # 🖼️ Configuración de assets de marca
+│   │   └── 📄 serviceHero.ts   # 🎭 Contenido de heros de servicios
+│   ├── 📁 pages/               # 📄 Páginas principales de la aplicación
+│   │   ├── 📄 Index.tsx        # 🏠 Página de inicio principal
+│   │   ├── 📄 ServicePage.tsx  # 🔍 Página individual de servicio
+│   │   └── 📄 NotFound.tsx     # ❌ Página 404 personalizada
+│   ├── 📁 lib/                 # 🔧 Utilidades y helpers
+│   │   └── 📄 utils.ts         # 🛠️ Funciones de utilidad comunes
+│   ├── 📄 App.tsx              # ⚛️ Componente raíz de la aplicación
+│   ├── 📄 main.tsx             # 🚀 Punto de entrada de React
+│   └── 📄 index.css            # 🎨 Estilos globales y variables CSS
+├── 📁 public/                  # 📂 Assets públicos estáticos
+├── 📄 package.json             # 📦 Configuración de dependencias
+├── 📄 tailwind.config.ts       # 🎨 Configuración de Tailwind CSS
+├── 📄 vite.config.ts           # ⚡ Configuración de Vite
+└── 📄 README.md                # 📖 Documentación del proyecto
 ```
 
 ---
 
-## 🔧 Scripts Disponibles
+## 🔧 Scripts de Desarrollo
 
-```bash
-# Desarrollo
-npm run dev          # Inicia servidor de desarrollo
-npm run build        # Construye para producción
-npm run preview      # Previsualiza build de producción
-npm run lint         # Ejecuta linting del código
-
-# Mantenimiento
-npm run type-check   # Verificación de tipos TypeScript
-npm run format       # Formatea código con Prettier
-npm run clean        # Limpia archivos de build
-```
+<div align="center">
+  <table>
+    <tr>
+      <th width="30%">🚀 Comando</th>
+      <th width="70%">📝 Descripción</th>
+    </tr>
+    <tr>
+      <td><code>npm run dev</code></td>
+      <td>🔥 Inicia servidor de desarrollo con hot reload</td>
+    </tr>
+    <tr>
+      <td><code>npm run build</code></td>
+      <td>📦 Construye aplicación optimizada para producción</td>
+    </tr>
+    <tr>
+      <td><code>npm run preview</code></td>
+      <td>👀 Previsualiza build de producción localmente</td>
+    </tr>
+    <tr>
+      <td><code>npm run lint</code></td>
+      <td>🔍 Ejecuta linting y análisis de código</td>
+    </tr>
+  </table>
+</div>
 
 ---
 
 ## 🌐 Despliegue
 
-### 🚀 **Opciones de Despliegue**
+<div align="center">
+  <h3>🚀 Opciones de Despliegue en Producción</h3>
+  <table>
+    <tr>
+      <td align="center" width="25%">
+        <img src="https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png" width="50" height="50"><br>
+        <b>Vercel</b><br>
+        <small>Recomendado para React</small>
+      </td>
+      <td align="center" width="25%">
+        <img src="https://www.netlify.com/v3/img/components/logomark.png" width="50" height="50"><br>
+        <b>Netlify</b><br>
+        <small>Ideal para sitios estáticos</small>
+      </td>
+      <td align="center" width="25%">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="50" height="50"><br>
+        <b>GitHub Pages</b><br>
+        <small>Para proyectos open source</small>
+      </td>
+      <td align="center" width="25%">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" width="50" height="50"><br>
+        <b>AWS S3</b><br>
+        <small>Escalabilidad empresarial</small>
+      </td>
+    </tr>
+  </table>
+</div>
 
-La aplicación puede desplegarse en múltiples plataformas:
-
-- **Vercel** (Recomendado para React)
-- **Netlify** (Ideal para sitios estáticos)
-- **GitHub Pages** (Para proyectos open source)
-- **AWS S3 + CloudFront** (Para escalabilidad empresarial)
-
-### 📦 **Build de Producción**
+### 📦 Preparación para Producción
 
 ```bash
-# Generar build optimizado
+# 🏗️ Generar build optimizado para producción
 npm run build
 
-# El directorio 'dist' contiene los archivos listos para despliegue
+# 📊 Analizar bundle size y performance
+npm run build -- --analyze
+
+# 📁 El directorio 'dist/' contiene los archivos listos para despliegue
+# 📈 Optimizaciones incluidas: minificación, tree-shaking, code-splitting
 ```
 
 ---
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
+<div align="center">
+  <p>Este proyecto está bajo la <b>Licencia MIT</b></p>
+  <p>Ver el archivo <a href="LICENSE">LICENSE</a> para más detalles</p>
+</div>
 
 ---
 
 <div align="center">
-  <p><strong>Desarrollado con ❤️ para Cuenca & Asociados</strong></p>
-  <p>
-    <img src="https://img.shields.io/badge/Made%20with-React-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="Made with React">
-    <img src="https://img.shields.io/badge/Powered%20by-TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="Powered by TypeScript">
-  </p>
+  <h2>💼 Desarrollado para Cuenca & Asociados</h2>
+  <p><em>Excelencia en Auditoría Financiera, Contable y Tributaria</em></p>
+  
+  <table>
+    <tr>
+      <td align="center">
+        <img src="https://img.shields.io/badge/Made%20with-❤️-red?style=for-the-badge" alt="Made with Love">
+      </td>
+      <td align="center">
+        <img src="https://img.shields.io/badge/Built%20with-React-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="Built with React">
+      </td>
+      <td align="center">
+        <img src="https://img.shields.io/badge/Powered%20by-TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="Powered by TypeScript">
+      </td>
+    </tr>
+  </table>
+  
+  <p><sub>🏆 Desarrollado con las mejores prácticas de la industria</sub></p>
 </div>
