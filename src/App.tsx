@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -37,9 +36,10 @@ const queryClient = new QueryClient({
 });
 
 /**
- * Componente principal de la aplicación
+ * Componente principal de la aplicación con UI Facade integrada
  * Implementa el patrón de composición con providers anidados
  * Integra sistema de persistencia de rutas y gestión de estado global
+ * Utiliza la UI Facade para abstracción de componentes de UI
  */
 const App = () => (
   <QueryClientProvider client={queryClient}>
