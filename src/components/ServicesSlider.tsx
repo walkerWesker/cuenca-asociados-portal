@@ -11,7 +11,7 @@ import {
 import { servicesData } from '@/data/services';
 import { Button } from '@/components/ui/button';
 import { Slider } from "@/components/ui/slider";
-import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 const ServicesSlider = () => {
   const navigate = useNavigate();
@@ -102,9 +102,7 @@ const ServicesSlider = () => {
             ))}
           </CarouselContent>
           <div className="flex justify-center items-center gap-2 mt-8">
-            <Button variant="outline" size="icon" className="static transform-none mx-2" onClick={() => api?.scrollPrev()}>
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
+            <CarouselPrevious className="static transform-none mx-2" />
             <div className="w-full max-w-xs">
               <Slider
                 value={[current]}
@@ -118,9 +116,7 @@ const ServicesSlider = () => {
                 }}
               />
             </div>
-            <Button variant="outline" size="icon" className="static transform-none mx-2" onClick={() => api?.scrollNext()}>
-              <ChevronRight className="h-4 w-4" />
-            </Button>
+            <CarouselNext className="static transform-none mx-2" />
           </div>
         </Carousel>
 
