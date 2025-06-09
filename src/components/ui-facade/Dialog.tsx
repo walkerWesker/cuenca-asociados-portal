@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Dialog as HeadlessDialog, DialogPanel, DialogTitle } from '@headlessui/react';
+import { Dialog as HeadlessDialog, DialogPanel, DialogTitle as HeadlessDialogTitle } from '@headlessui/react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter } from '@heroui/react';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
