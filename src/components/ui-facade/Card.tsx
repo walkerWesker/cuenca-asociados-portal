@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Card as NextUICard, CardBody, CardHeader, CardFooter } from '@nextui-org/react';
+import { Card as NextUICard, CardBody } from '@nextui-org/react';
 import { cn } from '@/lib/utils';
 
 /**
@@ -42,7 +42,6 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
   ({ children, className, ...props }, ref) => {
     return (
       <NextUICard
-        ref={ref}
         className={cn(
           "rounded-lg border bg-card text-card-foreground shadow-sm",
           className
@@ -58,13 +57,12 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
 export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
   ({ children, className, ...props }, ref) => {
     return (
-      <CardHeader
-        ref={ref}
+      <div
         className={cn("flex flex-col space-y-1.5 p-6", className)}
         {...props}
       >
         {children}
-      </CardHeader>
+      </div>
     );
   }
 );
@@ -73,7 +71,6 @@ export const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
   ({ children, className, ...props }, ref) => {
     return (
       <CardBody
-        ref={ref}
         className={cn("p-6 pt-0", className)}
         {...props}
       >
@@ -86,13 +83,12 @@ export const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
 export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
   ({ children, className, ...props }, ref) => {
     return (
-      <CardFooter
-        ref={ref}
+      <div
         className={cn("flex items-center p-6 pt-0", className)}
         {...props}
       >
         {children}
-      </CardFooter>
+      </div>
     );
   }
 );

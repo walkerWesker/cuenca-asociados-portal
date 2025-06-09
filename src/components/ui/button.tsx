@@ -4,6 +4,3 @@
  * Mantiene compatibilidad con importaciones existentes
  */
 export { Button, buttonVariants, type ButtonProps } from '../ui-facade/Button';
-
-// Para mantener compatibilidad con el sistema anterior
-export const buttonVariants = () => '';

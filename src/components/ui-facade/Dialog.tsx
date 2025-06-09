@@ -72,8 +72,8 @@ export const DialogTrigger: React.FC<DialogTriggerProps> = ({ children, asChild 
   
   if (asChild && React.isValidElement(children)) {
     return React.cloneElement(children, {
-      onClick: () => onOpenChange(true)
-    });
+      onPress: () => onOpenChange(true)
+    } as any);
   }
   
   return (
@@ -96,7 +96,7 @@ export const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps
         className={cn("max-w-lg", className)}
         {...props}
       >
-        <ModalContent ref={ref}>
+        <ModalContent>
           {children}
           <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 hover:opacity-100">
             <X className="h-4 w-4" />
@@ -112,7 +112,6 @@ export const DialogHeader = React.forwardRef<HTMLDivElement, DialogHeaderProps>(
   ({ children, className, ...props }, ref) => {
     return (
       <ModalHeader
-        ref={ref}
         className={cn("flex flex-col space-y-1.5 text-center sm:text-left", className)}
         {...props}
       >
@@ -126,7 +125,6 @@ export const DialogFooter = React.forwardRef<HTMLDivElement, DialogFooterProps>(
   ({ children, className, ...props }, ref) => {
     return (
       <ModalFooter
-        ref={ref}
         className={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className)}
         {...props}
       >

@@ -8,11 +8,12 @@ import { cn } from '@/lib/utils';
  * Mantiene compatibilidad con la API anterior
  */
 
-interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'defaultValue'> {
   className?: string;
   type?: string;
   placeholder?: string;
   value?: string;
+  defaultValue?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   size?: 'sm' | 'md' | 'lg';
@@ -31,6 +32,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     label,
     description,
     errorMessage,
+    defaultValue,
     ...props 
   }, ref) => {
     return (
@@ -42,6 +44,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         label={label}
         description={description}
         errorMessage={errorMessage}
+        defaultValue={defaultValue}
         className={cn(
           "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
           className

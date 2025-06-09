@@ -7,10 +7,11 @@ import { cn } from '@/lib/utils';
  * Facade Pattern para Textarea - Unifica la interfaz de NextUI Textarea
  */
 
-interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'defaultValue'> {
   className?: string;
   placeholder?: string;
   value?: string;
+  defaultValue?: string;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   disabled?: boolean;
   label?: string;
@@ -28,6 +29,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     errorMessage,
     minRows = 3,
     maxRows = 8,
+    defaultValue,
     ...props 
   }, ref) => {
     return (
@@ -38,6 +40,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         errorMessage={errorMessage}
         minRows={minRows}
         maxRows={maxRows}
+        defaultValue={defaultValue}
         className={cn(
           "flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
           className
