@@ -30,6 +30,13 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     minRows = 3,
     maxRows = 8,
     defaultValue,
+    // Filter out props that shouldn't be passed to NextUI
+    children,
+    onClick,
+    onMouseDown,
+    onMouseUp,
+    onFocus,
+    onBlur,
     ...props 
   }, ref) => {
     return (

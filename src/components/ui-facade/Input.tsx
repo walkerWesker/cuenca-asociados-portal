@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
  * Mantiene compatibilidad con la API anterior
  */
 
-interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'defaultValue'> {
+interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'defaultValue' | 'color'> {
   className?: string;
   type?: string;
   placeholder?: string;
@@ -18,6 +18,7 @@ interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, '
   disabled?: boolean;
   size?: 'sm' | 'md' | 'lg';
   variant?: 'flat' | 'bordered' | 'faded' | 'underlined';
+  color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
   label?: string;
   description?: string;
   errorMessage?: string;
@@ -29,10 +30,18 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     type = 'text', 
     size = 'md',
     variant = 'bordered',
+    color = 'default',
     label,
     description,
     errorMessage,
     defaultValue,
+    // Filter out props that shouldn't be passed to NextUI
+    children,
+    onClick,
+    onMouseDown,
+    onMouseUp,
+    onFocus,
+    onBlur,
     ...props 
   }, ref) => {
     return (
@@ -41,6 +50,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         type={type}
         size={size}
         variant={variant}
+        color={color}
         label={label}
         description={description}
         errorMessage={errorMessage}
